@@ -99,7 +99,7 @@ namespace Externum_ballistics
             propertyGrid1.SelectedObject = parametrs;
         }
 
-        private void Form1_Load(object sender, EventArgs e)// Чтение файла снаряда при запуске
+        private void Form1_Load(object sender, EventArgs e)// Чтение файла снаряда при запуске 
         {
             path = @"net6.0-windowsOFM29.json";
             string text = File.ReadAllText(path);

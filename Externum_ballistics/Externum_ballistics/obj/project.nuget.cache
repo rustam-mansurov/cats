@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "wAadFN4IwCtq5rPxdylwNO+EHuqZdC0JSfwKg2VnSdgSwvUppnvYt07iSXsSQuXlJvvwdQh2IUqjsDkXIfuqJA==",
+  "dgSpecHash": "HNzm12rYVRdYr6VS2zbgsGHBsbw38E0Q7/swSlxQjf4I8yVqtRN6Loe3w+fj+5d0QoOLt/qN+h8toa8etQsIIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Externum_ballistics\\Externum_ballistics\\Externum_ballistics.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Git\\cats\\Externum_ballistics\\Externum_ballistics\\Externum_ballistics.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
