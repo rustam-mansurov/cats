@@ -131,17 +131,17 @@ namespace Externum_ballistics
             jetparametrs.lambda = 2.376;// Лямбда
             jetparametrs.k = 1.22;// Показатель адиабаты
             jetparametrs.Sv = solver.Sv(jetparametrs.dv);
-            jetparametrs.Psigma = solver.Psigma(jetparametrs.G, jetparametrs.u, jetparametrs.Sv,jetparametrs.pv, jetparametrs.pn);
-            jetparametrs.P = solver.P(jetparametrs.Psigma, jetparametrs.nu,jetparametrs.beta);
-            jetparametrs.Mpx = solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu);
-            jetparametrs.It = solver.It(jetparametrs.P, jetparametrs.t);
-            jetparametrs.u = solver.u(jetparametrs.u1,jetparametrs.pk);
-            jetparametrs.pk = solver.pk(jetparametrs.pT, jetparametrs.u, jetparametrs.Sg, 0.98, 287, jetparametrs.Tk, 0.98, jetparametrs.Skr, jetparametrs.nu);
-            jetparametrs.G = solver.G(jetparametrs.Skr, jetparametrs.pk, jetparametrs.A, R, jetparametrs.Tk);
-            jetparametrs.uv = solver.uv(jetparametrs.akr, jetparametrs.lambda);
-            jetparametrs.akr = solver.akr(jetparametrs.k, R, jetparametrs.Tk);
-            jetparametrs.re = solver.re(jetparametrs.dv);
-            jetparametrs.pv = solver.pv(jetparametrs.pk, jetparametrs.k, jetparametrs.lambda);
+            jetparametrs.Psigma = solver.Psigma(jetparametrs.G, jetparametrs.u, jetparametrs.Sv,jetparametrs.pv, jetparametrs.pn);// Суммарная тяга с учетом вращения
+            jetparametrs.P = solver.P(jetparametrs.Psigma, jetparametrs.nu,jetparametrs.beta);// Тяга без учета вращения
+            jetparametrs.Mpx = solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu);// Коэффициент тяги на вращение
+            jetparametrs.It = solver.It(jetparametrs.P, jetparametrs.t);// Импульс двигателя
+            jetparametrs.u = solver.u(jetparametrs.u1,jetparametrs.pk);// Скорость горения топлива
+            jetparametrs.pk = solver.pk(jetparametrs.pT, jetparametrs.u, jetparametrs.Sg, 0.98, 287, jetparametrs.Tk, 0.98, jetparametrs.Skr, jetparametrs.nu);// Давление в камере
+            jetparametrs.G = solver.G(jetparametrs.Skr, jetparametrs.pk, jetparametrs.A, R, jetparametrs.Tk);// Массовый расход топлива в секунду
+            jetparametrs.uv = solver.uv(jetparametrs.akr, jetparametrs.lambda);// Внешнее u
+            jetparametrs.akr = solver.akr(jetparametrs.k, R, jetparametrs.Tk);// Скорость звука в критическом срезе
+            jetparametrs.re = solver.re(jetparametrs.dv);// радиус сопла
+            jetparametrs.pv = solver.pv(jetparametrs.pk, jetparametrs.k, jetparametrs.lambda);// Внешнее давление
 
             propertyGrid1.SelectedObject = jetparametrs;
         }

@@ -117,9 +117,6 @@ namespace Externum_ballistics
         {
             return pk * Math.Pow((1 - (k - 1) / (k + 1)) * lambda * lambda, k / (k - 1));
         }
-
-
-
         #endregion
 
         #region Линейные уравнения характеристик снаряда

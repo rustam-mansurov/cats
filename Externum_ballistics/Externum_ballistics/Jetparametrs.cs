@@ -9,6 +9,7 @@ namespace Externum_ballistics
 {
     public class Jetparametrs
     {
+
         #region Сопло с ребрами
         [Category("Сопло с ребрами"), DescriptionAttribute("Описание"), DisplayName("Площадь выходного сечения сопла")]
         public double Sv { get; set; }
@@ -91,24 +92,35 @@ namespace Externum_ballistics
         public double k { get; set; }
         #endregion
 
-        public double[] Get_Initial_Conditions(int N, Jetparametrs parametrs)// Получить начальные параметры
+        public double[] Get_Initial_Conditions(int N, Jetparametrs jetparametrs)// Получить начальные параметры
         {
             double[] Y0 = new double[N];
-            Y0[0] = parametrs.Sv;
-            Y0[1] = parametrs.Psigma;
-            Y0[2] = parametrs.P;
-            Y0[3] = parametrs.Mpx;
-            Y0[4] = parametrs.It;
-            Y0[5] = parametrs.u;
-            Y0[6] = parametrs.pk;
-            Y0[7] = parametrs.G;
-            Y0[8] = parametrs.uv;
-            Y0[9] = parametrs.akr;
-            Y0[10] = parametrs.h;
-            Y0[11] = parametrs.dv;
-            Y0[12] = parametrs.beta;
-            Y0[13] = parametrs.re;
-            Y0[14] = parametrs.pv;
+            Y0[0] = jetparametrs.h;
+            Y0[1] = jetparametrs.dv;
+            Y0[2] = jetparametrs.beta;
+            Y0[3] = jetparametrs.pn;
+            Y0[4] = jetparametrs.nu;
+            Y0[5] = jetparametrs.t;
+            Y0[6] = jetparametrs.u1;
+            Y0[7] = jetparametrs.pT;
+            Y0[8] = jetparametrs.Sg;
+            Y0[9] = jetparametrs.Tk;
+            Y0[10] = jetparametrs.Skr;
+            Y0[11] = jetparametrs.A;
+            Y0[12] = jetparametrs.lambda;
+            Y0[13] = jetparametrs.k;
+            Y0[14] = jetparametrs.Sv;
+            Y0[15] = jetparametrs.Psigma;
+            Y0[16] = jetparametrs.P;
+            Y0[17] = jetparametrs.Mpx;
+            Y0[18] = jetparametrs.It;
+            Y0[19] = jetparametrs.u;
+            Y0[20] = jetparametrs.pk;
+            Y0[21] = jetparametrs.G;
+            Y0[22] = jetparametrs.uv;
+            Y0[23] = jetparametrs.akr;
+            Y0[24] = jetparametrs.re;
+            Y0[25] = jetparametrs.pv;
             return Y0;
         }
     }
