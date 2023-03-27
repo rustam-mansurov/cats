@@ -88,9 +88,9 @@ namespace Externum_ballistics
             return u1 * pk;
         }
 
-        public double pk(double pT, double u, double Sg, double Hi, double R, double Tk, double fc, double Skr, double v)// Давление в камере сгорания (Формула Бори)
+        public double pk(double pT, double u1, double Sg, double Hi, double R, double Tk, double fc, double Skr, double v)// Давление в камере сгорания (Формула Бори)
         {
-            return Math.Pow((pT * u * Sg * Math.Sqrt(0.98 * R * Tk)) / (0.98 * Skr * A1), 1 / (1 - v));
+            return Math.Pow((pT * u1 * Sg * Math.Sqrt(0.98 * R * Tk)) / (0.98 * Skr * A1), 1 / (1 - v));
         }
 
         public double G(double Skr, double ptk, double A, double R, double Tk)// Расход продуктов горения через сопло
