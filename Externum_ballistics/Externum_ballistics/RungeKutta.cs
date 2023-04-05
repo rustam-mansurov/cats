@@ -71,7 +71,7 @@ namespace Externum_ballistics
             Y[8] = solver.a(T);
             Y[9] = solver.T(h);
             Y[30] = solver.p(h);
-            Y[10] = solver.ro(p,T);
+            Y[10] = solver.ro(Y[30],T);
             Y[11] = solver.g(0, h);
             Y[13] = solver.Mah(V, a);
             Y[15] = solver.Cx(M);
@@ -148,7 +148,7 @@ namespace Externum_ballistics
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.5;
+            double dt = 0.05;
             // Объект метода
             TMyRK task = new TMyRK(N);
             // Установим начальные условия задачи

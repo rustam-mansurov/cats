@@ -33,32 +33,31 @@ namespace Externum_ballistics
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("g, м/с")]
         public double g { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Скоростной напор в воздухе")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Скоростной напор в воздухе, кг/м^2")]
         public double q { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Угол направления")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Угол направления, град")]
         public double psi { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Площадь Миделева сечения")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Площадь Миделева сечения, м^2")]
         public double Sm { get; set; }
 
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("m, кг")]
         public double Mass { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Плотность воздуха")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Плотность воздуха, кг/м^3")]
         public double ro { get; set; }
 
-
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Давление воздуха")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Давление воздуха, кПа")]
         public double p { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Температура")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Температура, К")]
         public double T { get; set; }
 
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Число маха")]
         public double Mah { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Скорость звука, м")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Скорость звука, м/с")]
         public double a { get; set; }
 
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Длина, м")]

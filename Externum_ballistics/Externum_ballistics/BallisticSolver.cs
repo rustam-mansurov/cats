@@ -68,7 +68,7 @@ namespace Externum_ballistics
             return Psigma*((1-nu)+ nu*Math.Cos(beta*Math.PI/180));
         }
 
-        public double Mpx(double Psigma, double nu, double re, double beta)// Тяга с учетом вращения
+        public double Mpx(double Psigma, double nu, double re, double beta)// Момент вращения
         {
             return Psigma*nu*re*Math.Sin(beta*Math.PI/180);
         }
@@ -87,14 +87,14 @@ namespace Externum_ballistics
         {
             double u = 0;
             u = u1 * pk * nu;
-            return u;
+            return Math.Round(u,2);
         }
 
         public double pk(double u1, double Sg, double Hi, double R, double Tk, double fc, double Skr, double v)// Давление в камере сгорания (Формула Бори)
         {
             double pk = 0;
             pk = Math.Pow((1600 * u1 * Sg * Math.Sqrt(0.98 * R * Tk)) / (0.98 * Skr * A1), 1 / (1 - v));
-            return pk;
+            return Math.Round(pk,2);
         }
 
         public double G(double Skr, double pk, double A, double R, double Tk)// Расход продуктов горения через сопло
@@ -124,19 +124,19 @@ namespace Externum_ballistics
 
         public double uv (double akr, double lambda)// Скорость газов в выходном сечении
         {
-            return akr * lambda;
+            return Math.Round(akr * lambda,2);
         }
 
         public double akr (double k, double R, double T)// Скорость звука в критическом сечении
         {
-            return Math.Sqrt(2 * k / (k + 1) * R * T);
+            return Math.Round(Math.Sqrt(2 * k / (k + 1) * R * T),2);
         }
 
         public double pv (double pk, double k, double lambda)
         {
             double pv = 0;
             pv = pk * Math.Pow((1 - (k - 1) / (k + 1) * lambda * lambda), (1 / (k - 1)));
-            return pv;
+            return Math.Round(pv,2);
         }
 
         public double m(double G)
@@ -149,7 +149,7 @@ namespace Externum_ballistics
 
         public double Mah (double V, double a)// Число Маха
         {
-            return V / a;
+            return Math.Round(V / a,2);
         }
 
         public double Cx (double M)
@@ -181,7 +181,7 @@ namespace Externum_ballistics
                 a[3] = 10.298;
             }
 
-            else if (M > 1.2 && M <= 5)
+            else if (M > 1.2)
             {
                 a[0] = 0.7088;
                 a[1] = -0.2797;
@@ -191,42 +191,42 @@ namespace Externum_ballistics
 
             Res = a[0] + a[1] * M + a[2] * Math.Pow(M, 2) + a[3] * Math.Pow(M, 3);
 
-            return Res;
+            return Math.Round(Res,2);
         }
         public double q(double ro, double V)// Скоростной напор в воздухе
         {
-            return ro*V*V/2;
+            return Math.Round(ro*V*V/2,2);
         }
         public double ro(double p, double T)// Плотность воздуха
         {
             double M = 29;
             double R = 8.31;
-            return (p*M)/(R*T);
+            return Math.Round((p*M)/(R*T),2);
         }
 
         public double a(double T)// Скорость звука
         {
-            return a0 * Math.Sqrt(T / T0);
+            return Math.Round(a0 * Math.Sqrt(T / T0),2);
         }
 
         public double T(double height)// Температура на высоте h
         {
-            return 5e-8 * height * height - 0.00682858 * height + 288.72637363;
+            return Math.Round(5e-8 * height * height - 0.00682858 * height + 288.72637363,2);
         }
 
         public double p(double height)// Давление на высоте h
         {
-            return (-1e-8 * height * height * height + 0.00055417 * height * height - 11.96119603 * height + 101310.54945055)/10e+2;
+            return Math.Round((-1e-8 * height * height * height + 0.00055417 * height * height - 11.96119603 * height + 101310.54945055) / 10e+2, 2);
         }
 
         public double g(double phi, double h)
         {
-            return 9.780318 * (1 + 0.005302 * Math.Sin(phi * Math.PI / 180) - 0.000006 * Math.Sin(2 * phi * Math.PI / 180) * Math.Sin(2 * phi * Math.PI / 180)) - 0.000003086 * h;
+            return Math.Round(9.780318 * (1 + 0.005302 * Math.Sin(phi * Math.PI / 180) - 0.000006 * Math.Sin(2 * phi * Math.PI / 180) * Math.Sin(2 * phi * Math.PI / 180)) - 0.000003086 * h,2);
         }
 
         public double Sm(double d)// Площадь миделева сечения снаряда
         {
-            return Math.PI * d * d / 4;
+            return Math.Round(Math.PI * d * d / 4,2);
         }
 
         public double mz(double M, double omega)
