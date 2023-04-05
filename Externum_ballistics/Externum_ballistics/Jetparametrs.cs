@@ -61,11 +61,14 @@ namespace Externum_ballistics
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Внутреннее давление")]
         public double pn { get; set; }
 
-        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Доля тяги на давление")]
+        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Доля тяги на устойчивость")]
         public double nu { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время работы двигателя")]
         public double t { get; set; }
+
+        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время старта работы двигателя")]
+        public double t_delta { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Единичная скорость горения")]
         public double u1 { get; set; }
@@ -76,7 +79,7 @@ namespace Externum_ballistics
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Площадь горящего свода")]
         public double Sg { get; set; }
 
-        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Температура тепловой конструкции?")]
+        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Температура камеры")]
         public double Tk { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Площадь критического сечения")]
@@ -91,6 +94,17 @@ namespace Externum_ballistics
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Показатель адиабаты")]
         public double k { get; set; }
         #endregion
+        #region Устойчивость
+
+        [Category("Устойчивость"), DescriptionAttribute("Описание"), DisplayName("Критерий устойчивости")]
+        public double sigma { get; set; }
+
+        [Category("Устойчивость"), DescriptionAttribute("Описание"), DisplayName("Коэффициент гироскопического момента")]
+        public double alfa { get; set; }
+
+        [Category("Устойчивость"), DescriptionAttribute("Описание"), DisplayName("Коэффициент аэродинамического момента")]
+        public double beta1 { get; set; }
+        #endregion 
 
         public double[] Get_Initial_Conditions(int N, Jetparametrs jetparametrs)// Получить начальные параметры
         {

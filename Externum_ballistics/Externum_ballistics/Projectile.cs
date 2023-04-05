@@ -35,6 +35,15 @@ namespace Externum_ballistics
 
         [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
         public double ix { get; set; }
+
+        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
+        public double Cx { get; set; }
+
+        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
+        public double Cy { get; set; }
+
+        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
+        public double Cz { get; set; }
         #endregion
     }
 }

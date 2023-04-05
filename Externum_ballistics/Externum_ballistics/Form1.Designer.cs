@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Параметры снаряда");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Параметры расчета");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Прямая задача");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Обратная задача");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Построить графики");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Параметры снаряда");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Параметры расчета");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Прямая задача");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Обратная задача");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
+            treeNode15,
+            treeNode16});
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Построить графики");
             this.FileMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +61,12 @@
             this.formsPlot1 = new ScottPlot.FormsPlot();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.formsPlot2 = new ScottPlot.FormsPlot();
+            this.formsPlot3 = new ScottPlot.FormsPlot();
+            this.formsPlot4 = new ScottPlot.FormsPlot();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -83,8 +89,15 @@
             this.Column20 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column21 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column22 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.Column23 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column24 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column25 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column26 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column27 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column28 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column29 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Calculation.SuspendLayout();
@@ -153,19 +166,19 @@
             this.начатьToolStripMenuItem,
             this.остановитьToolStripMenuItem});
             this.Calculation.Name = "contextMenuStrip1";
-            this.Calculation.Size = new System.Drawing.Size(181, 70);
+            this.Calculation.Size = new System.Drawing.Size(139, 48);
             // 
             // начатьToolStripMenuItem
             // 
             this.начатьToolStripMenuItem.Name = "начатьToolStripMenuItem";
-            this.начатьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.начатьToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.начатьToolStripMenuItem.Text = "Начать";
             this.начатьToolStripMenuItem.Click += new System.EventHandler(this.начатьToolStripMenuItem_Click);
             // 
             // остановитьToolStripMenuItem
             // 
             this.остановитьToolStripMenuItem.Name = "остановитьToolStripMenuItem";
-            this.остановитьToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.остановитьToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.остановитьToolStripMenuItem.Text = "Остановить";
             // 
             // menuStrip1
@@ -241,19 +254,23 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(467, 27);
+            this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Location = new System.Drawing.Point(479, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1026, 696);
+            this.tabControl1.Size = new System.Drawing.Size(1014, 696);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.formsPlot4);
+            this.tabPage1.Controls.Add(this.formsPlot3);
+            this.tabPage1.Controls.Add(this.formsPlot2);
             this.tabPage1.Controls.Add(this.formsPlot1);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1018, 668);
+            this.tabPage1.Size = new System.Drawing.Size(1006, 668);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Графики";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -263,7 +280,7 @@
             this.formsPlot1.Location = new System.Drawing.Point(7, 6);
             this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(1007, 656);
+            this.formsPlot1.Size = new System.Drawing.Size(497, 308);
             this.formsPlot1.TabIndex = 0;
             // 
             // tabPage2
@@ -272,7 +289,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 24);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1018, 668);
+            this.tabPage2.Size = new System.Drawing.Size(1006, 668);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Таблица переменных";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -302,12 +319,89 @@
             this.Column19,
             this.Column20,
             this.Column21,
-            this.Column22});
+            this.Column22,
+            this.Column23,
+            this.Column24,
+            this.Column25,
+            this.Column26,
+            this.Column27,
+            this.Column28,
+            this.Column29,
+            this.Column30,
+            this.Column31});
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 25;
             this.dataGridView1.Size = new System.Drawing.Size(1006, 656);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1018, 668);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Визуализация";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Name = "treeView1";
+            treeNode13.ContextMenuStrip = this.FileMenu;
+            treeNode13.Name = "Узел5";
+            treeNode13.Text = "Параметры снаряда";
+            treeNode14.ContextMenuStrip = this.InitialСonditions;
+            treeNode14.Name = "Узел4";
+            treeNode14.Text = "Параметры расчета";
+            treeNode15.Name = "Узел0";
+            treeNode15.Text = "Прямая задача";
+            treeNode16.Name = "Узел7";
+            treeNode16.Text = "Обратная задача";
+            treeNode17.ContextMenuStrip = this.Calculation;
+            treeNode17.Name = "Узел6";
+            treeNode17.Text = "Расчёт";
+            treeNode18.Name = "Узел1";
+            treeNode18.Text = "Построить графики";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode13,
+            treeNode14,
+            treeNode17,
+            treeNode18});
+            this.treeView1.Size = new System.Drawing.Size(449, 175);
+            this.treeView1.TabIndex = 2;
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(12, 208);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(449, 511);
+            this.propertyGrid1.TabIndex = 3;
+            // 
+            // formsPlot2
+            // 
+            this.formsPlot2.Location = new System.Drawing.Point(505, 6);
+            this.formsPlot2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot2.Name = "formsPlot2";
+            this.formsPlot2.Size = new System.Drawing.Size(497, 308);
+            this.formsPlot2.TabIndex = 1;
+            // 
+            // formsPlot3
+            // 
+            this.formsPlot3.Location = new System.Drawing.Point(7, 336);
+            this.formsPlot3.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot3.Name = "formsPlot3";
+            this.formsPlot3.Size = new System.Drawing.Size(497, 308);
+            this.formsPlot3.TabIndex = 2;
+            // 
+            // formsPlot4
+            // 
+            this.formsPlot4.Location = new System.Drawing.Point(513, 336);
+            this.formsPlot4.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.formsPlot4.Name = "formsPlot4";
+            this.formsPlot4.Size = new System.Drawing.Size(497, 308);
+            this.formsPlot4.TabIndex = 3;
             // 
             // Column1
             // 
@@ -419,40 +513,50 @@
             this.Column22.HeaderText = "Ix";
             this.Column22.Name = "Column22";
             // 
-            // treeView1
+            // Column23
             // 
-            this.treeView1.Location = new System.Drawing.Point(12, 27);
-            this.treeView1.Name = "treeView1";
-            treeNode1.ContextMenuStrip = this.FileMenu;
-            treeNode1.Name = "Узел5";
-            treeNode1.Text = "Параметры снаряда";
-            treeNode2.ContextMenuStrip = this.InitialСonditions;
-            treeNode2.Name = "Узел4";
-            treeNode2.Text = "Параметры расчета";
-            treeNode3.Name = "Узел0";
-            treeNode3.Text = "Прямая задача";
-            treeNode4.Name = "Узел7";
-            treeNode4.Text = "Обратная задача";
-            treeNode5.ContextMenuStrip = this.Calculation;
-            treeNode5.Name = "Узел6";
-            treeNode5.Text = "Расчёт";
-            treeNode6.Name = "Узел1";
-            treeNode6.Text = "Построить графики";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode5,
-            treeNode6});
-            this.treeView1.Size = new System.Drawing.Size(449, 175);
-            this.treeView1.TabIndex = 2;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.Column23.HeaderText = "mx";
+            this.Column23.Name = "Column23";
             // 
-            // propertyGrid1
+            // Column24
             // 
-            this.propertyGrid1.Location = new System.Drawing.Point(12, 208);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(449, 511);
-            this.propertyGrid1.TabIndex = 3;
+            this.Column24.HeaderText = "P";
+            this.Column24.Name = "Column24";
+            // 
+            // Column25
+            // 
+            this.Column25.HeaderText = "t_delta";
+            this.Column25.Name = "Column25";
+            // 
+            // Column26
+            // 
+            this.Column26.HeaderText = "t1";
+            this.Column26.Name = "Column26";
+            // 
+            // Column27
+            // 
+            this.Column27.HeaderText = "alfa";
+            this.Column27.Name = "Column27";
+            // 
+            // Column28
+            // 
+            this.Column28.HeaderText = "beta";
+            this.Column28.Name = "Column28";
+            // 
+            // Column29
+            // 
+            this.Column29.HeaderText = "sigma";
+            this.Column29.Name = "Column29";
+            // 
+            // Column30
+            // 
+            this.Column30.HeaderText = "Iz";
+            this.Column30.Name = "Column30";
+            // 
+            // Column31
+            // 
+            this.Column31.HeaderText = "Mza";
+            this.Column31.Name = "Column31";
             // 
             // Form1
             // 
@@ -508,6 +612,11 @@
         private ToolStripMenuItem xMLToolStripMenuItem;
         private ContextMenuStrip InitialСonditions;
         private ToolStripMenuItem начальныеУсловияToolStripMenuItem;
+        private ToolStripMenuItem начальныеПараметрыРеактивногоДвигателяToolStripMenuItem;
+        private TabPage tabPage3;
+        private ScottPlot.FormsPlot formsPlot4;
+        private ScottPlot.FormsPlot formsPlot3;
+        private ScottPlot.FormsPlot formsPlot2;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
@@ -530,6 +639,14 @@
         private DataGridViewTextBoxColumn Column20;
         private DataGridViewTextBoxColumn Column21;
         private DataGridViewTextBoxColumn Column22;
-        private ToolStripMenuItem начальныеПараметрыРеактивногоДвигателяToolStripMenuItem;
+        private DataGridViewTextBoxColumn Column23;
+        private DataGridViewTextBoxColumn Column24;
+        private DataGridViewTextBoxColumn Column25;
+        private DataGridViewTextBoxColumn Column26;
+        private DataGridViewTextBoxColumn Column27;
+        private DataGridViewTextBoxColumn Column28;
+        private DataGridViewTextBoxColumn Column29;
+        private DataGridViewTextBoxColumn Column30;
+        private DataGridViewTextBoxColumn Column31;
     }
 }

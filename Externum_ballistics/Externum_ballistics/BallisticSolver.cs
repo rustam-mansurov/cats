@@ -8,10 +8,8 @@ namespace Externum_ballistics
 {
     public class BallisticSolver
     {
-        double R = 287;// Удельная газовая постоянная
         double a0 = 340.7;// Начальная скорость звука
         double T0 = 288.9;// Начальная температура   
-        double ro = 1800;// Плотность топлива
         double A1 = 0.6523864;// Коэффициент для формулы Бори
 
         #region Дифференциальные уравнения
@@ -37,12 +35,12 @@ namespace Externum_ballistics
 
         public double teta(double g, double teta, double V, double Cy, double q, double Sm, double m)// Угол наклона траектории
         {
-            return (180 / Math.PI) * (-g * Math.Cos(teta * Math.PI / 180) / V) - (0 * q * Sm) / (m * V);
+            return (180 / Math.PI) * (-Cy * g * Math.Cos(teta * Math.PI / 180) / V) - (0 * q * Sm) / (m * V);
         }
 
         public double psi(double Cz, double q, double Sm, double m, double V, double teta)// Угол направления
         {
-            return -(0 * Cz * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
+            return -(Cz * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
         }
 
         public double omega(double mx, double q, double Sm, double l, double Ix)// Аксиальная угловая скорость
@@ -58,9 +56,11 @@ namespace Externum_ballistics
             return Math.PI*dv*dv/4;
         }
 
-        public double Psigma(double G, double u, double Sv, double pv, double pn)// Общая реактивная тяга двигателя
+        public double Psigma(double G, double uv, double Sv, double pv, double pn)// Общая реактивная тяга двигателя
         {
-            return G * u + Sv * (pv - pn);
+            double P = 0;
+            P = G * uv + Sv * (pv - pn);
+            return P;
         }
 
         public double P(double Psigma, double nu, double beta)// Тяга с учетом вращения
@@ -83,24 +83,43 @@ namespace Externum_ballistics
             return P*t;
         }
 
-        public double u(double u1, double pk)// Скорость горения
+        public double u(double u1, double pk, double nu)// Скорость горения
         {
-            return u1 * pk;
+            double u = 0;
+            u = u1 * pk * nu;
+            return u;
         }
 
-        public double pk(double pT, double u1, double Sg, double Hi, double R, double Tk, double fc, double Skr, double v)// Давление в камере сгорания (Формула Бори)
+        public double pk(double u1, double Sg, double Hi, double R, double Tk, double fc, double Skr, double v)// Давление в камере сгорания (Формула Бори)
         {
-            return Math.Pow((pT * u1 * Sg * Math.Sqrt(0.98 * R * Tk)) / (0.98 * Skr * A1), 1 / (1 - v));
+            double pk = 0;
+            pk = Math.Pow((1600 * u1 * Sg * Math.Sqrt(0.98 * R * Tk)) / (0.98 * Skr * A1), 1 / (1 - v));
+            return pk;
         }
 
-        public double G(double Skr, double ptk, double A, double R, double Tk)// Расход продуктов горения через сопло
+        public double G(double Skr, double pk, double A, double R, double Tk)// Расход продуктов горения через сопло
         {
-            return (Skr * ptk * A) / (Math.Sqrt(R * Tk));
+            return (Skr * pk * A) / (Math.Sqrt(R * Tk));
         }
 
-        public double A(double k)// Расход продуктов горения через сопло
+        public double A(double k)// Коэффициент для формулы Бори
         {
             return Math.Sqrt(k*Math.Pow(2/(k+1),(k+1)/(k-1)));
+        }
+
+        public double beta1(double mz, double q, double Sm, double l, double Iy)// коэффициент аэродинамического момента
+        {
+            return (mz * q * Sm * l) / Iy;
+        }
+
+        public double sigma(double alfa, double beta1)// Критерий устойчивости
+        {
+            return (1 - beta1 / (alfa*alfa));
+        }
+
+        public double alfa(double Ix, double Iy, double omega)// Коэффициент гироскопического момента
+        {
+            return Ix / (2 * Iy) * omega;
         }
 
         public double uv (double akr, double lambda)// Скорость газов в выходном сечении
@@ -115,7 +134,14 @@ namespace Externum_ballistics
 
         public double pv (double pk, double k, double lambda)
         {
-            return pk * Math.Pow((1 - (k - 1) / (k + 1)) * lambda * lambda, k / (k - 1));
+            double pv = 0;
+            pv = pk * Math.Pow((1 - (k - 1) / (k + 1) * lambda * lambda), (1 / (k - 1)));
+            return pv;
+        }
+
+        public double m(double G)
+        {
+            return -G;
         }
         #endregion
 
@@ -167,10 +193,15 @@ namespace Externum_ballistics
 
             return Res;
         }
-
-        public double q(double p, double Mah, double a, double T)// Скоростной напор в воздухе
+        public double q(double ro, double V)// Скоростной напор в воздухе
         {
-            return p * Mah * Mah * a * a / (2*R*T);
+            return ro*V*V/2;
+        }
+        public double ro(double p, double T)// Плотность воздуха
+        {
+            double M = 29;
+            double R = 8.31;
+            return (p*M)/(R*T);
         }
 
         public double a(double T)// Скорость звука
@@ -185,7 +216,7 @@ namespace Externum_ballistics
 
         public double p(double height)// Давление на высоте h
         {
-            return -1e-8 * height * height * height + 0.00055417 * height * height - 11.96119603 * height + 101310.54945055;
+            return (-1e-8 * height * height * height + 0.00055417 * height * height - 11.96119603 * height + 101310.54945055)/10e+2;
         }
 
         public double g(double phi, double h)
@@ -196,6 +227,15 @@ namespace Externum_ballistics
         public double Sm(double d)// Площадь миделева сечения снаряда
         {
             return Math.PI * d * d / 4;
+        }
+
+        public double mz(double M, double omega)
+        {
+            double[] b = new double[3];
+            b[0] = 0.000617;
+            b[1] = -0.00022;
+            b[2] = 2.92e-5;
+            return (b[0] + b[1]*M + b[2] * M * M) * omega;
         }
         #endregion
     }

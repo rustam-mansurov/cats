@@ -33,7 +33,6 @@ namespace Externum_ballistics
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("g, м/с")]
         public double g { get; set; }
 
-
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Скоростной напор в воздухе")]
         public double q { get; set; }
 
@@ -46,8 +45,12 @@ namespace Externum_ballistics
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("m, кг")]
         public double Mass { get; set; }
 
-        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Давление")]
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Плотность воздуха")]
         public double ro { get; set; }
+
+
+        [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Давление воздуха")]
+        public double p { get; set; }
 
         [Category("Начальные условия"), DescriptionAttribute("Описание"), DisplayName("Температура")]
         public double T { get; set; }
@@ -93,23 +96,14 @@ namespace Externum_ballistics
         [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Сх")]
         public double Cx { get; set; }
 
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Суа")]
-        public double[,] Cya { get; set; }
+        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Сx")]
+        public double Cy { get; set; }
 
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Сzа")]
-        public double[] Cza { get; set; }
+        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Сz")]
+        public double Cz { get; set; }
 
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Mzа")]
-        public double[] Mza { get; set; }
-
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Myа")]
-        public double[] Mya { get; set; }
-
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Mxа")]
-        public double[] Mxa { get; set; }
-
-        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("Mwа")]
-        public double[] Mwa { get; set; }
+        [Category("Различные моменты и коэффициенты"), DescriptionAttribute("Описание"), DisplayName("mz")]
+        public double mz { get; set; }
         #endregion
 
         public double[] Get_Initial_Conditions(int N, Parametrs parametrs)// Получить начальные параметры

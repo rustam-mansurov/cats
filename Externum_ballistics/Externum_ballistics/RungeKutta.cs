@@ -9,7 +9,6 @@ namespace Externum_ballistics
     public abstract class RungeKutta
     {
         public BallisticSolver solver = new BallisticSolver();
-        public Parametrs parametrs = new Parametrs();
         /// <summary>
         /// Текущее время
         /// </summary>
@@ -66,21 +65,25 @@ namespace Externum_ballistics
         /// <returns>правая часть</returns>
         abstract public double[] F(double t, double[] Y);
     
-        public void update (double ro, double V, double T, double h, double g, double a, double M)
+        public void update (double ro, double V, double T, double h, double g, double a, double M, double Ix, double Iy, double omega, double mz, double q, double Sm, double l, double beta, double alfa, double p)
         {
-            Y[7] = solver.q(ro, M, a, T);
+            Y[7] = solver.q(ro, V);
             Y[8] = solver.a(T);
             Y[9] = solver.T(h);
-            Y[10] = solver.p(h);
+            Y[30] = solver.p(h);
+            Y[10] = solver.ro(p,T);
             Y[11] = solver.g(0, h);
             Y[13] = solver.Mah(V, a);
             Y[15] = solver.Cx(M);
+            Y[25] = solver.alfa(0.1455, 1.4417, omega);
+            Y[26] = solver.beta1(0.8918, q, Sm, l, 1.4417);
+            Y[27] = solver.sigma(beta, alfa);
         }
         
         public void NextStep(double dt)
         {
             int i;
-            update(Y[10], Y[3], Y[9], Y[1], Y[11], Y[8], Y[13]);
+            update(Y[10], Y[3], Y[9], Y[1], Y[11], Y[8], Y[13],Y[21], Y[28], Y[6], Y[29], Y[8], Y[12], Y[19], Y[26], Y[25], Y[30]);
 
             if (dt < 0) return;
 
@@ -125,13 +128,13 @@ namespace Externum_ballistics
         /// <returns></returns>
         public override double[] F(double t, double[] Y)
         {
-            return Funk(Y[0],Y[1],Y[2], Y[3], Y[4], Y[5], Y[6], Y[7], Y[8], Y[9], Y[10], Y[11], Y[12], Y[13], Y[14], Y[15], Y[16], Y[17], Y[18], Y[19], Y[20], Y[21], Y[22]);
+            return Funk(Y[0],Y[1],Y[2], Y[3], Y[4], Y[5], Y[6], Y[7], Y[8], Y[9], Y[10], Y[11], Y[12], Y[13], Y[14], Y[15], Y[16], Y[17], Y[18], Y[19], Y[20], Y[21], Y[22], Y[23], Y[24], Y[25], Y[26], Y[27], Y[28], Y[29], Y[30]);
         }
 
         /// Создание вектора параметров полёта снаряда
-        public double[] Funk(double X, double Y, double Z, double V, double teta, double psi, double omega, double q, double a, double T, double ro, double g, double Sm, double Mah, double m, double Cx, double Cy, double Cz, double d, double l, double Ix, double mx, double P)
+        public double[] Funk(double X, double Y, double Z, double V, double teta, double psi, double omega, double q, double a, double T, double ro, double g, double Sm, double Mah, double m, double Cx, double Cy, double Cz, double d, double l, double Ix, double mx, double P, double t_delta, double t1, double alfa, double beta, double sigma, double Iz, double Mza, double p)
         {
-            double[] F = new double[23];
+            double[] F = new double[31];
             F[0] = solver.X(V, teta, psi);
             F[1] = solver.Y(V, teta);
             F[2] = solver.Z(V, teta, psi);
@@ -150,11 +153,15 @@ namespace Externum_ballistics
             TMyRK task = new TMyRK(N);
             // Установим начальные условия задачи
             task.SetInit(0, Y0);
-            // решаем до 15 секунд
+            // решаем до того как высота снаряда не станет меньше нуля
             int j = 0;
             while (task.Y[1] >= 0 )
             {
-                double[] result = new double[23];
+                double[] result = new double[31];
+                if (task.Y[24] <= t-task.Y[23] && task.Y[24] >= t+task.Y[23])
+                {
+                    task.Y[22] = 0;
+                }
                 for (int i = 0; i < N-1; i++)
                 {
                     result[0] = task.t;
