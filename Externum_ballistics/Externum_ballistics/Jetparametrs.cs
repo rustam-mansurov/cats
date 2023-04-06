@@ -64,10 +64,10 @@ namespace Externum_ballistics
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Доля тяги на устойчивость")]
         public double nu { get; set; }
 
-        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время работы двигателя, сек")]
+        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время старта работы двигателя, сек")]
         public double t { get; set; }
 
-        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время старта работы двигателя, сек")]
+        [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время работы двигателя, сек")]
         public double t_delta { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Единичная скорость горения, м/с")]

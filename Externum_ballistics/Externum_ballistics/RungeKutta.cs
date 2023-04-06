@@ -148,7 +148,7 @@ namespace Externum_ballistics
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.05;
+            double dt = 0.5;
             // Объект метода
             TMyRK task = new TMyRK(N);
             // Установим начальные условия задачи
@@ -158,7 +158,11 @@ namespace Externum_ballistics
             while (task.Y[1] >= 0 )
             {
                 double[] result = new double[31];
-                if (task.Y[24] <= t-task.Y[23] && task.Y[24] >= t+task.Y[23])
+                if (task.Y[23] >= task.t-task.Y[24] && task.Y[23] <= task.t+task.Y[24])
+                {
+                    task.Y[22] =  1837;
+                }
+                else
                 {
                     task.Y[22] = 0;
                 }

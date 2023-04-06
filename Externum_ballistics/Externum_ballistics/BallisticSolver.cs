@@ -35,12 +35,12 @@ namespace Externum_ballistics
 
         public double teta(double g, double teta, double V, double Cy, double q, double Sm, double m)// Угол наклона траектории
         {
-            return (180 / Math.PI) * (-Cy * g * Math.Cos(teta * Math.PI / 180) / V) - (0 * q * Sm) / (m * V);
+            return (180 / Math.PI) * -(g * Math.Cos(teta * Math.PI / 180) / V) - (Cy * q * Sm) / (m * V);
         }
 
         public double psi(double Cz, double q, double Sm, double m, double V, double teta)// Угол направления
         {
-            return -(Cz * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
+            return -(0 * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
         }
 
         public double omega(double mx, double q, double Sm, double l, double Ix)// Аксиальная угловая скорость

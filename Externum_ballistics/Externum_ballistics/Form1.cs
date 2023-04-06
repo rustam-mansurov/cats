@@ -60,9 +60,9 @@ namespace Externum_ballistics
         private void начатьToolStripMenuItem_Click(object sender, EventArgs e)//Начать вычисления
         {
             Y0 = parametrs.Get_Initial_Conditions(n, parametrs);// Начальные условия
-            Y0[22] = jetparametrs.Psigma;
-            Y0[23] = jetparametrs.t;
-            Y0[24] = jetparametrs.t_delta;
+            Y0[22] = 0;//jetparametrs.Psigma;
+            Y0[23] = jetparametrs.t_delta;
+            Y0[24] = jetparametrs.t;
             Y0[25] = jetparametrs.alfa;
             Y0[26] = jetparametrs.beta1;
             Y0[27] = jetparametrs.sigma;
@@ -81,6 +81,8 @@ namespace Externum_ballistics
             double[] koef2 = new double[result.Count];
             List<double> dataxJet = new List<double>();
             List<double> datayJet = new List<double>();
+            List<double> dataJetV = new List<double>();
+            List<double> dataJett = new List<double>();
             for (int i = 0; i < result.Count; i++)
             {
                 dataGridView1.Rows.Add();
@@ -91,10 +93,12 @@ namespace Externum_ballistics
                 dataOmega[i] = result[i][7];
                 dataSigma[i] = result[i][28];
 
-                if (result[i][0] >= jetparametrs.t_delta-result[i][24] && result[i][0] <= jetparametrs.t_delta + result[i][24])
+                if (result[i][24] >= result[i][0] - jetparametrs.t && result[i][24] <= result[i][0] + jetparametrs.t)
                 {
                     dataxJet.Add(result[i][1]);
                     datayJet.Add(result[i][2]);
+                    dataJetV.Add(result[i][4]);
+                    dataJett.Add(result[i][0]);
                 }
 
                 for (int j = 0; j < N-1; j++)
@@ -104,11 +108,15 @@ namespace Externum_ballistics
             }
             double[] dataY2 = new double[datayJet.Count];
             double[] dataX2 = new double[dataxJet.Count];
+            double[] dataV2 = new double[dataxJet.Count];
+            double[] datat2 = new double[dataxJet.Count];
 
             for (int k = 0; k < dataxJet.Count; k++)
             {
                 dataX2[k] = dataxJet[k];
                 dataY2[k] = datayJet[k];
+                dataV2[k] = dataJetV[k];
+                datat2[k] = dataJett[k];
             }
             for (int i = 0; i < koef1.Length; i++)
             {
@@ -124,6 +132,8 @@ namespace Externum_ballistics
             formsPlot2.Plot.AddScatter(datat, dataV);
             formsPlot2.Plot.XLabel("t, секунд");
             formsPlot2.Plot.YLabel("V, м/с");
+            formsPlot2.Refresh();
+            formsPlot2.Plot.AddScatter(datat2, dataV2);
             formsPlot2.Refresh();
             formsPlot3.Plot.AddScatter(datat, dataOmega);
             formsPlot3.Plot.XLabel("t, секунд");
