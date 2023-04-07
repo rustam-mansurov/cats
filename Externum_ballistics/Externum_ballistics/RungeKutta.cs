@@ -15,6 +15,9 @@ namespace Externum_ballistics
         public double t;
         /// <summary>
         /// Искомое решение Y[0] — само решение, Y[i] — i-я производная решения
+        /// 0 - x, 1 - y, 2 - z, 3 - V, 4 - teta, 5 - psi, 6 - omega, 7 - q, 8 - a, 9 - T, 10 - ro, 
+        /// 11 - g, 12 - Sm, 13 - Mah, 14 - m, 15 - Cx, 16 - Cy, 17 - Cz, 18 - d, 19 - l,
+        /// 20 - Ix, 21 - mx, 22 - P, 23 - t_delta, 24 - t1, 25 - alfa, 26 - beta, 27 - sigma, 28 - Iz, 29 - Mza, 30 - p
         /// </summary>
         public double[] Y;
         /// <summary>
@@ -76,14 +79,14 @@ namespace Externum_ballistics
             Y[13] = solver.Mah(V, a);
             Y[15] = solver.Cx(M);
             Y[25] = solver.alfa(0.1455, 1.4417, omega);
-            Y[26] = solver.beta1(0.8918, q, Sm, l, 1.4417);
+            Y[26] = solver.beta1(0.8918, ro, Sm, l, 1.4417, V);
             Y[27] = solver.sigma(beta, alfa);
         }
         
         public void NextStep(double dt)
         {
             int i;
-            update(Y[10], Y[3], Y[9], Y[1], Y[11], Y[8], Y[13],Y[21], Y[28], Y[6], Y[29], Y[8], Y[12], Y[19], Y[26], Y[25], Y[30]);
+            update(Y[10], Y[3], Y[9], Y[1], Y[11], Y[8], Y[13], Y[20], Y[28], Y[6], Y[29], Y[7], Y[12], Y[19], Y[26], Y[25], Y[30]);
 
             if (dt < 0) return;
 
@@ -148,7 +151,7 @@ namespace Externum_ballistics
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.5;
+            double dt = 0.05;
             // Объект метода
             TMyRK task = new TMyRK(N);
             // Установим начальные условия задачи
@@ -158,9 +161,11 @@ namespace Externum_ballistics
             while (task.Y[1] >= 0 )
             {
                 double[] result = new double[31];
-                if (task.Y[23] >= task.t-task.Y[24] && task.Y[23] <= task.t+task.Y[24])
+                if (task.Y[23] >= task.t-task.Y[24] && task.Y[23] <= task.t)
                 {
-                    task.Y[22] =  1837;
+                    task.Y[22] =  11560/3;
+                    task.Y[15] = solver.Cx(Y[13]) - 0.12;
+                    task.Y[14] = 55.6 - 5;
                 }
                 else
                 {

@@ -107,9 +107,9 @@ namespace Externum_ballistics
             return Math.Sqrt(k*Math.Pow(2/(k+1),(k+1)/(k-1)));
         }
 
-        public double beta1(double mz, double q, double Sm, double l, double Iy)// коэффициент аэродинамического момента
+        public double beta1(double mz, double ro, double Sm, double l, double Iy, double V)// коэффициент аэродинамического момента
         {
-            return (mz * q * Sm * l) / Iy;
+            return (mz * ro * V * V / 2 * Sm * l) / Iy;
         }
 
         public double sigma(double alfa, double beta1)// Критерий устойчивости
@@ -141,7 +141,7 @@ namespace Externum_ballistics
 
         public double m(double G)
         {
-            return -G;
+            return -5 / (3/0.05);//-G;
         }
         #endregion
 

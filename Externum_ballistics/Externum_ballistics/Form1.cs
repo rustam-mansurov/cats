@@ -93,7 +93,7 @@ namespace Externum_ballistics
                 dataOmega[i] = result[i][7];
                 dataSigma[i] = result[i][28];
 
-                if (result[i][24] >= result[i][0] - jetparametrs.t && result[i][24] <= result[i][0] + jetparametrs.t)
+                if (result[i][24] >= result[i][0] - jetparametrs.t && result[i][24] <= result[i][0])
                 {
                     dataxJet.Add(result[i][1]);
                     datayJet.Add(result[i][2]);
@@ -216,7 +216,7 @@ namespace Externum_ballistics
             jetparametrs.Mpx = Math.Round(solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu),2);// Коэффициент тяги на вращение
             jetparametrs.t_delta = 22;
             jetparametrs.alfa = Math.Round(solver.alfa(parametrs.I_x, parametrs.I_z, parametrs.Initial_angular_velocity),2);
-            jetparametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.q, parametrs.Sm, parametrs.Length, parametrs.I_z),2);
+            jetparametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.q, parametrs.Sm, parametrs.Length, parametrs.I_z, parametrs.Starting_velocity),2);
             jetparametrs.sigma = Math.Round(solver.sigma(jetparametrs.alfa, jetparametrs.beta1),2);
             propertyGrid1.SelectedObject = jetparametrs;
         }
