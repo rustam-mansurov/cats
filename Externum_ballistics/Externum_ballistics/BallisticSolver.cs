@@ -43,9 +43,22 @@ namespace Externum_ballistics
             return -(0 * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
         }
 
-        public double omega(double mx, double q, double Sm, double l, double Ix)// Аксиальная угловая скорость
+        public double omega(double mx, double q, double Sm, double l, double Ix, double delta_omega)// Аксиальная угловая скорость
         {
-            return -mx * q * Sm * l / Ix;
+            return -mx * q * Sm * l / Ix + delta_omega;
+        }
+
+        public double delta_omega(double Mpx, double P, double d, double Ix, double t_start, double t_delta, double t)// Аксиальная угловая скорость
+        {
+            if (t >= t_start && t <= t_start+t_delta)
+            {
+                return ((Mpx * P * d) / 2) / Ix;          
+            }
+
+            else 
+            { 
+                return 0; 
+            }
         }
         #endregion
 
@@ -139,9 +152,9 @@ namespace Externum_ballistics
             return Math.Round(pv,2);
         }
 
-        public double m(double G)
+        public double m(double G, double t_start, double t)
         {
-            return -5 / (3/0.05);//-G;
+            return -G ;
         }
         #endregion
 
@@ -152,7 +165,7 @@ namespace Externum_ballistics
             return Math.Round(V / a,2);
         }
 
-        public double Cx (double M)
+        public double Cx (double M, double t_delta, double t_start,  double t)
         {
             double [] a = new double[4];
             double Res = 0;
@@ -190,7 +203,6 @@ namespace Externum_ballistics
             }
 
             Res = a[0] + a[1] * M + a[2] * Math.Pow(M, 2) + a[3] * Math.Pow(M, 3);
-
             return Math.Round(Res,2);
         }
         public double q(double ro, double V)// Скоростной напор в воздухе

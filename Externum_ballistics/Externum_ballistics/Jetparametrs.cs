@@ -41,12 +41,14 @@ namespace Externum_ballistics
         [Category("Сопло с ребрами"), DescriptionAttribute("Описание"), DisplayName("Скорость звука в выходном сечении, м/с")]
         public double akr { get; set; }
 
-
         [Category("Сопло с ребрами"), DescriptionAttribute("Описание"), DisplayName("Радиус расположения ребер сопла")]
         public double re { get; set; }
 
         [Category("Сопло с ребрами"), DescriptionAttribute("Описание"), DisplayName("Внешнее давление, Па")]
         public double pv { get; set; }
+
+        [Category("Сопло с ребрами"), DescriptionAttribute("Описание"), DisplayName("Ускорение угловой скорости, Рад/с")]
+        public double delta_omega { get; set; }
         #endregion
         #region Константы
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Высота ребер на внутренней поверхности сопла, м")]
@@ -65,7 +67,7 @@ namespace Externum_ballistics
         public double nu { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время старта работы двигателя, сек")]
-        public double t { get; set; }
+        public double t_start { get; set; }
 
         [Category("Константы"), DescriptionAttribute("Описание"), DisplayName("Время работы двигателя, сек")]
         public double t_delta { get; set; }
@@ -114,7 +116,7 @@ namespace Externum_ballistics
             Y0[2] = jetparametrs.beta;
             Y0[3] = jetparametrs.pn;
             Y0[4] = jetparametrs.nu;
-            Y0[5] = jetparametrs.t;
+            Y0[5] = jetparametrs.t_delta;
             Y0[6] = jetparametrs.u1;
             Y0[7] = jetparametrs.pT;
             Y0[8] = jetparametrs.Sg;

@@ -7,16 +7,22 @@ namespace Externum_ballistics
 {
     public partial class Form1 : Form
     {
-        uint N = 31;
-        int n = 31;
+        static uint N = 33;
+        static int n = 34;
         double R = 346.9;
         string path;
-        double[] Y0 = new double[31];
+        /// <summary>
+        /// 0 - x, 1 - y, 2 - z, 3 - V, 4 - teta, 5 - psi, 6 - omega, 7 - q, 8 - a, 9 - T, 10 - ro, 
+        /// 11 - g, 12 - Sm, 13 - Mah, 14 - m, 15 - Cx, 16 - Cy, 17 - Cz, 18 - d, 19 - l,
+        /// 20 - Ix, 21 - mx, 22 - P, 23 - t_delta, 24 - t_start, 25 - alfa, 26 - beta, 27 - sigma, 
+        /// 28 - Iz, 29 - Mza, 30 - p, 31 - delta_omega, 32 - Mpx
+        /// </summary>
+        double[] Y0 = new double[n];
         Projectile OFM29 = new Projectile();// Создадим экземпляр класса для снаряда ОФМ29
         BallisticSolver solver = new BallisticSolver();
         Parametrs parametrs = new Parametrs();
         Jetparametrs jetparametrs = new Jetparametrs();
-        TMyRK test = new TMyRK(31);
+        TMyRK test = new TMyRK(N);
 
         public Form1()
         {
@@ -62,15 +68,18 @@ namespace Externum_ballistics
             Y0 = parametrs.Get_Initial_Conditions(n, parametrs);// Начальные условия
             Y0[22] = 0;//jetparametrs.Psigma;
             Y0[23] = jetparametrs.t_delta;
-            Y0[24] = jetparametrs.t;
+            Y0[24] = jetparametrs.t_start;
+            Y0[28] = parametrs.I_z;
             Y0[25] = jetparametrs.alfa;
             Y0[26] = jetparametrs.beta1;
             Y0[27] = jetparametrs.sigma;
-            Y0[28] = parametrs.I_z;
             Y0[29] = parametrs.mz;
+            Y0[30] = parametrs.p;
+            Y0[31] = jetparametrs.delta_omega;
+            Y0[32] = jetparametrs.Mpx;
 
             List<double[]> result = new List<double[]>();
-            result = test.Test(N, Y0);
+            result = test.Test(N, Y0, n);
             double [] datax = new double[result.Count];
             double[] datat = new double[result.Count];
             double [] datay = new double[result.Count];
@@ -83,6 +92,7 @@ namespace Externum_ballistics
             List<double> datayJet = new List<double>();
             List<double> dataJetV = new List<double>();
             List<double> dataJett = new List<double>();
+            List<double> dataOmegaJet = new List<double>();
             for (int i = 0; i < result.Count; i++)
             {
                 dataGridView1.Rows.Add();
@@ -93,12 +103,13 @@ namespace Externum_ballistics
                 dataOmega[i] = result[i][7];
                 dataSigma[i] = result[i][28];
 
-                if (result[i][24] >= result[i][0] - jetparametrs.t && result[i][24] <= result[i][0])
+                if (result[i][0] >= jetparametrs.t_start && result[i][0] <= jetparametrs.t_start + jetparametrs.t_delta )
                 {
                     dataxJet.Add(result[i][1]);
                     datayJet.Add(result[i][2]);
                     dataJetV.Add(result[i][4]);
                     dataJett.Add(result[i][0]);
+                    dataOmegaJet.Add(result[i][7]);
                 }
 
                 for (int j = 0; j < N-1; j++)
@@ -110,6 +121,7 @@ namespace Externum_ballistics
             double[] dataX2 = new double[dataxJet.Count];
             double[] dataV2 = new double[dataxJet.Count];
             double[] datat2 = new double[dataxJet.Count];
+            double[] dataOmegaJet2 = new double[dataxJet.Count];
 
             for (int k = 0; k < dataxJet.Count; k++)
             {
@@ -117,31 +129,35 @@ namespace Externum_ballistics
                 dataY2[k] = datayJet[k];
                 dataV2[k] = dataJetV[k];
                 datat2[k] = dataJett[k];
+                datat2[k] = dataJett[k];
+                dataOmegaJet2[k] = dataOmegaJet[k];
             }
             for (int i = 0; i < koef1.Length; i++)
             {
                 koef1[i] = 0.9;
                 koef2[i] = 0.6;
             }
-            formsPlot1.Plot.AddScatter(datax, datay);
+            formsPlot1.Plot.AddScatter(datax, datay,markerShape:ScottPlot.MarkerShape.none, lineWidth:3);
             formsPlot1.Plot.XLabel("X, метров");
             formsPlot1.Plot.YLabel("Y, метров");
             formsPlot1.Refresh();
-            formsPlot1.Plot.AddScatter(dataX2, dataY2);
+            formsPlot1.Plot.AddScatter(dataX2, dataY2, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot1.Refresh();
-            formsPlot2.Plot.AddScatter(datat, dataV);
+            formsPlot2.Plot.AddScatter(datat, dataV, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot2.Plot.XLabel("t, секунд");
             formsPlot2.Plot.YLabel("V, м/с");
             formsPlot2.Refresh();
-            formsPlot2.Plot.AddScatter(datat2, dataV2);
+            formsPlot2.Plot.AddScatter(datat2, dataV2, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot2.Refresh();
-            formsPlot3.Plot.AddScatter(datat, dataOmega);
+            formsPlot3.Plot.AddScatter(datat, dataOmega, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot3.Plot.XLabel("t, секунд");
             formsPlot3.Plot.YLabel("Omega, рад/с");
             formsPlot3.Refresh();
-            formsPlot4.Plot.AddScatter(datat, dataSigma);
-            formsPlot4.Plot.AddScatter(datat, koef1);
-            formsPlot4.Plot.AddScatter(datat, koef2);
+            formsPlot3.Plot.AddScatter(datat2, dataOmegaJet2, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot3.Refresh();
+            formsPlot4.Plot.AddScatter(datat, dataSigma, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot4.Plot.AddHorizontalLine(0.6);
+            formsPlot4.Plot.AddHorizontalLine(0.9);
             formsPlot4.Plot.XLabel("t, секунд");
             formsPlot4.Plot.YLabel("Критерий устойчивости");
             formsPlot4.Refresh();
@@ -165,7 +181,7 @@ namespace Externum_ballistics
             parametrs.Z = 0;
             parametrs.d = OFM29.Caliber;
             parametrs.psi = solver.psi(parametrs.Cz, parametrs.q, parametrs.Sm, parametrs.Mass, parametrs.Starting_velocity, parametrs.Start_angle);
-            parametrs.Cx = solver.Cx(parametrs.Mah);
+            parametrs.Cx = solver.Cx(parametrs.Mah, jetparametrs.t_start, jetparametrs.t_delta, test.t);
             parametrs.Cy = 0;  
             parametrs.Cz = 0;
             parametrs.mz = 0.8918; //solver.mz(parametrs.Mah, parametrs.Initial_angular_velocity);
@@ -173,6 +189,7 @@ namespace Externum_ballistics
             parametrs.I_z = 1.4417;
             parametrs.Initial_angular_velocity = 1560;
             parametrs.Start_angle = 52;
+            parametrs.Length = OFM29.Length;
             propertyGrid1.SelectedObject = parametrs;
         }
 
@@ -188,12 +205,13 @@ namespace Externum_ballistics
         {
             string text = File.ReadAllText(path);
             jetparametrs = JsonConvert.DeserializeObject<Jetparametrs>(text);
+            jetparametrs.t_start = 22;
+            jetparametrs.t_delta = 3;// Время работы РД
             jetparametrs.h = 0.026;// Высота ребер
             jetparametrs.dv = 0.04; // Выходной диаметр
             jetparametrs.beta = 15;// Угол наклона ребер
             jetparametrs.pn = 0.101325;// Нормальное атмосферное давление
             jetparametrs.nu = 0.5;// Доля тяги на вращение
-            jetparametrs.t = 3;// Время работы РД
             jetparametrs.u1 = 6.53*1e-6f;// Единичная скорость горения
             jetparametrs.pT = 1600;// Плотность топлива
             jetparametrs.Sg = 0.015394;// Площадь горящего свода
@@ -212,12 +230,12 @@ namespace Externum_ballistics
             jetparametrs.pv = solver.pv(jetparametrs.pk, jetparametrs.k, jetparametrs.lambda);// Внешнее давление
             jetparametrs.Psigma = Math.Round(solver.Psigma(jetparametrs.G, jetparametrs.uv, jetparametrs.Sv, jetparametrs.pv, jetparametrs.pn),2);// Суммарная тяга с учетом вращения
             jetparametrs.P = Math.Round(solver.P(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.beta),2);// Тяга без учета вращения
-            jetparametrs.It = Math.Round(solver.It(jetparametrs.Psigma, jetparametrs.t),2);// Импульс двигателя
-            jetparametrs.Mpx = Math.Round(solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu),2);// Коэффициент тяги на вращение
-            jetparametrs.t_delta = 22;
+            jetparametrs.It = Math.Round(solver.It(jetparametrs.Psigma, jetparametrs.t_delta),2);// Импульс двигателя
+            jetparametrs.Mpx = Math.Round(solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu),2);// Коэффициент тяги на вращение        
             jetparametrs.alfa = Math.Round(solver.alfa(parametrs.I_x, parametrs.I_z, parametrs.Initial_angular_velocity),2);
-            jetparametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.q, parametrs.Sm, parametrs.Length, parametrs.I_z, parametrs.Starting_velocity),2);
+            jetparametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.ro, parametrs.Sm, parametrs.Length, parametrs.I_z, parametrs.Starting_velocity),2);
             jetparametrs.sigma = Math.Round(solver.sigma(jetparametrs.alfa, jetparametrs.beta1),2);
+            jetparametrs.delta_omega = Math.Round(solver.delta_omega(jetparametrs.Mpx, jetparametrs.Psigma, parametrs.d, parametrs.I_x, jetparametrs.t_start, jetparametrs.t_delta, 0));
             propertyGrid1.SelectedObject = jetparametrs;
         }
 
@@ -227,6 +245,11 @@ namespace Externum_ballistics
             formsPlot2.Plot.Clear();
             formsPlot3.Plot.Clear();
             formsPlot4.Plot.Clear();
+        }
+
+        private void изменитьПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            propertyGrid1.SelectedObject = OFM29;
         }
     }
 }

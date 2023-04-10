@@ -99,6 +99,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.button1 = new System.Windows.Forms.Button();
+            this.изменитьПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Calculation.SuspendLayout();
@@ -112,9 +113,10 @@
             // FileMenu
             // 
             this.FileMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.загрузитьToolStripMenuItem});
+            this.загрузитьToolStripMenuItem,
+            this.изменитьПараметрыToolStripMenuItem});
             this.FileMenu.Name = "contextMenuStrip2";
-            this.FileMenu.Size = new System.Drawing.Size(129, 26);
+            this.FileMenu.Size = new System.Drawing.Size(194, 70);
             // 
             // загрузитьToolStripMenuItem
             // 
@@ -122,7 +124,7 @@
             this.jsonToolStripMenuItem1,
             this.xMLToolStripMenuItem});
             this.загрузитьToolStripMenuItem.Name = "загрузитьToolStripMenuItem";
-            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.загрузитьToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
             this.загрузитьToolStripMenuItem.Text = "Загрузить";
             // 
             // jsonToolStripMenuItem1
@@ -572,6 +574,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // изменитьПараметрыToolStripMenuItem
+            // 
+            this.изменитьПараметрыToolStripMenuItem.Name = "изменитьПараметрыToolStripMenuItem";
+            this.изменитьПараметрыToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.изменитьПараметрыToolStripMenuItem.Text = "Изменить параметры";
+            this.изменитьПараметрыToolStripMenuItem.Click += new System.EventHandler(this.изменитьПараметрыToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -665,5 +674,6 @@
         private DataGridViewTextBoxColumn Column31;
         private DataGridViewTextBoxColumn Column32;
         private Button button1;
+        private ToolStripMenuItem изменитьПараметрыToolStripMenuItem;
     }
 }

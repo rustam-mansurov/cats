@@ -17,7 +17,8 @@ namespace Externum_ballistics
         /// Искомое решение Y[0] — само решение, Y[i] — i-я производная решения
         /// 0 - x, 1 - y, 2 - z, 3 - V, 4 - teta, 5 - psi, 6 - omega, 7 - q, 8 - a, 9 - T, 10 - ro, 
         /// 11 - g, 12 - Sm, 13 - Mah, 14 - m, 15 - Cx, 16 - Cy, 17 - Cz, 18 - d, 19 - l,
-        /// 20 - Ix, 21 - mx, 22 - P, 23 - t_delta, 24 - t1, 25 - alfa, 26 - beta, 27 - sigma, 28 - Iz, 29 - Mza, 30 - p
+        /// 20 - Ix, 21 - mx, 22 - P, 23 - t_delta, 24 - t_start, 25 - alfa, 26 - beta, 27 - sigma, 
+        /// 28 - Iz, 29 - Mza, 30 - p, 31 - delta_omega, 32 - Mpx
         /// </summary>
         public double[] Y;
         /// <summary>
@@ -68,25 +69,26 @@ namespace Externum_ballistics
         /// <returns>правая часть</returns>
         abstract public double[] F(double t, double[] Y);
     
-        public void update (double ro, double V, double T, double h, double g, double a, double M, double Ix, double Iy, double omega, double mz, double q, double Sm, double l, double beta, double alfa, double p)
+        public void update ()
         {
-            Y[7] = solver.q(ro, V);
-            Y[8] = solver.a(T);
-            Y[9] = solver.T(h);
-            Y[30] = solver.p(h);
-            Y[10] = solver.ro(Y[30],T);
-            Y[11] = solver.g(0, h);
-            Y[13] = solver.Mah(V, a);
-            Y[15] = solver.Cx(M);
-            Y[25] = solver.alfa(0.1455, 1.4417, omega);
-            Y[26] = solver.beta1(0.8918, ro, Sm, l, 1.4417, V);
-            Y[27] = solver.sigma(beta, alfa);
+            Y[9] = solver.T(Y[1]);
+            Y[30] = solver.p(Y[1]);
+            Y[10] = solver.ro(Y[30], Y[9]);
+            Y[7] = solver.q(Y[10], Y[3]);
+            Y[8] = solver.a(Y[9]);
+            Y[11] = solver.g(0, Y[1]);
+            Y[13] = solver.Mah(Y[3], Y[8]);
+            Y[15] = solver.Cx(Y[13], Y[23], Y[24], t);
+            Y[25] = solver.alfa(0.1455, 1.4417, Y[6]);
+            Y[26] = solver.beta1(0.8918, Y[10], Y[12], Y[19], 1.4417, Y[3]);
+            Y[27] = solver.sigma(Y[25], Y[26]);
+            Y[31] = solver.delta_omega(Y[32], Y[22], Y[18], 0.8918, Y[24], Y[23],t);
         }
         
         public void NextStep(double dt)
         {
             int i;
-            update(Y[10], Y[3], Y[9], Y[1], Y[11], Y[8], Y[13], Y[20], Y[28], Y[6], Y[29], Y[7], Y[12], Y[19], Y[26], Y[25], Y[30]);
+            update();
 
             if (dt < 0) return;
 
@@ -131,23 +133,23 @@ namespace Externum_ballistics
         /// <returns></returns>
         public override double[] F(double t, double[] Y)
         {
-            return Funk(Y[0],Y[1],Y[2], Y[3], Y[4], Y[5], Y[6], Y[7], Y[8], Y[9], Y[10], Y[11], Y[12], Y[13], Y[14], Y[15], Y[16], Y[17], Y[18], Y[19], Y[20], Y[21], Y[22], Y[23], Y[24], Y[25], Y[26], Y[27], Y[28], Y[29], Y[30]);
+            return Funk(Y[3], Y[4], Y[5], Y[6], Y[7], Y[11], Y[12], Y[14], Y[15], Y[16], Y[17], Y[19], Y[20], Y[21], Y[22], Y[31]);
         }
 
         /// Создание вектора параметров полёта снаряда
-        public double[] Funk(double X, double Y, double Z, double V, double teta, double psi, double omega, double q, double a, double T, double ro, double g, double Sm, double Mah, double m, double Cx, double Cy, double Cz, double d, double l, double Ix, double mx, double P, double t_delta, double t1, double alfa, double beta, double sigma, double Iz, double Mza, double p)
+        public double[] Funk(double V, double teta, double psi, double omega, double q,double g, double Sm, double m, double Cx, double Cy, double Cz, double l, double Ix, double mx, double P, double delta_omega)
         {
-            double[] F = new double[31];
+            double[] F = new double[33];
             F[0] = solver.X(V, teta, psi);
             F[1] = solver.Y(V, teta);
             F[2] = solver.Z(V, teta, psi);
             F[3] = solver.V(g, teta, Cx, q, Sm, m, P);
             F[4] = solver.teta(g, teta, V, Cy, q, Sm, m);
             F[5] = solver.psi(Cz, q, Sm, m, V, teta);
-            F[6] = solver.omega(mx, q, Sm, l, Ix);
+            F[6] = solver.omega(mx, q, Sm, l, Ix, delta_omega);
             return F;
         }
-        public List<double[]> Test(uint N, double[] Y0)
+        public List<double[]> Test(uint N, double[] Y0, int n)
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
@@ -160,16 +162,15 @@ namespace Externum_ballistics
             int j = 0;
             while (task.Y[1] >= 0 )
             {
-                double[] result = new double[31];
-                if (task.Y[23] >= task.t-task.Y[24] && task.Y[23] <= task.t)
+                double[] result = new double[n];
+                if (task.t >= task.Y[24] && task.t <= task.Y[23] + task.Y[24])
                 {
                     task.Y[22] =  11560/3;
-                    task.Y[15] = solver.Cx(Y[13]) - 0.12;
-                    task.Y[14] = 55.6 - 5;
                 }
                 else
                 {
                     task.Y[22] = 0;
+                    task.Y[31] = 0;
                 }
                 for (int i = 0; i < N-1; i++)
                 {
