@@ -79,10 +79,10 @@ namespace Externum_ballistics
             Y[11] = solver.g(0, Y[1]);
             Y[13] = solver.Mah(Y[3], Y[8]);
             Y[15] = solver.Cx(Y[13], Y[23], Y[24], t);
-            Y[25] = solver.alfa(0.1455, 1.4417, Y[6]);
-            Y[26] = solver.beta1(0.8918, Y[10], Y[12], Y[19], 1.4417, Y[3]);
+            Y[25] = solver.alfa(Y[20], Y[28], Y[6]);
+            Y[26] = solver.beta1(Y[29], Y[10], Y[12], Y[19], Y[28], Y[3]);
             Y[27] = solver.sigma(Y[25], Y[26]);
-            Y[31] = solver.delta_omega(Y[32], Y[22], Y[18], 0.8918, Y[24], Y[23],t);
+            Y[31] = solver.delta_omega(Y[32], Y[22], Y[18], Y[29], Y[24], Y[23],t);
         }
         
         public void NextStep(double dt)

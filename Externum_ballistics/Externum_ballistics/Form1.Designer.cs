@@ -31,15 +31,17 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Параметры снаряда");
             System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Параметры расчета");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Прямая задача");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Обратная задача");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
-            treeNode3,
-            treeNode4});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Оптимизация");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Прямая задача");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Обратная задача");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
             this.FileMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.изменитьПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InitialСonditions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.начальныеУсловияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -99,7 +101,6 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.button1 = new System.Windows.Forms.Button();
-            this.изменитьПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Calculation.SuspendLayout();
@@ -116,7 +117,7 @@
             this.загрузитьToolStripMenuItem,
             this.изменитьПараметрыToolStripMenuItem});
             this.FileMenu.Name = "contextMenuStrip2";
-            this.FileMenu.Size = new System.Drawing.Size(194, 70);
+            this.FileMenu.Size = new System.Drawing.Size(194, 48);
             // 
             // загрузитьToolStripMenuItem
             // 
@@ -140,6 +141,13 @@
             this.xMLToolStripMenuItem.Size = new System.Drawing.Size(98, 22);
             this.xMLToolStripMenuItem.Text = "XML";
             this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            // 
+            // изменитьПараметрыToolStripMenuItem
+            // 
+            this.изменитьПараметрыToolStripMenuItem.Name = "изменитьПараметрыToolStripMenuItem";
+            this.изменитьПараметрыToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+            this.изменитьПараметрыToolStripMenuItem.Text = "Изменить параметры";
+            this.изменитьПараметрыToolStripMenuItem.Click += new System.EventHandler(this.изменитьПараметрыToolStripMenuItem_Click);
             // 
             // InitialСonditions
             // 
@@ -208,7 +216,7 @@
             // OpenFile
             // 
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(133, 22);
+            this.OpenFile.Size = new System.Drawing.Size(180, 22);
             this.OpenFile.Text = "Открыть";
             // 
             // сохранитьToolStripMenuItem1
@@ -216,7 +224,7 @@
             this.сохранитьToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.jsonToolStripMenuItem});
             this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
-            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.сохранитьToolStripMenuItem1.Text = "Сохранить";
             // 
             // jsonToolStripMenuItem
@@ -229,7 +237,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // справкаToolStripMenuItem
@@ -543,17 +551,20 @@
             treeNode2.ContextMenuStrip = this.InitialСonditions;
             treeNode2.Name = "Узел4";
             treeNode2.Text = "Параметры расчета";
-            treeNode3.Name = "Узел0";
-            treeNode3.Text = "Прямая задача";
-            treeNode4.Name = "Узел7";
-            treeNode4.Text = "Обратная задача";
-            treeNode5.ContextMenuStrip = this.Calculation;
-            treeNode5.Name = "Узел6";
-            treeNode5.Text = "Расчёт";
+            treeNode3.Name = "Узел1";
+            treeNode3.Text = "Оптимизация";
+            treeNode4.Name = "Узел0";
+            treeNode4.Text = "Прямая задача";
+            treeNode5.Name = "Узел7";
+            treeNode5.Text = "Обратная задача";
+            treeNode6.ContextMenuStrip = this.Calculation;
+            treeNode6.Name = "Узел6";
+            treeNode6.Text = "Расчёт";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2,
-            treeNode5});
+            treeNode3,
+            treeNode6});
             this.treeView1.Size = new System.Drawing.Size(449, 175);
             this.treeView1.TabIndex = 2;
             // 
@@ -573,13 +584,6 @@
             this.button1.Text = "Очистить графики";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // изменитьПараметрыToolStripMenuItem
-            // 
-            this.изменитьПараметрыToolStripMenuItem.Name = "изменитьПараметрыToolStripMenuItem";
-            this.изменитьПараметрыToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
-            this.изменитьПараметрыToolStripMenuItem.Text = "Изменить параметры";
-            this.изменитьПараметрыToolStripMenuItem.Click += new System.EventHandler(this.изменитьПараметрыToolStripMenuItem_Click);
             // 
             // Form1
             // 

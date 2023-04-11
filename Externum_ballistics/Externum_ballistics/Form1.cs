@@ -66,6 +66,7 @@ namespace Externum_ballistics
         private void начатьToolStripMenuItem_Click(object sender, EventArgs e)//Начать вычисления
         {
             Y0 = parametrs.Get_Initial_Conditions(n, parametrs);// Начальные условия
+            Y0[20] = parametrs.I_x;
             Y0[22] = 0;//jetparametrs.Psigma;
             Y0[23] = jetparametrs.t_delta;
             Y0[24] = jetparametrs.t_start;
