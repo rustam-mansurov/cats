@@ -45,9 +45,12 @@
             this.InitialСonditions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.начальныеУсловияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Optimisation = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Calculation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.начатьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.остановитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.внутренняяБаллистикаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.OpenFile = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,6 +106,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
+            this.Optimisation.SuspendLayout();
             this.Calculation.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -171,26 +175,48 @@
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Text = "Начальные параметры реактивного двигателя";
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem_Click);
             // 
+            // Optimisation
+            // 
+            this.Optimisation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem});
+            this.Optimisation.Name = "Optimisation";
+            this.Optimisation.Size = new System.Drawing.Size(355, 48);
+            // 
+            // оптимизацияВнешнебаллистическихПараметровToolStripMenuItem
+            // 
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem.Name = "оптимизацияВнешнебаллистическихПараметровToolStripMenuItem";
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem.Size = new System.Drawing.Size(354, 22);
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem.Text = "Оптимизация внешнебаллистических параметров";
+            this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem.Click += new System.EventHandler(this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem_Click);
+            // 
             // Calculation
             // 
             this.Calculation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.начатьToolStripMenuItem,
-            this.остановитьToolStripMenuItem});
+            this.остановитьToolStripMenuItem,
+            this.внутренняяБаллистикаToolStripMenuItem});
             this.Calculation.Name = "contextMenuStrip1";
-            this.Calculation.Size = new System.Drawing.Size(139, 48);
+            this.Calculation.Size = new System.Drawing.Size(206, 70);
             // 
             // начатьToolStripMenuItem
             // 
             this.начатьToolStripMenuItem.Name = "начатьToolStripMenuItem";
-            this.начатьToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.начатьToolStripMenuItem.Text = "Начать";
+            this.начатьToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.начатьToolStripMenuItem.Text = "Внешняя баллистика";
             this.начатьToolStripMenuItem.Click += new System.EventHandler(this.начатьToolStripMenuItem_Click);
             // 
             // остановитьToolStripMenuItem
             // 
             this.остановитьToolStripMenuItem.Name = "остановитьToolStripMenuItem";
-            this.остановитьToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.остановитьToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
             this.остановитьToolStripMenuItem.Text = "Остановить";
+            // 
+            // внутренняяБаллистикаToolStripMenuItem
+            // 
+            this.внутренняяБаллистикаToolStripMenuItem.Name = "внутренняяБаллистикаToolStripMenuItem";
+            this.внутренняяБаллистикаToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
+            this.внутренняяБаллистикаToolStripMenuItem.Text = "Внутренняя Баллистика";
+            this.внутренняяБаллистикаToolStripMenuItem.Click += new System.EventHandler(this.внутренняяБаллистикаToolStripMenuItem_Click);
             // 
             // menuStrip1
             // 
@@ -216,7 +242,7 @@
             // OpenFile
             // 
             this.OpenFile.Name = "OpenFile";
-            this.OpenFile.Size = new System.Drawing.Size(180, 22);
+            this.OpenFile.Size = new System.Drawing.Size(133, 22);
             this.OpenFile.Text = "Открыть";
             // 
             // сохранитьToolStripMenuItem1
@@ -224,7 +250,7 @@
             this.сохранитьToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.jsonToolStripMenuItem});
             this.сохранитьToolStripMenuItem1.Name = "сохранитьToolStripMenuItem1";
-            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.сохранитьToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
             this.сохранитьToolStripMenuItem1.Text = "Сохранить";
             // 
             // jsonToolStripMenuItem
@@ -237,7 +263,7 @@
             // выходToolStripMenuItem
             // 
             this.выходToolStripMenuItem.Name = "выходToolStripMenuItem";
-            this.выходToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.выходToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
             this.выходToolStripMenuItem.Text = "Выход";
             // 
             // справкаToolStripMenuItem
@@ -551,6 +577,7 @@
             treeNode2.ContextMenuStrip = this.InitialСonditions;
             treeNode2.Name = "Узел4";
             treeNode2.Text = "Параметры расчета";
+            treeNode3.ContextMenuStrip = this.Optimisation;
             treeNode3.Name = "Узел1";
             treeNode3.Text = "Оптимизация";
             treeNode4.Name = "Узел0";
@@ -570,7 +597,7 @@
             // 
             // propertyGrid1
             // 
-            this.propertyGrid1.Location = new System.Drawing.Point(12, 208);
+            this.propertyGrid1.Location = new System.Drawing.Point(24, 208);
             this.propertyGrid1.Name = "propertyGrid1";
             this.propertyGrid1.Size = new System.Drawing.Size(449, 511);
             this.propertyGrid1.TabIndex = 3;
@@ -601,6 +628,7 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.FileMenu.ResumeLayout(false);
             this.InitialСonditions.ResumeLayout(false);
+            this.Optimisation.ResumeLayout(false);
             this.Calculation.ResumeLayout(false);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -679,5 +707,8 @@
         private DataGridViewTextBoxColumn Column32;
         private Button button1;
         private ToolStripMenuItem изменитьПараметрыToolStripMenuItem;
+        private ToolStripMenuItem внутренняяБаллистикаToolStripMenuItem;
+        private ContextMenuStrip Optimisation;
+        private ToolStripMenuItem оптимизацияВнешнебаллистическихПараметровToolStripMenuItem;
     }
 }

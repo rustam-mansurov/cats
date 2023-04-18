@@ -43,23 +43,11 @@ namespace Externum_ballistics
             return -(0 * q * Sm) / (m * V * Math.Cos(teta * Math.PI / 180));
         }
 
-        public double omega(double mx, double q, double Sm, double l, double Ix, double delta_omega)// Аксиальная угловая скорость
+        public double omega(double mx, double q, double Sm, double l, double Ix, double Mpx)// Аксиальная угловая скорость
         {
-            return -mx * q * Sm * l / Ix + delta_omega;
+            return -mx * q * Sm * l / Ix + Mpx/Ix;
         }
 
-        public double delta_omega(double Mpx, double P, double d, double Ix, double t_start, double t_delta, double t)// Аксиальная угловая скорость
-        {
-            if (t >= t_start && t <= t_start+t_delta)
-            {
-                return ((Mpx * P * d) / 2) / Ix;          
-            }
-
-            else 
-            { 
-                return 0; 
-            }
-        }
         #endregion
 
         #region Реактивный двигатель

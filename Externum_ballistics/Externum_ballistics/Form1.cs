@@ -7,22 +7,16 @@ namespace Externum_ballistics
 {
     public partial class Form1 : Form
     {
-        static uint N = 33;
-        static int n = 34;
+        static uint N = 8;
+        static int n = 9;
         double R = 346.9;
         string path;
-        /// <summary>
-        /// 0 - x, 1 - y, 2 - z, 3 - V, 4 - teta, 5 - psi, 6 - omega, 7 - q, 8 - a, 9 - T, 10 - ro, 
-        /// 11 - g, 12 - Sm, 13 - Mah, 14 - m, 15 - Cx, 16 - Cy, 17 - Cz, 18 - d, 19 - l,
-        /// 20 - Ix, 21 - mx, 22 - P, 23 - t_delta, 24 - t_start, 25 - alfa, 26 - beta, 27 - sigma, 
-        /// 28 - Iz, 29 - Mza, 30 - p, 31 - delta_omega, 32 - Mpx
-        /// </summary>
         double[] Y0 = new double[n];
         Projectile OFM29 = new Projectile();// Создадим экземпляр класса для снаряда ОФМ29
         BallisticSolver solver = new BallisticSolver();
-        Parametrs parametrs = new Parametrs();
+        ExternumParametrs parametrs = new ExternumParametrs();
         Jetparametrs jetparametrs = new Jetparametrs();
-        TMyRK test = new TMyRK(N);
+        Externum_ballistics test = new Externum_ballistics(N);
 
         public Form1()
         {
@@ -65,22 +59,8 @@ namespace Externum_ballistics
 
         private void начатьToolStripMenuItem_Click(object sender, EventArgs e)//Начать вычисления
         {
-            Y0 = parametrs.Get_Initial_Conditions(n, parametrs);// Начальные условия
-            Y0[20] = parametrs.I_x;
-            Y0[22] = 0;//jetparametrs.Psigma;
-            Y0[23] = jetparametrs.t_delta;
-            Y0[24] = jetparametrs.t_start;
-            Y0[28] = parametrs.I_z;
-            Y0[25] = jetparametrs.alfa;
-            Y0[26] = jetparametrs.beta1;
-            Y0[27] = jetparametrs.sigma;
-            Y0[29] = parametrs.mz;
-            Y0[30] = parametrs.p;
-            Y0[31] = jetparametrs.delta_omega;
-            Y0[32] = jetparametrs.Mpx;
-
             List<double[]> result = new List<double[]>();
-            result = test.Test(N, Y0, n);
+            result = test.Test(N, parametrs, n);
             double [] datax = new double[result.Count];
             double[] datat = new double[result.Count];
             double [] datay = new double[result.Count];
@@ -102,9 +82,9 @@ namespace Externum_ballistics
                 datay[i] = result[i][2];
                 dataV[i] = result[i][4];
                 dataOmega[i] = result[i][7];
-                dataSigma[i] = result[i][28];
+                dataSigma[i] = result[i][8];
 
-                if (result[i][0] >= jetparametrs.t_start && result[i][0] <= jetparametrs.t_start + jetparametrs.t_delta )
+                if (result[i][0] >= parametrs.t_start && result[i][0] <= parametrs.t_start + parametrs.t_delta )
                 {
                     dataxJet.Add(result[i][1]);
                     datayJet.Add(result[i][2]);
@@ -167,31 +147,9 @@ namespace Externum_ballistics
 
         private void начальныеУсловияToolStripMenuItem_Click(object sender, EventArgs e)// Задание начальных условий
         {
-            string text = File.ReadAllText(path);
-            parametrs = JsonConvert.DeserializeObject<Parametrs>(text);
-            parametrs.g = solver.g(0, 0);
-            parametrs.T = solver.T(0);
-            parametrs.a = solver.a(parametrs.T);
-            parametrs.Sm = solver.Sm(OFM29.Caliber);
-            parametrs.p = solver.p(0);
-            parametrs.ro = solver.ro(parametrs.p,parametrs.T);
-            parametrs.Mah = solver.Mah(parametrs.Starting_velocity, parametrs.a);
-            parametrs.q = solver.q(parametrs.ro, parametrs.Starting_velocity);
-            parametrs.X = 0;
-            parametrs.Y = 0;
-            parametrs.Z = 0;
-            parametrs.d = OFM29.Caliber;
-            parametrs.psi = solver.psi(parametrs.Cz, parametrs.q, parametrs.Sm, parametrs.Mass, parametrs.Starting_velocity, parametrs.Start_angle);
-            parametrs.Cx = solver.Cx(parametrs.Mah, jetparametrs.t_start, jetparametrs.t_delta, test.t);
-            parametrs.Cy = 0;  
-            parametrs.Cz = 0;
-            parametrs.mz = 0.8918; //solver.mz(parametrs.Mah, parametrs.Initial_angular_velocity);
-            parametrs.I_x = 0.1455;
-            parametrs.I_z = 1.4417;
-            parametrs.Initial_angular_velocity = 1560;
-            parametrs.Start_angle = 52;
-            parametrs.Length = OFM29.Length;
+            parametrs = parametrs.Get_Initial_Conditions(parametrs);
             propertyGrid1.SelectedObject = parametrs;
+
         }
 
         private void Form1_Load(object sender, EventArgs e)// Чтение файла снаряда при запуске 
@@ -204,40 +162,7 @@ namespace Externum_ballistics
 
         private void начальныеПараметрыРеактивногоДвигателяToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            string text = File.ReadAllText(path);
-            jetparametrs = JsonConvert.DeserializeObject<Jetparametrs>(text);
-            jetparametrs.t_start = 22;
-            jetparametrs.t_delta = 3;// Время работы РД
-            jetparametrs.h = 0.026;// Высота ребер
-            jetparametrs.dv = 0.04; // Выходной диаметр
-            jetparametrs.beta = 15;// Угол наклона ребер
-            jetparametrs.pn = 0.101325;// Нормальное атмосферное давление
-            jetparametrs.nu = 0.5;// Доля тяги на вращение
-            jetparametrs.u1 = 6.53*1e-6f;// Единичная скорость горения
-            jetparametrs.pT = 1600;// Плотность топлива
-            jetparametrs.Sg = 0.015394;// Площадь горящего свода
-            jetparametrs.Tk = 2478;// Температура???
-            jetparametrs.Skr = 0.000115;// Площадь критического сопла
-            jetparametrs.A = 0.652;// Коэффициент расхода сопла
-            jetparametrs.lambda = 2.376;// Лямбда
-            jetparametrs.k = 1.22;// Показатель адиабаты
-            jetparametrs.Sv = Math.Round(solver.Sv(jetparametrs.dv),2);// Площадь внешняя
-            jetparametrs.pk = solver.pk(jetparametrs.u1, jetparametrs.Sg, 0.98, R, jetparametrs.Tk, 0.98, jetparametrs.Skr, jetparametrs.nu);// Давление в камере
-            jetparametrs.u = solver.u(jetparametrs.u1, jetparametrs.pk, jetparametrs.nu);// Скорость горения топлива
-            jetparametrs.G = Math.Round(solver.G(jetparametrs.Skr, jetparametrs.pk, jetparametrs.A, R, jetparametrs.Tk),2);// Массовый расход топлива в секунду
-            jetparametrs.akr = solver.akr(jetparametrs.k, R, jetparametrs.Tk);// Скорость звука в критическом срезе
-            jetparametrs.uv = solver.uv(jetparametrs.akr, jetparametrs.lambda);// Внешнее u
-            jetparametrs.re = solver.re(jetparametrs.dv);// радиус сопла
-            jetparametrs.pv = solver.pv(jetparametrs.pk, jetparametrs.k, jetparametrs.lambda);// Внешнее давление
-            jetparametrs.Psigma = Math.Round(solver.Psigma(jetparametrs.G, jetparametrs.uv, jetparametrs.Sv, jetparametrs.pv, jetparametrs.pn),2);// Суммарная тяга с учетом вращения
-            jetparametrs.P = Math.Round(solver.P(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.beta),2);// Тяга без учета вращения
-            jetparametrs.It = Math.Round(solver.It(jetparametrs.Psigma, jetparametrs.t_delta),2);// Импульс двигателя
-            jetparametrs.Mpx = Math.Round(solver.Mpx(jetparametrs.Psigma, jetparametrs.nu, jetparametrs.re, jetparametrs.nu),2);// Коэффициент тяги на вращение        
-            jetparametrs.alfa = Math.Round(solver.alfa(parametrs.I_x, parametrs.I_z, parametrs.Initial_angular_velocity),2);
-            jetparametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.ro, parametrs.Sm, parametrs.Length, parametrs.I_z, parametrs.Starting_velocity),2);
-            jetparametrs.sigma = Math.Round(solver.sigma(jetparametrs.alfa, jetparametrs.beta1),2);
-            jetparametrs.delta_omega = Math.Round(solver.delta_omega(jetparametrs.Mpx, jetparametrs.Psigma, parametrs.d, parametrs.I_x, jetparametrs.t_start, jetparametrs.t_delta, 0));
-            propertyGrid1.SelectedObject = jetparametrs;
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -251,6 +176,16 @@ namespace Externum_ballistics
         private void изменитьПараметрыToolStripMenuItem_Click(object sender, EventArgs e)
         {
             propertyGrid1.SelectedObject = OFM29;
+        }
+
+        private void внутренняяБаллистикаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void оптимизацияВнешнебаллистическихПараметровToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
