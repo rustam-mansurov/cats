@@ -37,19 +37,17 @@ namespace Externum_ballistics
             return Math.Sqrt(sum);
         }
 
-        public double[] step_forward (double[] x, double[] delta)
+        public double step_forward (double x, double delta)
         {
-            double[] y = new double[2];
-            y[0] = x[0] + delta[0];
-            y[1] = x[1] + delta[1];
+            double y = 0;
+            y = x + delta;
             return y;
         }
 
-        public double[] step_back(double[] x, double[] delta)
+        public double step_back(double x, double delta)
         {
-            double[] y = new double[2];
-            y[0] = x[0] - delta[0];
-            y[1] = x[1] - delta[1];
+            double y = 0;
+            y = x - delta;
             return y;
         }
 
@@ -64,7 +62,8 @@ namespace Externum_ballistics
             int last = result.Count;
             f_pred = result[last][1];
             // Подставляем вместо старых значений новые
-            x = step_forward(x, delta);
+            x[0] = step_forward(x[0], delta[0]);
+            int j = 0;
             while (norma > eps)
             {
                 parametrs.teta = x[0];
@@ -72,15 +71,25 @@ namespace Externum_ballistics
                 result = test.Test(N, parametrs, n);
                 last = result.Count;
                 f = result[last][1];
+
                 if (f_pred > f)
                 {
-                    x = step_back(x, delta);
+                    if(j == 0)
+                    {
+                        j = 1;
+                    }
+                    else
+                    {
+                        j = 0;
+                    }
+                    x[j] = step_back(x[j], delta[j]);
                 }
 
                 else
                 {
                     delta = decrease(delta, gamma);
-                    x = step_forward(x, delta);
+                    x[j] = step_forward(x[j], delta[j]);
+
                 }
             }
             return x;
