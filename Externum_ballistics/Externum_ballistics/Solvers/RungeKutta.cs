@@ -11,6 +11,7 @@ namespace Externum_ballistics
         public BallisticSolver solver = new BallisticSolver();
         public InletBallisticSolver Inlet_solver = new InletBallisticSolver();
         public ExternumParametrs parametrs = new ExternumParametrs();
+        public InletParametrs inletparametrs = new InletParametrs();
         /// <summary>
         /// Текущее время
         /// </summary>

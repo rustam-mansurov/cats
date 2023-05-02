@@ -17,6 +17,7 @@ namespace Externum_ballistics
         ExternumParametrs parametrs = new ExternumParametrs();
         Jetparametrs jetparametrs = new Jetparametrs();
         Externum_ballistics test = new Externum_ballistics(N);
+        Optimization optimizer = new Optimization();
 
         public Form1()
         {
@@ -186,6 +187,11 @@ namespace Externum_ballistics
         private void оптимизацияВнешнебаллистическихПараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Optimisation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            
         }
     }
 }

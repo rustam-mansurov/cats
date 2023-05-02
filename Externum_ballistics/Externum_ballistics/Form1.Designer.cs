@@ -159,7 +159,7 @@
             this.начальныеУсловияToolStripMenuItem,
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem});
             this.InitialСonditions.Name = "InitialСonditions";
-            this.InitialСonditions.Size = new System.Drawing.Size(332, 48);
+            this.InitialСonditions.Size = new System.Drawing.Size(332, 70);
             // 
             // начальныеУсловияToolStripMenuItem
             // 
@@ -180,7 +180,8 @@
             this.Optimisation.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem});
             this.Optimisation.Name = "Optimisation";
-            this.Optimisation.Size = new System.Drawing.Size(355, 48);
+            this.Optimisation.Size = new System.Drawing.Size(355, 26);
+            this.Optimisation.Opening += new System.ComponentModel.CancelEventHandler(this.Optimisation_Opening);
             // 
             // оптимизацияВнешнебаллистическихПараметровToolStripMenuItem
             // 

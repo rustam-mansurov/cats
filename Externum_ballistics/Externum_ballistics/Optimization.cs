@@ -8,91 +8,75 @@ namespace Externum_ballistics
 {
     public class Optimization
     {
-        static uint N = 8;
-        static int n = 9;
-        Externum_ballistics test = new Externum_ballistics(N);
         ExternumParametrs parametrs = new ExternumParametrs();
-        double eps = 0;
-        double [] gamma = {1.5, 1.5};
-        double [] x = new double[2];
-        double delta = 0.5;
+        Externum_ballistics test = new Externum_ballistics(8);
+        double[] x = { 45, 15 };
+        int n = 9;
+        int j = 0;
+        double [] y = new double[2];
+        double [] delta = {1,1};
 
-        public double[] decrease (double[] delta, double gamma)
+        public double[] CoordinateSearchDetectionAlgorithm ()
         {
-            for (int i = 0; i < delta.Length; i++)
+            while (j < 2)
             {
-                delta[i] = delta[i] / gamma;
-            }
-            return delta;
-        }
-
-        public double Normal_vector(double[] delta)
-        {
-            double sum = 0;
-            for (int i = 0; i < delta.Length; i++)
-            {
-                sum += delta[i]*delta[i];
-            }
-
-            return Math.Sqrt(sum);
-        }
-
-        public double step_forward (double x, double delta)
-        {
-            double y = 0;
-            y = x + delta;
-            return y;
-        }
-
-        public double step_back(double x, double delta)
-        {
-            double y = 0;
-            y = x - delta;
-            return y;
-        }
-
-        public double[] desicion (double [] x, double [] delta, double gamma, double eps)
-        {
-            List<double[]> result = new List<double[]>();
-            double f_pred = 0;
-            double f = 0;
-            double norma = Normal_vector(delta);
-            parametrs = parametrs.Get_Initial_Conditions(parametrs);// Задаем параметры для расчёта
-            result = test.Test(N, parametrs, n);// Производим расчёт
-            int last = result.Count;
-            f_pred = result[last][1];
-            // Подставляем вместо старых значений новые
-            x[0] = step_forward(x[0], delta[0]);
-            int j = 0;
-            while (norma > eps)
-            {
-                parametrs.teta = x[0];
-                parametrs.t_start = x[1];
-                result = test.Test(N, parametrs, n);
-                last = result.Count;
-                f = result[last][1];
-
-                if (f_pred > f)
+                y = Minus(x, delta);
+                if (f(y) > f(x))
                 {
-                    if(j == 0)
-                    {
-                        j = 1;
-                    }
-                    else
-                    {
-                        j = 0;
-                    }
-                    x[j] = step_back(x[j], delta[j]);
+                    x = y;
                 }
 
                 else
                 {
-                    delta = decrease(delta, gamma);
-                    x[j] = step_forward(x[j], delta[j]);
+                    y = Plus(x, delta);
+                    if (f(y) > f(x))
+                    {
+                        x = y;
+                    }
 
+                    else
+                    {
+                        j++;
+                    }
                 }
             }
             return x;
+        }
+
+        public double[] Optimize()
+        {
+
+        }
+
+        public double[] Minus (double [] x, double [] delta)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = x[i] - delta[i];
+            }
+
+            return x;
+        }
+
+        public double[] Plus(double[] x, double[] delta)
+        {
+            for (int i = 0; i < x.Length; i++)
+            {
+                x[i] = x[i] + delta[i];
+            }
+
+            return x;
+        }
+
+        public double f(double [] x)
+        {
+            parametrs = parametrs.Get_Initial_Conditions(parametrs);
+            parametrs.teta = x[0];
+            parametrs.t_start = x[1];
+            List<double[]> result = new List<double[]>();          
+            result = test.Test(8, parametrs, n);
+            int last = result.Count;
+            return result[last][1];
         }
     }
 }
