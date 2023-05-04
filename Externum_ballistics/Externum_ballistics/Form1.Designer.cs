@@ -104,6 +104,7 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.button1 = new System.Windows.Forms.Button();
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Optimisation.SuspendLayout();
@@ -157,21 +158,22 @@
             // 
             this.InitialСonditions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.начальныеУсловияToolStripMenuItem,
-            this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem});
+            this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem,
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem});
             this.InitialСonditions.Name = "InitialСonditions";
-            this.InitialСonditions.Size = new System.Drawing.Size(332, 70);
+            this.InitialСonditions.Size = new System.Drawing.Size(338, 92);
             // 
             // начальныеУсловияToolStripMenuItem
             // 
             this.начальныеУсловияToolStripMenuItem.Name = "начальныеУсловияToolStripMenuItem";
-            this.начальныеУсловияToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.начальныеУсловияToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
             this.начальныеУсловияToolStripMenuItem.Text = "Начальные условия снаряда";
             this.начальныеУсловияToolStripMenuItem.Click += new System.EventHandler(this.начальныеУсловияToolStripMenuItem_Click);
             // 
             // начальныеПараметрыРеактивногоДвигателяToolStripMenuItem
             // 
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Name = "начальныеПараметрыРеактивногоДвигателяToolStripMenuItem";
-            this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Size = new System.Drawing.Size(331, 22);
+            this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Text = "Начальные параметры реактивного двигателя";
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem_Click);
             // 
@@ -279,13 +281,13 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // справкаToolStripMenuItem1
             // 
             this.справкаToolStripMenuItem1.Name = "справкаToolStripMenuItem1";
-            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
+            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.справкаToolStripMenuItem1.Text = "Просмотр справки";
             // 
             // tabControl1
@@ -613,6 +615,13 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem
+            // 
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Name = "начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem";
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Text = "Начальные параметры внутренней баллистики";
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -711,5 +720,6 @@
         private ToolStripMenuItem внутренняяБаллистикаToolStripMenuItem;
         private ContextMenuStrip Optimisation;
         private ToolStripMenuItem оптимизацияВнешнебаллистическихПараметровToolStripMenuItem;
+        private ToolStripMenuItem начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem;
     }
 }

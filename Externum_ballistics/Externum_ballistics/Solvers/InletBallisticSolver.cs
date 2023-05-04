@@ -15,11 +15,6 @@ namespace Externum_ballistics
         double m = 40;// Масса снаряда
         double uk = 5.9e-10;// Единичная скорость горения пороха в канале ствола
 
-        public double z (double uk, double e1)// Относительная толщина горящего свода
-        {
-            return (uk / e1);
-        }
-
         #region Дифференциальные уравнения
         public double psi(double z, double psiP, double psi, double uk, double e1, double sigma, double k, double S0, double Lambda0) // Относительная доля сгоревшего пороха
         {
@@ -34,22 +29,12 @@ namespace Externum_ballistics
             }
         }
 
-        public double sigma (double lambda, double z, double mu, double psiP, double psi) // Уравнение горения
+        public double z(double uk, double e1)// Относительная толщина горящего свода
         {
-            if (z <= 1 || psi <= psiP)// До фазы распада пороховых элементов
-            {
-                return 1 + 2 * lambda * z + 3 * mu * z * z;
-            }
+            return (uk / e1);
+        }
 
-            else // После фазы распада пороховых элементов 
-            {
-                return 1 + 2 * lambda + 3 * mu * Math.Sqrt((1-psi)/(1-psiP));
-            }
-        }
-        public double psiP(double k, double lambda, double mu)// Относительная доля сгоревшего пороха P
-        {
-            return k*(1+lambda+mu);
-        }
+
 
         public double V(double m, double p_sn, double S, double eta, double p_f)// Уравнение дульной скорости снаряда
         {
@@ -88,7 +73,7 @@ namespace Externum_ballistics
             return (2 * e1) / L0;
         }
 
-        public double k(double P, double Q, double beta)// Площадь сечений
+        public double kappa(double P, double Q, double beta)// Площадь сечений
         {
             return (Q + 2 * P) / Q * beta;
         }
@@ -103,27 +88,45 @@ namespace Externum_ballistics
             return (-6 * beta * beta) / (Q + 2 * P);
         }
 
-        public double J1(double S_kn, double W_sn)
+        public double J1()
         {
             return 1 / 3;
         }
-        public double J2(double S_kn, double W_sn)
+        public double J2()
         {
             return 1 / 2;
         }
-        public double J3(double S_kn, double W_sn)
+        public double J3()
         {
             return 1 / 6;
         }
         #endregion
         #region Линейные уравнения
+
+        public double psiP(double k, double lambda, double mu)// Относительная доля сгоревшего пороха P
+        {
+            return k * (1 + lambda + mu);
+        }
+
+        public double sigma(double lambda, double z, double mu, double psiP, double psi) // Уравнение горения
+        {
+            if (z <= 1 || psi <= psiP)// До фазы распада пороховых элементов
+            {
+                return 1 + 2 * lambda * z + 3 * mu * z * z;
+            }
+
+            else // После фазы распада пороховых элементов 
+            {
+                return 1 + 2 * lambda + 3 * mu * Math.Sqrt((1 - psi) / (1 - psiP));
+            }
+        }
         public double p(double W, double alfa, double psi, double omega, double omegaV, double f, double m, double J1, double teta, double V, double delta)// Уравнение энергии (Среднее давление в стволе)
         {
             return ((omega * psi + omegaV) * f - (1 + (omega + omegaV) / m * J1) * teta * m * V / 2) / (W - omega / delta * (1 - psi) - alfa * (omega * psi + omegaV));
         }
-        public double T(double W, double alfa, double psi, double omega, double omegaV, double delta, double R, double p)// Уравнение состояния (Определение температуры)
+        public double T(double W, double alfa, double psi, double omega, double omegaV, double delta, double cp, double cv, double p)// Уравнение состояния (Определение температуры)
         {
-            return p*(W - omega / delta * (1 - psi) - alfa * (omega * psi + omegaV))/ ((omega * psi + omegaV)*R);
+            return p*(W - omega / delta * (1 - psi) - alfa * (omega * psi + omegaV))/ ((omega * psi + omegaV)*(cp-cv));
         }
 
         public double p_kn(double p_sn, double omega, double omega_v, double m, double J2, double V, double W)// Давление на дно канала
@@ -141,9 +144,14 @@ namespace Externum_ballistics
             return W_km + S_sn*(x - L);
         }
 
-        public double W_km (double S_km, double l_n, double l_k, double S_kn, double L_k)// Объём каморы
+        public double W_km (double[] l_n, double S_kn, double L_k, double [] d_km)// Объём каморы
         {
-            return S_km * l_n + 1 / 3 * (l_n - l_k) * (S_km + Math.Sqrt(S_km + S_kn) + S_kn) + S_kn * (L_k - l_k);
+            double sum = 0;
+            for (int i = 0; i < l_n.Length; i++)
+            {
+                sum += S(d_km[i]) * l_n[i] + 1 / 3 * (l_n[i] - l_n[i + 1]) * (S(d_km[i]) + Math.Sqrt(S(d_km[i]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i + 1]);
+            }
+            return sum;
         }
 
         
@@ -160,9 +168,9 @@ namespace Externum_ballistics
             }
         }
 
-        public double teta(double cv, double R)
+        public double teta(double cv, double cp)
         {
-            return R/cv;
+            return (cp-cv)/cv;
         }
         #endregion 
     }

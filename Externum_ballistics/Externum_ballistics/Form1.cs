@@ -186,12 +186,21 @@ namespace Externum_ballistics
 
         private void оптимизаци€¬нешнебаллистическихѕараметровToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            double[] x = new double[3];
+            x = optimizer.Optimize();
+            MessageBox.Show(x[0].ToString());
+            MessageBox.Show(x[1].ToString());
+            MessageBox.Show(x[2].ToString());
         }
 
         private void Optimisation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
         {
             
+        }
+
+        private void начальныеѕараметры¬нутреннейЅаллистикиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -159,7 +159,7 @@ namespace Externum_ballistics
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.05;
+            double dt = 0.01;
             // Объект метода
             Externum_ballistics task = new Externum_ballistics(N);
             // Установим начальные условия задачи
@@ -203,24 +203,18 @@ namespace Externum_ballistics
         /// <returns></returns>
         public override double[] F(double t)
         {
-            return Funk(Y[0], Y[1], Y[2], Y[3], Y[4], Y[5], Y[6], Y[7], Y[8], Y[9], Y[10], Y[11], Y[12], Y[13], Y[14]);
-        }
-
-        /// Создание вектора параметров полёта снаряда
-        public double[] Funk(double uk, double e1, double psiP, double sigma, double k, double S0, double Lambda0, double z, double psi, double eta, double p_sn, double S_sn, double V, double m, double p_f)
-        {
             double[] F = new double[4];
-            F[0] = Inlet_solver.z(uk,e1);
-            F[1] = Inlet_solver.psi(z, psiP, psi, uk, e1, sigma, k, S0, Lambda0);
-            F[2] = Inlet_solver.V(m, p_sn, S_sn, eta, p_f);
-            F[3] = Inlet_solver.x(V);
+            F[0] = Inlet_solver.z(inletparametrs.uk, inletparametrs.e1);
+            F[1] = Inlet_solver.psi(inletparametrs.z, inletparametrs.psiP, inletparametrs.psi, inletparametrs.uk, inletparametrs.e1, inletparametrs.sigma, inletparametrs.k, inletparametrs.S0, inletparametrs.Lambda0);
+            F[2] = Inlet_solver.V(inletparametrs.m, inletparametrs.p_sn, inletparametrs.S_sn, inletparametrs.eta, inletparametrs.p_f);
+            F[3] = Inlet_solver.x(inletparametrs.V);
             return F;
         }
         public List<double[]> Test(uint N, ExternumParametrs start_parametrs, int n)
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.05;
+            double dt = 0.001;
             // Объект метода
             Externum_ballistics task = new Externum_ballistics(N);
             // Установим начальные условия задачи
