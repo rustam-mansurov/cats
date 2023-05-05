@@ -16,6 +16,7 @@ namespace Externum_ballistics
         /// Текущее время
         /// </summary>
         public double t;
+        public bool IsThisExternumBallistic = true;
         /// <summary>
         /// Искомое решение Y[0] — само решение, Y[i] — i-я производная решения
         /// </summary>
@@ -64,6 +65,17 @@ namespace Externum_ballistics
             Y[5] = parametrs.psi;
             Y[6] = parametrs.Omega;
         }
+
+        public void SetInit(double t0, InletParametrs start_parametrs)
+        {
+            inletparametrs = start_parametrs;
+            t = t0;
+            Y[0] = inletparametrs.z;
+            Y[1] = inletparametrs.psi;
+            Y[2] = inletparametrs.V;
+            Y[3] = inletparametrs.x;
+        }
+
         /// <summary>
         /// Расчет правых частей системы
         /// </summary>
@@ -72,7 +84,7 @@ namespace Externum_ballistics
         /// <returns>правая часть</returns>
         abstract public double[] F(double t);
 
-        public void update()
+        public void update(bool IsThisExternum)
         {
             parametrs.T = solver.T(parametrs.Y);
             parametrs.p = solver.p(parametrs.Y);
@@ -87,7 +99,17 @@ namespace Externum_ballistics
             parametrs.sigma = solver.sigma(parametrs.alfa, parametrs.beta1);
         }
 
-        public void Initialize(double [] YY)
+        public void update()
+        {
+            inletparametrs.sigma = Inlet_solver.sigma(inletparametrs.lambda, inletparametrs.z, inletparametrs.mu, inletparametrs.psiP, inletparametrs.psi);
+            inletparametrs.p = Inlet_solver.p(inletparametrs.W_sn, inletparametrs.alfa, inletparametrs.psi, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.f, inletparametrs.m, inletparametrs.J1, inletparametrs.teta, inletparametrs.V, inletparametrs.delta);
+            inletparametrs.T = Inlet_solver.T(inletparametrs.W_sn, inletparametrs.alfa, inletparametrs.psi, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.delta, inletparametrs.cp, inletparametrs.cv, inletparametrs.p);
+            inletparametrs.p_sn = Inlet_solver.p_sn(inletparametrs.p, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.m, inletparametrs.J1, inletparametrs.J2, inletparametrs.J3, inletparametrs.V, inletparametrs.W_sn);
+            inletparametrs.p_kn = Inlet_solver.p_kn(inletparametrs.p_sn, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.m, inletparametrs.J2, inletparametrs.V, inletparametrs.W_sn);
+            inletparametrs.eta = Inlet_solver.eta(inletparametrs.p_sn, inletparametrs.p_f);
+        }
+
+        public void Initialize(double [] YY, bool IsThis)
         {
             parametrs.X = YY[0];
             parametrs.Y = YY[1];
@@ -98,7 +120,50 @@ namespace Externum_ballistics
             parametrs.Omega = YY[6];
         }
 
+        public void Initialize(double[] YY)
+        {
+            inletparametrs.z = YY[0];
+            inletparametrs.psi = YY[1];
+            inletparametrs.V = YY[2];
+            inletparametrs.x = YY[3];
+        }
+
         public void NextStep(double dt, Externum_ballistics task)
+        {
+            int i;
+            update();
+            if (dt < 0) return;
+
+            // рассчитать Y1
+            Y1 = F(t);
+
+            for (i = 0; i < Y.Length; i++)
+                YY[i] = Y[i] + Y1[i] * (dt / 2.0);
+            Initialize(YY, IsThisExternumBallistic);
+            // рассчитать Y2
+            Y2 = F(t + dt / 2.0);
+
+            for (i = 0; i < Y.Length; i++)
+                YY[i] = Y[i] + Y2[i] * (dt / 2.0);
+            Initialize(YY, IsThisExternumBallistic);
+            // рассчитать Y3
+            Y3 = F(t + dt / 2.0);
+
+            for (i = 0; i < Y.Length; i++)
+                YY[i] = Y[i] + Y3[i] * dt;
+            Initialize(YY, IsThisExternumBallistic);
+            // рассчитать Y4
+            Y4 = F(t + dt);
+
+            // рассчитать решение на новом шаге
+            for (i = 0; i < Y.Length; i++)
+                Y[i] = Y[i] + dt / 6.0 * (Y1[i] + 2.0 * Y2[i] + 2.0 * Y3[i] + Y4[i]);
+
+            // рассчитать текущее время
+            t = t + dt;        
+        }
+
+        public void NextStep(double dt, Inlet_ballistics task)
         {
             int i;
             update();
@@ -130,9 +195,11 @@ namespace Externum_ballistics
                 Y[i] = Y[i] + dt / 6.0 * (Y1[i] + 2.0 * Y2[i] + 2.0 * Y3[i] + Y4[i]);
 
             // рассчитать текущее время
-            t = t + dt;        
+            t = t + dt;
         }
     }
+
+
     public class Externum_ballistics : RungeKutta
     {
         public Externum_ballistics(uint N) : base(N) { }
@@ -155,11 +222,11 @@ namespace Externum_ballistics
             F[6] = solver.omega(parametrs.mx_wx, parametrs.q, parametrs.Sm, parametrs.Length, parametrs.I_x, parametrs.Mpx);
             return F;
         }
-        public List<double[]> Test(uint N, ExternumParametrs initial_parametrs, int n)
+        public List<double[]> CalcExternum(uint N, ExternumParametrs initial_parametrs, int n)
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.01;
+            double dt = 0.05;
             // Объект метода
             Externum_ballistics task = new Externum_ballistics(N);
             // Установим начальные условия задачи
@@ -193,8 +260,7 @@ namespace Externum_ballistics
 
     public class Inlet_ballistics : RungeKutta
     {
-        public Inlet_ballistics(uint N) : base(N) { }
-
+        public Inlet_ballistics(uint N) : base(N) { }  
         /// <summary>
         /// Расчёт правых частей
         /// </summary>
@@ -204,31 +270,47 @@ namespace Externum_ballistics
         public override double[] F(double t)
         {
             double[] F = new double[4];
-            F[0] = Inlet_solver.z(inletparametrs.uk, inletparametrs.e1);
-            F[1] = Inlet_solver.psi(inletparametrs.z, inletparametrs.psiP, inletparametrs.psi, inletparametrs.uk, inletparametrs.e1, inletparametrs.sigma, inletparametrs.k, inletparametrs.S0, inletparametrs.Lambda0);
-            F[2] = Inlet_solver.V(inletparametrs.m, inletparametrs.p_sn, inletparametrs.S_sn, inletparametrs.eta, inletparametrs.p_f);
+            F[0] = Inlet_solver.z(inletparametrs.uk, inletparametrs.e1, inletparametrs.p);
+            F[1] = Inlet_solver.psi(inletparametrs.z, inletparametrs.psiP, inletparametrs.psi, inletparametrs.uk, inletparametrs.e1, inletparametrs.sigma, inletparametrs.k, inletparametrs.S0, inletparametrs.Lambda0, inletparametrs.p);
+            F[2] = Inlet_solver.V(inletparametrs.m, inletparametrs.p_sn, inletparametrs.S_kn, inletparametrs.eta, inletparametrs.p_f);
             F[3] = Inlet_solver.x(inletparametrs.V);
             return F;
         }
-        public List<double[]> Test(uint N, ExternumParametrs start_parametrs, int n)
+        public List<double[]> CalcInlet(uint N, InletParametrs start_parametrs, int n)
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.001;
+            double dt = 10e-6;
             // Объект метода
-            Externum_ballistics task = new Externum_ballistics(N);
+            Inlet_ballistics task = new Inlet_ballistics(N);
             // Установим начальные условия задачи
-            task.SetInit(0, start_parametrs);
-            while (task.Y[1] <= 1)
+            SetInit(0, start_parametrs);
+            //Y[3] <= 6322
+            int iter = 0;
+            while (iter <= 10000)
             {
-                double[] result = new double[n];
-                for (int i = 0; i < N - 1; i++)
-                {
-                    result[0] = task.t;
-                    result[i + 1] = task.Y[i];
-                }
+                iter++;
+                int i = 0;
+                double[] result = new double[n+10];
+
+                result[0] = t;
+                result[1] = Y[0];
+                result[2] = Y[1];
+                result[3] = Y[2];
+                result[4] = Y[3];
+                result[5] = inletparametrs.sigma;
+                result[6] = inletparametrs.p;
+                result[7] = inletparametrs.p_sn;
+                result[8] = inletparametrs.p_kn;
+                result[9] = inletparametrs.eta;
+                result[10] = inletparametrs.psiP;
+                result[11] = inletparametrs.T;
+                result[12] = inletparametrs.W_km;
+                result[13] = inletparametrs.W_sn;
+                result[14] = inletparametrs.teta;
+
                 res.Add(result);
-                NextStep(dt, task);
+                NextStep(dt,task);
             }
             return res;
         }

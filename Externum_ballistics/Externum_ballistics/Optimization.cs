@@ -188,7 +188,7 @@ namespace Externum_ballistics
             parametrs.teta = x[0];
             parametrs.t_start = x[1];
             List<double[]> result = new List<double[]>();
-            result = test.Test(8, parametrs, n);
+            result = test.CalcExternum(8, parametrs, n);
             int last = result.Count - 1;
             return result[last][1];
         }

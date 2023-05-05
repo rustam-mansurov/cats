@@ -16,29 +16,31 @@ namespace Externum_ballistics
         double uk = 5.9e-10;// Единичная скорость горения пороха в канале ствола
 
         #region Дифференциальные уравнения
-        public double psi(double z, double psiP, double psi, double uk, double e1, double sigma, double k, double S0, double Lambda0) // Относительная доля сгоревшего пороха
+        public double psi(double z, double psiP, double psi, double uk, double e1, double sigma, double k, double S0, double Lambda0, double p) // Относительная доля сгоревшего пороха
         {
+            double res = 0;
             if (z <= 1 || psi <= psiP)// До фазы распада пороховых элементов
             {
-                return (k / e1) * sigma * uk;
+                res = (k / e1) * sigma * uk*p;
+                return res;
             }
 
             else // После фазы распада пороховых элементов 
             {
-                return S0 / Lambda0 * sigma * uk;
+                res = S0 / Lambda0 * sigma * uk * p;
+                return res;
             }
         }
 
-        public double z(double uk, double e1)// Относительная толщина горящего свода
+        public double z(double uk, double e1, double p)// Относительная толщина горящего свода
         {
-            return (uk / e1);
+            double res = (uk * p / e1);
+            return res;
         }
-
-
 
         public double V(double m, double p_sn, double S, double eta, double p_f)// Уравнение дульной скорости снаряда
         {
-            return (p_sn * S * eta *(p_sn - p_f))/m;
+            return (p_sn * S * eta * (p_sn - p_f))/m;
         }
 
         public double x (double V)// Уравнение движения снаряда
@@ -134,7 +136,7 @@ namespace Externum_ballistics
             return p_sn*(1+(omega+omega_v)/m*J2)+(omega + omega_v)*V*V/W*(1/2-J2);
         }
 
-        public double p_sn(double p_sn, double omega, double omega_v, double m, double J1, double J2, double J3, double V, double W, double p)// Давление на дно снаряда
+        public double p_sn(double p, double omega, double omega_v, double m, double J1, double J2, double J3, double V, double W)// Давление на дно снаряда
         {
             return (p+(omega+omega_v)*V*V/W*(1/2*J1+J2-J3-1/2))/(1+(omega+omega_v)/m*(J2-J3));
         }
@@ -147,9 +149,9 @@ namespace Externum_ballistics
         public double W_km (double[] l_n, double S_kn, double L_k, double [] d_km)// Объём каморы
         {
             double sum = 0;
-            for (int i = 0; i < l_n.Length; i++)
+            for (int i = 1; i < l_n.Length; i++)
             {
-                sum += S(d_km[i]) * l_n[i] + 1 / 3 * (l_n[i] - l_n[i + 1]) * (S(d_km[i]) + Math.Sqrt(S(d_km[i]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i + 1]);
+                sum += S(d_km[i-1]) * l_n[i-1] + 1 / 3 * (l_n[i-1] - l_n[i]) * (S(d_km[i-1]) + Math.Sqrt(S(d_km[i-1]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i]);
             }
             return sum;
         }

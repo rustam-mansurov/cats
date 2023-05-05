@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Параметры снаряда");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Параметры расчета");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Оптимизация");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Прямая задача");
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Обратная задача");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode5});
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Параметры снаряда");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Параметры расчета");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Оптимизация");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Прямая задача");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Обратная задача");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
+            treeNode16,
+            treeNode17});
             this.FileMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,6 +45,7 @@
             this.InitialСonditions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.начальныеУсловияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Optimisation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Calculation = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -104,7 +105,23 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
             this.button1 = new System.Windows.Forms.Button();
-            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Optimisation.SuspendLayout();
@@ -114,6 +131,8 @@
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
             // 
             // FileMenu
@@ -161,7 +180,7 @@
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem,
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem});
             this.InitialСonditions.Name = "InitialСonditions";
-            this.InitialСonditions.Size = new System.Drawing.Size(338, 92);
+            this.InitialСonditions.Size = new System.Drawing.Size(338, 70);
             // 
             // начальныеУсловияToolStripMenuItem
             // 
@@ -175,7 +194,13 @@
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Name = "начальныеПараметрыРеактивногоДвигателяToolStripMenuItem";
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Text = "Начальные параметры реактивного двигателя";
-            this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem_Click);
+            // 
+            // начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem
+            // 
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Name = "начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem";
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Text = "Начальные параметры внутренней баллистики";
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem_Click);
             // 
             // Optimisation
             // 
@@ -183,7 +208,6 @@
             this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem});
             this.Optimisation.Name = "Optimisation";
             this.Optimisation.Size = new System.Drawing.Size(355, 26);
-            this.Optimisation.Opening += new System.ComponentModel.CancelEventHandler(this.Optimisation_Opening);
             // 
             // оптимизацияВнешнебаллистическихПараметровToolStripMenuItem
             // 
@@ -281,13 +305,13 @@
             // оПрограммеToolStripMenuItem
             // 
             this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(179, 22);
             this.оПрограммеToolStripMenuItem.Text = "О программе";
             // 
             // справкаToolStripMenuItem1
             // 
             this.справкаToolStripMenuItem1.Name = "справкаToolStripMenuItem1";
-            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.справкаToolStripMenuItem1.Size = new System.Drawing.Size(179, 22);
             this.справкаToolStripMenuItem1.Text = "Просмотр справки";
             // 
             // tabControl1
@@ -295,6 +319,7 @@
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
+            this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(479, 27);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -574,27 +599,27 @@
             // 
             this.treeView1.Location = new System.Drawing.Point(12, 27);
             this.treeView1.Name = "treeView1";
-            treeNode1.ContextMenuStrip = this.FileMenu;
-            treeNode1.Name = "Узел5";
-            treeNode1.Text = "Параметры снаряда";
-            treeNode2.ContextMenuStrip = this.InitialСonditions;
-            treeNode2.Name = "Узел4";
-            treeNode2.Text = "Параметры расчета";
-            treeNode3.ContextMenuStrip = this.Optimisation;
-            treeNode3.Name = "Узел1";
-            treeNode3.Text = "Оптимизация";
-            treeNode4.Name = "Узел0";
-            treeNode4.Text = "Прямая задача";
-            treeNode5.Name = "Узел7";
-            treeNode5.Text = "Обратная задача";
-            treeNode6.ContextMenuStrip = this.Calculation;
-            treeNode6.Name = "Узел6";
-            treeNode6.Text = "Расчёт";
+            treeNode13.ContextMenuStrip = this.FileMenu;
+            treeNode13.Name = "Узел5";
+            treeNode13.Text = "Параметры снаряда";
+            treeNode14.ContextMenuStrip = this.InitialСonditions;
+            treeNode14.Name = "Узел4";
+            treeNode14.Text = "Параметры расчета";
+            treeNode15.ContextMenuStrip = this.Optimisation;
+            treeNode15.Name = "Узел1";
+            treeNode15.Text = "Оптимизация";
+            treeNode16.Name = "Узел0";
+            treeNode16.Text = "Прямая задача";
+            treeNode17.Name = "Узел7";
+            treeNode17.Text = "Обратная задача";
+            treeNode18.ContextMenuStrip = this.Calculation;
+            treeNode18.Name = "Узел6";
+            treeNode18.Text = "Расчёт";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2,
-            treeNode3,
-            treeNode6});
+            treeNode13,
+            treeNode14,
+            treeNode15,
+            treeNode18});
             this.treeView1.Size = new System.Drawing.Size(449, 175);
             this.treeView1.TabIndex = 2;
             // 
@@ -615,12 +640,116 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem
+            // tabPage4
             // 
-            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Name = "начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem";
-            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
-            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Text = "Начальные параметры внутренней баллистики";
-            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem_Click);
+            this.tabPage4.Controls.Add(this.dataGridView2);
+            this.tabPage4.Location = new System.Drawing.Point(4, 24);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1006, 668);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Таблица внутренняя баллистика";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView2
+            // 
+            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.dataGridViewTextBoxColumn10,
+            this.dataGridViewTextBoxColumn11,
+            this.dataGridViewTextBoxColumn12,
+            this.dataGridViewTextBoxColumn13,
+            this.dataGridViewTextBoxColumn14,
+            this.dataGridViewTextBoxColumn15});
+            this.dataGridView2.Location = new System.Drawing.Point(0, 6);
+            this.dataGridView2.Name = "dataGridView2";
+            this.dataGridView2.RowTemplate.Height = 25;
+            this.dataGridView2.Size = new System.Drawing.Size(1006, 656);
+            this.dataGridView2.TabIndex = 1;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "t";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "z";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "psi";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "V";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.HeaderText = "x";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.HeaderText = "sigma";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.HeaderText = "p";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.HeaderText = "p_sn";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "p_kn";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            // 
+            // dataGridViewTextBoxColumn10
+            // 
+            this.dataGridViewTextBoxColumn10.HeaderText = "eta";
+            this.dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
+            // 
+            // dataGridViewTextBoxColumn11
+            // 
+            this.dataGridViewTextBoxColumn11.HeaderText = "psiP";
+            this.dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
+            // 
+            // dataGridViewTextBoxColumn12
+            // 
+            this.dataGridViewTextBoxColumn12.HeaderText = "T";
+            this.dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            // 
+            // dataGridViewTextBoxColumn13
+            // 
+            this.dataGridViewTextBoxColumn13.HeaderText = "W_km";
+            this.dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
+            // 
+            // dataGridViewTextBoxColumn14
+            // 
+            this.dataGridViewTextBoxColumn14.HeaderText = "W_sn";
+            this.dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
+            // 
+            // dataGridViewTextBoxColumn15
+            // 
+            this.dataGridViewTextBoxColumn15.HeaderText = "teta";
+            this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             // 
             // Form1
             // 
@@ -646,6 +775,8 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.tabPage4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -721,5 +852,22 @@
         private ContextMenuStrip Optimisation;
         private ToolStripMenuItem оптимизацияВнешнебаллистическихПараметровToolStripMenuItem;
         private ToolStripMenuItem начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem;
+        private TabPage tabPage4;
+        private DataGridView dataGridView2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
     }
 }

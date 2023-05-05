@@ -15,8 +15,10 @@ namespace Externum_ballistics
         Projectile OFM29 = new Projectile();// —оздадим экземпл€р класса дл€ снар€да ќ‘ћ29
         BallisticSolver solver = new BallisticSolver();
         ExternumParametrs parametrs = new ExternumParametrs();
+        InletParametrs inletParametrs = new InletParametrs();
         Jetparametrs jetparametrs = new Jetparametrs();
-        Externum_ballistics test = new Externum_ballistics(N);
+        Externum_ballistics CalcExternumBall = new Externum_ballistics(8);
+        Inlet_ballistics CalcInletBall = new Inlet_ballistics(4);
         Optimization optimizer = new Optimization();
 
         public Form1()
@@ -60,8 +62,10 @@ namespace Externum_ballistics
 
         private void начатьToolStripMenuItem_Click(object sender, EventArgs e)//Ќачать вычислени€
         {
+            N = 8;
+            n = 9;
             List<double[]> result = new List<double[]>();
-            result = test.Test(N, parametrs, n);
+            result = CalcExternumBall.CalcExternum(N, parametrs, n);
             double [] datax = new double[result.Count];
             double[] datat = new double[result.Count];
             double [] datay = new double[result.Count];
@@ -161,11 +165,6 @@ namespace Externum_ballistics
             propertyGrid1.SelectedObject = OFM29;
         }
 
-        private void начальныеѕараметры–еактивногоƒвигател€ToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-           
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             formsPlot1.Plot.Clear();
@@ -181,7 +180,18 @@ namespace Externum_ballistics
 
         private void внутренн€€ЅаллистикаToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            N = 4;
+            List<double[]> result = new List<double[]>();
+            result = CalcInletBall.CalcInlet(4, inletParametrs, 5);
 
+            for (int i = 0; i < result.Count; i++)
+            {
+                dataGridView2.Rows.Add();
+                for (int j = 0; j < 15; j++)
+                {
+                    dataGridView2.Rows[i].Cells[j].Value = result[i][j];
+                }
+            }
         }
 
         private void оптимизаци€¬нешнебаллистическихѕараметровToolStripMenuItem_Click(object sender, EventArgs e)
@@ -193,14 +203,10 @@ namespace Externum_ballistics
             MessageBox.Show(x[2].ToString());
         }
 
-        private void Optimisation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            
-        }
-
         private void начальныеѕараметры¬нутреннейЅаллистикиToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            inletParametrs = inletParametrs.Get_Initial_Conditions(inletParametrs);
+            propertyGrid1.SelectedObject = inletParametrs;
         }
     }
 }
