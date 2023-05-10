@@ -131,7 +131,7 @@ namespace Externum_ballistics
         public void NextStep(double dt, Externum_ballistics task)
         {
             int i;
-            update();
+            update(IsThisExternumBallistic);
             if (dt < 0) return;
 
             // рассчитать Y1
@@ -226,7 +226,7 @@ namespace Externum_ballistics
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 0.05;
+            double dt = 0.01;
             // Объект метода
             Externum_ballistics task = new Externum_ballistics(N);
             // Установим начальные условия задачи
@@ -273,43 +273,50 @@ namespace Externum_ballistics
             F[0] = Inlet_solver.z(inletparametrs.uk, inletparametrs.e1, inletparametrs.p);
             F[1] = Inlet_solver.psi(inletparametrs.z, inletparametrs.psiP, inletparametrs.psi, inletparametrs.uk, inletparametrs.e1, inletparametrs.sigma, inletparametrs.k, inletparametrs.S0, inletparametrs.Lambda0, inletparametrs.p);
             F[2] = Inlet_solver.V(inletparametrs.m, inletparametrs.p_sn, inletparametrs.S_kn, inletparametrs.eta, inletparametrs.p_f);
-            F[3] = Inlet_solver.x(inletparametrs.V);
+            F[3] = Inlet_solver.x(inletparametrs.V, inletparametrs.eta, inletparametrs.p_sn, inletparametrs.p_f);
             return F;
         }
         public List<double[]> CalcInlet(uint N, InletParametrs start_parametrs, int n)
         {
             List<double[]> res = new List<double[]>();
             // Шаг по времени
-            double dt = 10e-6;
+            double dt = 10e-7;
             // Объект метода
             Inlet_ballistics task = new Inlet_ballistics(N);
             // Установим начальные условия задачи
             SetInit(0, start_parametrs);
             //Y[3] <= 6322
             int iter = 0;
-            while (iter <= 10000)
+
+            while (iter <= 20000)
             {
                 iter++;
-                int i = 0;
-                double[] result = new double[n+10];
+              
+                if (iter%10 == 0)
+                {
+                    double[] result = new double[n + 10];
+                    result[0] = t;
+                    result[1] = Y[0];
+                    result[2] = Y[1];
+                    result[3] = Y[2];
+                    result[4] = Y[3];
+                    result[5] = inletparametrs.sigma;
+                    result[6] = inletparametrs.p;
+                    result[7] = inletparametrs.p_sn;
+                    result[8] = inletparametrs.p_kn;
+                    result[9] = inletparametrs.eta;
+                    result[10] = inletparametrs.psiP;
+                    result[11] = inletparametrs.T;
+                    result[12] = inletparametrs.W_km;
+                    result[13] = inletparametrs.W_sn;
+                    result[14] = inletparametrs.teta;
+                    res.Add(result);
+                }
 
-                result[0] = t;
-                result[1] = Y[0];
-                result[2] = Y[1];
-                result[3] = Y[2];
-                result[4] = Y[3];
-                result[5] = inletparametrs.sigma;
-                result[6] = inletparametrs.p;
-                result[7] = inletparametrs.p_sn;
-                result[8] = inletparametrs.p_kn;
-                result[9] = inletparametrs.eta;
-                result[10] = inletparametrs.psiP;
-                result[11] = inletparametrs.T;
-                result[12] = inletparametrs.W_km;
-                result[13] = inletparametrs.W_sn;
-                result[14] = inletparametrs.teta;
-
-                res.Add(result);
+               // if (iter > 39998)
+                //{
+                 //   i = 0;
+                //}
                 NextStep(dt,task);
             }
             return res;

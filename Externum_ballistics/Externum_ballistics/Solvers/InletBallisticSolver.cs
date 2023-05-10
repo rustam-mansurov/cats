@@ -40,12 +40,16 @@ namespace Externum_ballistics
 
         public double V(double m, double p_sn, double S, double eta, double p_f)// Уравнение дульной скорости снаряда
         {
+            if (eta == 0)
+            {
+                return 0;
+            }
             return (p_sn * S * eta * (p_sn - p_f))/m;
         }
 
-        public double x (double V)// Уравнение движения снаряда
+        public double x (double V, double eta, double p_sn, double p_f)// Уравнение движения снаряда
         {
-            return V;
+            return V * eta * (p_sn - p_f);
         }
 
         #endregion
@@ -119,12 +123,12 @@ namespace Externum_ballistics
 
             else // После фазы распада пороховых элементов 
             {
-                return 1 + 2 * lambda + 3 * mu * Math.Sqrt((1 - psi) / (1 - psiP));
+                return (1 + 2 * lambda + 3 * mu) * Math.Sqrt((1 - psi) / (1 - psiP));
             }
         }
         public double p(double W, double alfa, double psi, double omega, double omegaV, double f, double m, double J1, double teta, double V, double delta)// Уравнение энергии (Среднее давление в стволе)
         {
-            return ((omega * psi + omegaV) * f - (1 + (omega + omegaV) / m * J1) * teta * m * V / 2) / (W - omega / delta * (1 - psi) - alfa * (omega * psi + omegaV));
+            return ((omega * psi + omegaV) * f - (1 + (omega + omegaV) / m * J1) * teta * m * V*V / 2) / (W - omega / delta * (1 - psi) - alfa * (omega * psi + omegaV));
         }
         public double T(double W, double alfa, double psi, double omega, double omegaV, double delta, double cp, double cv, double p)// Уравнение состояния (Определение температуры)
         {
@@ -159,7 +163,7 @@ namespace Externum_ballistics
         
         public double eta (double p_sn, double p_f)// Функция Хевисайда
         {
-            if ((p_sn - p_f) <= 0)
+            if ((p_sn - p_f) < 0)
             {
                 return 0;
             }
