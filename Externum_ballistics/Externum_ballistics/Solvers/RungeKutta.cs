@@ -101,12 +101,14 @@ namespace Externum_ballistics
 
         public void update()
         {
-            inletparametrs.sigma = Inlet_solver.sigma(inletparametrs.lambda, inletparametrs.z, inletparametrs.mu, inletparametrs.psiP, inletparametrs.psi);
+            inletparametrs.sigma = Inlet_solver.sigma(inletparametrs.lambda_, inletparametrs.kappa_, inletparametrs.psi, inletparametrs.psiP);
             inletparametrs.p = Inlet_solver.p(inletparametrs.W_sn, inletparametrs.alfa, inletparametrs.psi, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.f, inletparametrs.m, inletparametrs.J1, inletparametrs.teta, inletparametrs.V, inletparametrs.delta);
             inletparametrs.T = Inlet_solver.T(inletparametrs.W_sn, inletparametrs.alfa, inletparametrs.psi, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.delta, inletparametrs.cp, inletparametrs.cv, inletparametrs.p);
             inletparametrs.p_sn = Inlet_solver.p_sn(inletparametrs.p, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.m, inletparametrs.J1, inletparametrs.J2, inletparametrs.J3, inletparametrs.V, inletparametrs.W_sn);
             inletparametrs.p_kn = Inlet_solver.p_kn(inletparametrs.p_sn, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.m, inletparametrs.J2, inletparametrs.V, inletparametrs.W_sn);
             inletparametrs.eta = Inlet_solver.eta(inletparametrs.p_sn, inletparametrs.p_f);
+            inletparametrs.uk = Inlet_solver.uk(inletparametrs.u1, inletparametrs.p, inletparametrs.p_f);
+            inletparametrs.W_sn = Inlet_solver.W_sn(inletparametrs.W_km, inletparametrs.S_sn, inletparametrs.x, inletparametrs.L);
         }
 
         public void Initialize(double [] YY, bool IsThis)
@@ -288,7 +290,7 @@ namespace Externum_ballistics
             //Y[3] <= 6322
             int iter = 0;
 
-            while (iter <= 20000)
+            while (Y[3] <= 7.322)
             {
                 iter++;
               
@@ -301,9 +303,9 @@ namespace Externum_ballistics
                     result[3] = Y[2];
                     result[4] = Y[3];
                     result[5] = inletparametrs.sigma;
-                    result[6] = inletparametrs.p;
-                    result[7] = inletparametrs.p_sn;
-                    result[8] = inletparametrs.p_kn;
+                    result[6] = inletparametrs.p / 1e+6;
+                    result[7] = inletparametrs.p_sn/1e+6;
+                    result[8] = inletparametrs.p_kn/1e+6;
                     result[9] = inletparametrs.eta;
                     result[10] = inletparametrs.psiP;
                     result[11] = inletparametrs.T;
@@ -313,10 +315,10 @@ namespace Externum_ballistics
                     res.Add(result);
                 }
 
-               // if (iter > 39998)
-                //{
-                 //   i = 0;
-                //}
+                if (inletparametrs.psi > inletparametrs.psiP)
+                {
+                    int i = 0;
+                }
                 NextStep(dt,task);
             }
             return res;

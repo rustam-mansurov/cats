@@ -192,6 +192,49 @@ namespace Externum_ballistics
                     dataGridView2.Rows[i].Cells[j].Value = result[i][j];
                 }
             }
+            double[] datat = new double[result.Count];
+            double[] datap = new double[result.Count];
+            double[] datap_sn = new double[result.Count];
+            double[] datap_kn = new double[result.Count];
+            double[] dataV = new double[result.Count];
+            double[] datax = new double[result.Count];
+            double[] dataz = new double[result.Count];
+            double[] dataPsi = new double[result.Count];
+
+            for (int i = 0; i < result.Count; i++)
+            {
+                dataGridView1.Rows.Add();
+                datat[i] = result[i][0];
+                datap[i] = result[i][6];
+                datap_sn[i] = result[i][7];
+                datap_kn[i] = result[i][8];
+                datax[i] = result[i][4];
+                dataV[i] = result[i][3];
+                dataz[i] = result[i][1];
+                dataPsi[i] = result[i][2];
+            }
+
+            formsPlot1.Plot.AddScatter(datat, datap, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3, label: "p");
+            formsPlot1.Plot.XLabel("t, секунд");
+            formsPlot1.Plot.YLabel("—реднее давление, ћѕа");
+            formsPlot1.Refresh();
+            formsPlot1.Plot.AddScatter(datat, datap_sn, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3, label: "p_сн");
+            formsPlot1.Refresh();
+            formsPlot1.Plot.Legend();
+            formsPlot1.Plot.AddScatter(datat, datap_kn, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3, label: "p_кн");
+            formsPlot1.Refresh();
+            formsPlot2.Plot.AddScatter(datat, datax, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot2.Plot.XLabel("t, секунд");
+            formsPlot2.Plot.YLabel("x, м");
+            formsPlot2.Refresh();
+            formsPlot3.Plot.AddScatter(datat, dataV, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot3.Plot.XLabel("t, секунд");
+            formsPlot3.Plot.YLabel("V, м/с");
+            formsPlot3.Refresh();
+            formsPlot4.Plot.AddScatter(datat, dataPsi, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot4.Plot.XLabel("t, секунд");
+            formsPlot4.Plot.YLabel("psi, дол€ сгоревшего пороха");
+            formsPlot4.Refresh();
         }
 
         private void оптимизаци€¬нешнебаллистическихѕараметровToolStripMenuItem_Click(object sender, EventArgs e)

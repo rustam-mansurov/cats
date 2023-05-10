@@ -59,6 +59,9 @@ namespace Externum_ballistics
         [Category("Начальные условия"), DescriptionAttribute("Единичная скорость горения пороха"), DisplayName("uk")]
         public double uk { get; set; }
 
+        [Category("Начальные условия"), DescriptionAttribute("Единичная скорость горения пороха"), DisplayName("uk")]
+        public double u1 { get; set; }
+
         [Category("Начальные условия"), DescriptionAttribute("Единичная скорость горения пороха"), DisplayName("mu")]
         public double mu { get; set; }
 
@@ -155,6 +158,14 @@ namespace Externum_ballistics
         [Category("Начальные условия"), DescriptionAttribute("Показатель адиабаты"), DisplayName("cp")]
         public double cp { get; set; }
 
+        [Category("Начальные условия"), DescriptionAttribute("Показатель адиабаты"), DisplayName("cp")]
+        public double kappa_ { get; set; }
+
+        [Category("Начальные условия"), DescriptionAttribute("Показатель адиабаты"), DisplayName("cp")]
+        public double lambda_ { get; set; }
+
+        [Category("Начальные условия"), DescriptionAttribute("Показатель адиабаты"), DisplayName("cp")]
+        public double L{ get; set; }
         public InletParametrs Get_Initial_Conditions(InletParametrs parametrs)// Получить начальные параметры
         {
             double[] d_m = { 0.214, 0.196, 0.164, 0.155, 0.155, 0.1524 };
@@ -162,11 +173,12 @@ namespace Externum_ballistics
             parametrs.psi = 0;
             parametrs.z = 0;
             parametrs.V = 0;
-            parametrs.x = 0;
+            parametrs.x = 1.015;
             parametrs.f = 900000;
             parametrs.d0 = 0.0009;
             parametrs.D0 = 0.0115;
             parametrs.L0 = 0.019;
+            parametrs.L = 1.093;
             parametrs.d_km = d_m;
             parametrs.d_kn = 0.1524;
             parametrs.c_poroh = 1298;
@@ -184,11 +196,10 @@ namespace Externum_ballistics
             parametrs.omegaV = 0.810;
             parametrs.teta = solver.teta(parametrs.cv, parametrs.cp);
             parametrs.m = 46;
-            parametrs.S_sn = solver.S(0.152);
             parametrs.delta = 1520;
             parametrs.J1 = 1/3f;
             parametrs.J2 = 1/2f;
-            parametrs.uk = 5.9e-10;
+            parametrs.u1 = 0.775*1e-9;
             parametrs.p_f = 25000000;
             parametrs.eta = 0;
             parametrs.J3 = 1/6f;
@@ -200,12 +211,15 @@ namespace Externum_ballistics
             parametrs.psiP = solver.psiP(parametrs.k, parametrs.lambda, parametrs.mu);
             parametrs.W_km = solver.W_km(parametrs.l_n, parametrs.S_kn, parametrs.L_k, parametrs.d_km);
             parametrs.W_sn = solver.W_sn(parametrs.W_km, parametrs.S_sn, parametrs.x, parametrs.L_k);
-            parametrs.sigma = solver.sigma(parametrs.lambda, parametrs.z, parametrs.mu, parametrs.psiP, parametrs.psi);
+            parametrs.kappa_ = solver.kappa_(parametrs.k, parametrs.mu);
+            parametrs.lambda_ = solver.lambda_(parametrs.k, parametrs.lambda, parametrs.mu, parametrs.kappa_);
+            parametrs.sigma = solver.sigma(parametrs.lambda_, parametrs.kappa_, parametrs.psi, parametrs.psiP);
             parametrs.p = solver.p(parametrs.W_sn, parametrs.alfa, parametrs.psi, parametrs.omega, parametrs.omegaV, parametrs.f, parametrs.m, parametrs.J1, parametrs.teta, parametrs.V, parametrs.delta);
             parametrs.T = solver.T(parametrs.W_sn, parametrs.alfa, parametrs.psi, parametrs.omega, parametrs.omegaV, parametrs.delta, parametrs.cp, parametrs.cv, parametrs.p);
             parametrs.p_sn = solver.p_sn(parametrs.p, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J1, parametrs.J2, parametrs.J3, parametrs.V, parametrs.W_sn);
             parametrs.p_kn = solver.p_kn(parametrs.p_sn, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J2, parametrs.V, parametrs.W_sn);
-            parametrs.S0 = solver.S(parametrs.d0);
+            parametrs.S0 = solver.S(parametrs.D0);
+            parametrs.uk = solver.uk(parametrs.u1, parametrs.p, parametrs.p_f);
             return parametrs;
         }
     }

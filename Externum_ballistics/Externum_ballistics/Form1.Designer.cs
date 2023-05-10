@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Параметры снаряда");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("Параметры расчета");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("Оптимизация");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Прямая задача");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("Обратная задача");
-            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
-            treeNode16,
-            treeNode17});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Параметры снаряда");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Параметры расчета");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Оптимизация");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Прямая задача");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Обратная задача");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Расчёт", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
             this.FileMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.загрузитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jsonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -101,10 +101,6 @@
             this.Column30 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column31 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column32 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -122,6 +118,9 @@
             this.dataGridViewTextBoxColumn13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn14 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn15 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+            this.button1 = new System.Windows.Forms.Button();
             this.FileMenu.SuspendLayout();
             this.InitialСonditions.SuspendLayout();
             this.Optimisation.SuspendLayout();
@@ -318,7 +317,6 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Location = new System.Drawing.Point(479, 27);
             this.tabControl1.Name = "tabControl1";
@@ -380,7 +378,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(1006, 668);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Таблица переменных";
+            this.tabPage2.Text = "Таблица переменных внешней баллистики";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
@@ -585,61 +583,6 @@
             this.Column32.HeaderText = "Column32";
             this.Column32.Name = "Column32";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(1006, 668);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Визуализация";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // treeView1
-            // 
-            this.treeView1.Location = new System.Drawing.Point(12, 27);
-            this.treeView1.Name = "treeView1";
-            treeNode13.ContextMenuStrip = this.FileMenu;
-            treeNode13.Name = "Узел5";
-            treeNode13.Text = "Параметры снаряда";
-            treeNode14.ContextMenuStrip = this.InitialСonditions;
-            treeNode14.Name = "Узел4";
-            treeNode14.Text = "Параметры расчета";
-            treeNode15.ContextMenuStrip = this.Optimisation;
-            treeNode15.Name = "Узел1";
-            treeNode15.Text = "Оптимизация";
-            treeNode16.Name = "Узел0";
-            treeNode16.Text = "Прямая задача";
-            treeNode17.Name = "Узел7";
-            treeNode17.Text = "Обратная задача";
-            treeNode18.ContextMenuStrip = this.Calculation;
-            treeNode18.Name = "Узел6";
-            treeNode18.Text = "Расчёт";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode18});
-            this.treeView1.Size = new System.Drawing.Size(449, 175);
-            this.treeView1.TabIndex = 2;
-            // 
-            // propertyGrid1
-            // 
-            this.propertyGrid1.Location = new System.Drawing.Point(24, 208);
-            this.propertyGrid1.Name = "propertyGrid1";
-            this.propertyGrid1.Size = new System.Drawing.Size(449, 511);
-            this.propertyGrid1.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(483, 729);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 23);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Очистить графики";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dataGridView2);
@@ -648,7 +591,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(1006, 668);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Таблица внутренняя баллистика";
+            this.tabPage4.Text = "Таблица переменных внутренней баллистики";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
@@ -751,6 +694,51 @@
             this.dataGridViewTextBoxColumn15.HeaderText = "teta";
             this.dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
             // 
+            // treeView1
+            // 
+            this.treeView1.Location = new System.Drawing.Point(12, 27);
+            this.treeView1.Name = "treeView1";
+            treeNode1.ContextMenuStrip = this.FileMenu;
+            treeNode1.Name = "Узел5";
+            treeNode1.Text = "Параметры снаряда";
+            treeNode2.ContextMenuStrip = this.InitialСonditions;
+            treeNode2.Name = "Узел4";
+            treeNode2.Text = "Параметры расчета";
+            treeNode3.ContextMenuStrip = this.Optimisation;
+            treeNode3.Name = "Узел1";
+            treeNode3.Text = "Оптимизация";
+            treeNode4.Name = "Узел0";
+            treeNode4.Text = "Прямая задача";
+            treeNode5.Name = "Узел7";
+            treeNode5.Text = "Обратная задача";
+            treeNode6.ContextMenuStrip = this.Calculation;
+            treeNode6.Name = "Узел6";
+            treeNode6.Text = "Расчёт";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3,
+            treeNode6});
+            this.treeView1.Size = new System.Drawing.Size(449, 175);
+            this.treeView1.TabIndex = 2;
+            // 
+            // propertyGrid1
+            // 
+            this.propertyGrid1.Location = new System.Drawing.Point(24, 208);
+            this.propertyGrid1.Name = "propertyGrid1";
+            this.propertyGrid1.Size = new System.Drawing.Size(449, 511);
+            this.propertyGrid1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(483, 729);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 23);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Очистить графики";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -810,7 +798,6 @@
         private ContextMenuStrip InitialСonditions;
         private ToolStripMenuItem начальныеУсловияToolStripMenuItem;
         private ToolStripMenuItem начальныеПараметрыРеактивногоДвигателяToolStripMenuItem;
-        private TabPage tabPage3;
         private ScottPlot.FormsPlot formsPlot4;
         private ScottPlot.FormsPlot formsPlot3;
         private ScottPlot.FormsPlot formsPlot2;

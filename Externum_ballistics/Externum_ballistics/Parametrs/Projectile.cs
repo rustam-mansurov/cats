@@ -15,35 +15,26 @@ namespace Externum_ballistics
     public class Projectile
     {
         #region Характеристики снаряда
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"),DisplayName("Имя снаряда")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Имя снаряда"),DisplayName("Имя снаряда")]
         public string Name { get; set; }
 
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Калибр")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Калибр снаряда, клб"), DisplayName("Калибр")]
         public double Caliber { get; set; }
 
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Масса")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Масса снаряда, кг"), DisplayName("Масса")]
         public double Mass { get; set; }
 
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Длина")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Длина снаряда, м"), DisplayName("Длина")]
         public double Length { get; set; }
 
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Длина головной части")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Длина головной части, м"), DisplayName("Длина головной части")]
         public double Head_length { get; set; }
 
-        [Category("Характеристики снаряда"),DescriptionAttribute("Описание"), DisplayName("Центр масс от носа")]
+        [Category("Характеристики снаряда"),DescriptionAttribute("Центр масс от носа, м"), DisplayName("Центр масс от носа")]
         public double Center_of_mass { get; set; }
 
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
+        [Category("Характеристики снаряда"), DescriptionAttribute("Коэффициент формы"), DisplayName("Коэффициент формы")]
         public double ix { get; set; }
-
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
-        public double Cx { get; set; }
-
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
-        public double Cy { get; set; }
-
-        [Category("Характеристики снаряда"), DescriptionAttribute("Описание"), DisplayName("Коэффициент формы")]
-        public double Cz { get; set; }
         #endregion
     }
 }
