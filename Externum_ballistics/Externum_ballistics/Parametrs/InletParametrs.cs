@@ -190,8 +190,8 @@ namespace Externum_ballistics
             parametrs.Q = solver.Q(parametrs.D0, parametrs.d0, parametrs.L0);
             parametrs.e1 = 0.0009;
             parametrs.alfa = 0.00095;
-            parametrs.cv = 1497;
-            parametrs.cp = 1838;
+            parametrs.cv = 1497.4;
+            parametrs.cp = 1838.8;
             parametrs.omega = 19;
             parametrs.omegaV = 0.810;
             parametrs.teta = solver.teta(parametrs.cv, parametrs.cp);
@@ -218,7 +218,7 @@ namespace Externum_ballistics
             parametrs.T = solver.T(parametrs.W_sn, parametrs.alfa, parametrs.psi, parametrs.omega, parametrs.omegaV, parametrs.delta, parametrs.cp, parametrs.cv, parametrs.p);
             parametrs.p_sn = solver.p_sn(parametrs.p, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J1, parametrs.J2, parametrs.J3, parametrs.V, parametrs.W_sn);
             parametrs.p_kn = solver.p_kn(parametrs.p_sn, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J2, parametrs.V, parametrs.W_sn);
-            parametrs.S0 = solver.S(parametrs.D0);
+            parametrs.S0 = solver.S0(parametrs.d0,parametrs.D0);
             parametrs.uk = solver.uk(parametrs.u1, parametrs.p, parametrs.p_f);
             return parametrs;
         }

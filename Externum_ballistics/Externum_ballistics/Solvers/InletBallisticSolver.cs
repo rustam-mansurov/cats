@@ -53,6 +53,11 @@ namespace Externum_ballistics
             return Math.PI * (d * d) / 4;
         }
 
+        public double S0(double d, double D)// Площадь сечений
+        {
+            return S(D) - 7 * S(d);
+        }
+
         public double Lambda0(double D0, double d0, double L0)// Площадь сечений
         {
             return Math.PI / 4 * (D0 * D0 - 7 * d0 * d0) * L0;
@@ -186,6 +191,7 @@ namespace Externum_ballistics
                 sum += S(d_km[i-1]) * l_n[i-1] + 1 / 3 * (l_n[i-1] - l_n[i]) * (S(d_km[i-1]) + Math.Sqrt(S(d_km[i-1]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i]);
             }
             return sum;
+            //return 0.018;
         }
 
         

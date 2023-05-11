@@ -1,17 +1,17 @@
 {
   "version": 2,
-  "dgSpecHash": "FrasvwcEy+HpedJinZgBbj0C3NZTdQDI7rDfjGcVF2QxG6AhU1pxodp9Vdn50yRUTfbeVBUKKX9BgmSAQoUHMQ==",
+  "dgSpecHash": "HNzm12rYVRdYr6VS2zbgsGHBsbw38E0Q7/swSlxQjf4I8yVqtRN6Loe3w+fj+5d0QoOLt/qN+h8toa8etQsIIQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Рустам\\Desktop\\dogs\\cats\\Externum_ballistics\\Externum_ballistics\\Externum_ballistics.csproj",
+  "projectFilePath": "C:\\Users\\Admin\\Desktop\\Git\\cats\\Externum_ballistics\\Externum_ballistics\\Externum_ballistics.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Рустам\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\scottplot\\4.1.60\\scottplot.4.1.60.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\scottplot.winforms\\4.1.60\\scottplot.winforms.4.1.60.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
-    "C:\\Users\\Рустам\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.4\\microsoft.netcore.platforms.3.1.4.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.office.interop.excel\\15.0.4795.1001\\microsoft.office.interop.excel.15.0.4795.1001.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\newtonsoft.json\\13.0.2\\newtonsoft.json.13.0.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\scottplot\\4.1.60\\scottplot.4.1.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\scottplot.winforms\\4.1.60\\scottplot.winforms.4.1.60.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.drawing.common\\4.7.2\\system.drawing.common.4.7.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512"
   ],
   "logs": []
 }
