@@ -9,7 +9,7 @@ namespace Externum_ballistics
 {
     public class InletParametrs
     {
-        InletBallisticSolver solver = new InletBallisticSolver(); 
+        InletBallisticSolver solver = new InletBallisticSolver();
         #region Начальные условия
         [Category("Начальные условия"), DescriptionAttribute("Масса пороха"), DisplayName("omega, кг")]
         public double omega { get; set; }
@@ -165,15 +165,16 @@ namespace Externum_ballistics
         public double lambda_ { get; set; }
 
         [Category("Начальные условия"), DescriptionAttribute("Показатель адиабаты"), DisplayName("cp")]
-        public double L{ get; set; }
+        public double L { get; set; }
         public InletParametrs Get_Initial_Conditions(InletParametrs parametrs)// Получить начальные параметры
         {
             double[] d_m = { 0.214, 0.196, 0.164, 0.155, 0.155, 0.1524 };
-            double[] l_m = { 0, 0.85, 0.960, 1.015, 1.045, 1.1225 };
+            double[] x_m = { 0, 0.85, 0.960, 1.015, 1.045, 1.1225 };
+            double[] l_m = x_m.Skip(1).Select((x, i) => x - x_m[i]).ToArray();
             parametrs.psi = 0;
             parametrs.z = 0;
             parametrs.V = 0;
-            parametrs.x = 1.015;
+            parametrs.x = x_m.Last();
             parametrs.f = 900000;
             parametrs.d0 = 0.0009;
             parametrs.D0 = 0.0115;
@@ -184,8 +185,8 @@ namespace Externum_ballistics
             parametrs.c_poroh = 1298;
             parametrs.l_n = l_m;
             parametrs.S_kn = solver.S(d_kn);
-            parametrs.L_k = 1.015;
-            parametrs.S_sn = solver.S(d_km[5]);
+            parametrs.L_k = x_m.Last();
+            parametrs.S_sn = solver.S(d_km.Last());
             parametrs.Lambda0 = solver.Lambda0(parametrs.D0, parametrs.d0, parametrs.L0);
             parametrs.Q = solver.Q(parametrs.D0, parametrs.d0, parametrs.L0);
             parametrs.e1 = 0.0009;
@@ -197,12 +198,12 @@ namespace Externum_ballistics
             parametrs.teta = solver.teta(parametrs.cv, parametrs.cp);
             parametrs.m = 46;
             parametrs.delta = 1520;
-            parametrs.J1 = 1/3f;
-            parametrs.J2 = 1/2f;
-            parametrs.u1 = 0.775*1e-9;
+            parametrs.J1 = 1 / 3f;
+            parametrs.J2 = 1 / 2f;
+            parametrs.u1 = 0.775 * 1e-9;
             parametrs.p_f = 25000000;
             parametrs.eta = 0;
-            parametrs.J3 = 1/6f;
+            parametrs.J3 = 1 / 6f;
             parametrs.beta = solver.beta(parametrs.e1, parametrs.L0);
             parametrs.P = solver.P(parametrs.D0, parametrs.d0, parametrs.L0);
             parametrs.k = solver.kappa(parametrs.P, parametrs.Q, parametrs.beta);
@@ -218,7 +219,7 @@ namespace Externum_ballistics
             parametrs.T = solver.T(parametrs.W_sn, parametrs.alfa, parametrs.psi, parametrs.omega, parametrs.omegaV, parametrs.delta, parametrs.cp, parametrs.cv, parametrs.p);
             parametrs.p_sn = solver.p_sn(parametrs.p, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J1, parametrs.J2, parametrs.J3, parametrs.V, parametrs.W_sn);
             parametrs.p_kn = solver.p_kn(parametrs.p_sn, parametrs.omega, parametrs.omegaV, parametrs.m, parametrs.J2, parametrs.V, parametrs.W_sn);
-            parametrs.S0 = solver.S0(parametrs.d0,parametrs.D0);
+            parametrs.S0 = solver.S0(parametrs.d0, parametrs.D0);
             parametrs.uk = solver.uk(parametrs.u1, parametrs.p, parametrs.p_f);
             return parametrs;
         }

@@ -170,12 +170,12 @@ namespace Externum_ballistics
 
         public double p_kn(double p_sn, double omega, double omega_v, double m, double J2, double V, double W)// Давление на дно канала
         {
-            return p_sn*(1+(omega+omega_v)/m*J2)+(omega + omega_v)*V*V/W*(1/2-J2);
+            return p_sn*(1+(omega+omega_v)/m*J2)+(omega + omega_v)*V*V/W*(1/2f-J2);
         }
 
         public double p_sn(double p, double omega, double omega_v, double m, double J1, double J2, double J3, double V, double W)// Давление на дно снаряда
         {
-            return (p+(omega+omega_v)*V*V/W*(1/2*J1+J2-J3-1/2))/(1+(omega+omega_v)/m*(J2-J3));
+            return (p+(omega+omega_v)*V*V/W*(1/2f*J1+J2-J3-1/2f))/(1+(omega+omega_v)/m*(J2-J3));
         }
 
         public double W_sn (double W_km, double S_sn, double x, double L)// Объём заснарядного пространства
@@ -188,7 +188,8 @@ namespace Externum_ballistics
             double sum = 0;
             for (int i = 1; i < l_n.Length; i++)
             {
-                sum += S(d_km[i-1]) * l_n[i-1] + 1 / 3 * (l_n[i-1] - l_n[i]) * (S(d_km[i-1]) + Math.Sqrt(S(d_km[i-1]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i]);
+                sum+= 1/3f * Math.PI*l_n[i-1] * (d_km[i-1] * d_km[i - 1] + d_km[i - 1] * d_km[i] + d_km[i] * d_km[i])/4;
+               // sum += Math.PI*S(d_km[i-1]) * l_n[i-1] + 1 / 3f * (l_n[i-1] - l_n[i]) * (S(d_km[i-1]) + Math.Sqrt(S(d_km[i-1]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i]);
             }
             return sum;
             //return 0.018;

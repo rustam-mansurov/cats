@@ -200,6 +200,7 @@ namespace Externum_ballistics
             double[] datax = new double[result.Count];
             double[] dataz = new double[result.Count];
             double[] dataPsi = new double[result.Count];
+            double[] dataW = new double[result.Count];
 
             for (int i = 0; i < result.Count; i++)
             {
@@ -212,6 +213,7 @@ namespace Externum_ballistics
                 dataV[i] = result[i][3];
                 dataz[i] = result[i][1];
                 dataPsi[i] = result[i][2];
+                dataW[i] = result[i][13];
             }
 
             formsPlot1.Plot.AddScatter(datat, datap, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3, label: "p");
@@ -231,7 +233,7 @@ namespace Externum_ballistics
             formsPlot3.Plot.XLabel("t, секунд");
             formsPlot3.Plot.YLabel("V, м/с");
             formsPlot3.Refresh();
-            formsPlot4.Plot.AddScatter(datat, dataPsi, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot4.Plot.AddScatter(datat, dataW, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot4.Plot.XLabel("t, секунд");
             formsPlot4.Plot.YLabel("psi, доля сгоревшего пороха");
             formsPlot4.Refresh();
