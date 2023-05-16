@@ -237,16 +237,16 @@ namespace Externum_ballistics
             while (parametrs.Y >= 0 )
             {
                 double[] result = new double[n];
-                if (t >= parametrs.t_start && t <= parametrs.t_start + parametrs.t_delta)
+                if (parametrs.IsARS == 1)
                 {
-                    parametrs.P = 11560 / 3;
-                    parametrs.Mpx = solver.Mpx(parametrs.Psigma, parametrs.nu, parametrs.re, parametrs.beta);
+                    if (t >= parametrs.t_start && t <= parametrs.t_start + parametrs.t_delta)
+                    {
+                        parametrs.P = 11560 / 3;
+                        parametrs.Mpx = solver.Mpx(parametrs.Psigma, parametrs.nu, parametrs.re, parametrs.beta);
+                    }
                 }
-                else
-                {
-                    parametrs.P = 0;
-                    parametrs.Mpx = 0;
-                }
+                parametrs.P = 0;
+                parametrs.Mpx = 0;
                 for (int i = 0; i <= N-1; i++)
                 {
                     result[0] = t;
