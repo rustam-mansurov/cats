@@ -233,7 +233,7 @@ namespace Externum_ballistics
             formsPlot3.Plot.XLabel("t, секунд");
             formsPlot3.Plot.YLabel("V, м/с");
             formsPlot3.Refresh();
-            formsPlot4.Plot.AddScatter(datat, dataW, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
+            formsPlot4.Plot.AddScatter(datat, dataPsi, markerShape: ScottPlot.MarkerShape.none, lineWidth: 3);
             formsPlot4.Plot.XLabel("t, секунд");
             formsPlot4.Plot.YLabel("psi, доля сгоревшего пороха");
             formsPlot4.Refresh();
@@ -243,9 +243,7 @@ namespace Externum_ballistics
         {
             double[] x = new double[3];
             x = optimizer.Optimize();
-            MessageBox.Show(x[0].ToString());
-            MessageBox.Show(x[1].ToString());
-            MessageBox.Show(x[2].ToString());
+            MessageBox.Show(" Оптимальный угол = " + x[0].ToString() + " градусов; " + " Оптимальное время старта двигателя = " + x[1].ToString() + " секунд; " + " Максимальная дальность = " + x[2].ToString() + " М. ");
         }
 
         private void начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem_Click(object sender, EventArgs e)

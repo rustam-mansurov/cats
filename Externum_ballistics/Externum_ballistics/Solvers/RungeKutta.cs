@@ -108,7 +108,7 @@ namespace Externum_ballistics
             inletparametrs.p_kn = Inlet_solver.p_kn(inletparametrs.p_sn, inletparametrs.omega, inletparametrs.omegaV, inletparametrs.m, inletparametrs.J2, inletparametrs.V, inletparametrs.W_sn);
             inletparametrs.eta = Inlet_solver.eta(inletparametrs.p_sn, inletparametrs.p_f);
             inletparametrs.uk = Inlet_solver.uk(inletparametrs.u1, inletparametrs.p, inletparametrs.p_f);
-            inletparametrs.W_sn = Inlet_solver.W_sn(inletparametrs.W_km, inletparametrs.S_sn, inletparametrs.x, inletparametrs.L);
+            inletparametrs.W_sn = Inlet_solver.W_sn(inletparametrs.W_km, inletparametrs.S_sn, inletparametrs.x, inletparametrs.L_k);
         }
 
         public void Initialize(double [] YY, bool IsThis)
@@ -237,16 +237,17 @@ namespace Externum_ballistics
             while (parametrs.Y >= 0 )
             {
                 double[] result = new double[n];
-                if (parametrs.IsARS == 1)
-                {
                     if (t >= parametrs.t_start && t <= parametrs.t_start + parametrs.t_delta)
                     {
                         parametrs.P = 11560 / 3;
                         parametrs.Mpx = solver.Mpx(parametrs.Psigma, parametrs.nu, parametrs.re, parametrs.beta);
                     }
+                    else
+                {
+                    parametrs.P = 0;
+                    parametrs.Mpx = 0;
                 }
-                parametrs.P = 0;
-                parametrs.Mpx = 0;
+
                 for (int i = 0; i <= N-1; i++)
                 {
                     result[0] = t;

@@ -179,7 +179,6 @@ namespace Externum_ballistics
             parametrs.d0 = 0.0009;
             parametrs.D0 = 0.0115;
             parametrs.L0 = 0.019;
-            parametrs.L = 1.093;
             parametrs.d_km = d_m;
             parametrs.d_kn = 0.1524;
             parametrs.c_poroh = 1298;
@@ -189,7 +188,7 @@ namespace Externum_ballistics
             parametrs.S_sn = solver.S(d_km.Last());
             parametrs.Lambda0 = solver.Lambda0(parametrs.D0, parametrs.d0, parametrs.L0);
             parametrs.Q = solver.Q(parametrs.D0, parametrs.d0, parametrs.L0);
-            parametrs.e1 = 0.0009;
+            parametrs.e1 = 0.0011;
             parametrs.alfa = 0.00095;
             parametrs.cv = 1497.4;
             parametrs.cp = 1838.8;

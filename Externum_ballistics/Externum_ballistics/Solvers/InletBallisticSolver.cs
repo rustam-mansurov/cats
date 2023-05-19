@@ -90,12 +90,12 @@ namespace Externum_ballistics
 
         public double kappa_(double kappa, double mu)// Площадь сечений
         {
-            return kappa - 0.5 * kappa*mu;
+            return kappa - 0.5f * kappa*mu;
         }
 
         public double lambda_(double kappa, double lambda, double mu, double kappa_)// Площадь сечений
         {
-            return (kappa*lambda+1.5*kappa*mu)/kappa_;
+            return (kappa*lambda+1.5f*kappa*mu)/kappa_;
         }
 
         public double mu(double P, double Q, double beta)// Площадь сечений
@@ -107,18 +107,18 @@ namespace Externum_ballistics
         {
             double u1_3 = 0;
             double u2_3 = 0;
-            u2_3 = 2 * u1 * p_f / (Math.Pow(2 * p_f, 2 / 3));
-            u1_3 = u2_3 * Math.Pow(p_f, 2 / 3) / (Math.Pow(p_f, 1 / 3));
+            u2_3 = 2 * u1 * p_f / (Math.Pow(2 * p_f, 2 / 3f));
+            u1_3 = u2_3 * Math.Pow(p_f, 2 / 3) / (Math.Pow(p_f, 1 / 3f));
             if (p <= p_f)
             {
-                return u1_3 * Math.Pow(p, 1 / 3);
+                return u1_3 * Math.Pow(p, 1 / 3f);
             }
 
             else  
 
             if (p < p_f && p < 2 * p_f)
             {
-                return u2_3 * Math.Pow(p, 2 / 3);
+                return u2_3 * Math.Pow(p, 2 / 3f);
             }
 
             else
@@ -188,7 +188,7 @@ namespace Externum_ballistics
             double sum = 0;
             for (int i = 1; i < l_n.Length; i++)
             {
-                sum+= 1/3f * Math.PI*l_n[i-1] * (d_km[i-1] * d_km[i - 1] + d_km[i - 1] * d_km[i] + d_km[i] * d_km[i])/4;
+                sum+= 1/3f * Math.PI*l_n[i-1] * (d_km[i-1] * d_km[i - 1] + d_km[i - 1] * d_km[i] + d_km[i] * d_km[i])/4f;
                // sum += Math.PI*S(d_km[i-1]) * l_n[i-1] + 1 / 3f * (l_n[i-1] - l_n[i]) * (S(d_km[i-1]) + Math.Sqrt(S(d_km[i-1]) + S_kn) + S_kn) + S_kn * (L_k - l_n[i]);
             }
             return sum;

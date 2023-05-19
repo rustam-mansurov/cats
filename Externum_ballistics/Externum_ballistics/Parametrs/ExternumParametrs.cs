@@ -268,7 +268,7 @@ namespace Externum_ballistics
             parametrs.beta1 = Math.Round(solver.beta1(parametrs.mz, parametrs.ro, parametrs.Sm, parametrs.Length, parametrs.I_z, parametrs.V), 2);
             parametrs.sigma = Math.Round(solver.sigma(parametrs.alfa, parametrs.beta1), 2);
             parametrs.psi = 0;
-            parametrs.IsARS = 0;
+            parametrs.IsARS = 1;
             return parametrs;
         }
     }
