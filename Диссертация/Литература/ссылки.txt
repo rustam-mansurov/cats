@@ -1,0 +1,7 @@
+1. Изображения
+	Определить есть ли пневмония по снимку	https://www.kaggle.com/paultimothymooney/chest-xray-pneumonia
+	Определить надета ли маска https://www.kaggle.com/andrewmvd/face-mask-detection
+2. Сигналы
+	Автоматическая маркировка аудиоданных из 80-и категорий https://www.kaggle.com/c/freesound-audio-tagging-2019/overview
+3. Текст
+	Определить является ли экстренный вызов ложным по тексту https://www.kaggle.com/c/nlp-getting-started/data

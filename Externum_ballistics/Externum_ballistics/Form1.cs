@@ -100,7 +100,7 @@ namespace Externum_ballistics
 
                 for (int j = 0; j < N-1; j++)
                 {
-                    dataGridView1.Rows[i].Cells[j].Value = result[i][j];
+                    dataGridView1.Rows[i].Cells[j].Value = Math.Round(result[i][j],2);
                 }
             }
             double[] dataY2 = new double[datayJet.Count];
@@ -250,6 +250,28 @@ namespace Externum_ballistics
         {
             inletParametrs = inletParametrs.Get_Initial_Conditions(inletParametrs);
             propertyGrid1.SelectedObject = inletParametrs;
+        }
+
+        private void ñîõðàíèòüÍà÷àëüíûåÏàðàìåòðûToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            SaveFileDialog openDialog = new SaveFileDialog();
+            openDialog.Filter = "Ôàéë äàííûõ|*.json";
+            if (openDialog.ShowDialog() == DialogResult.Cancel) return;
+            using (StreamWriter sw = new StreamWriter(openDialog.FileName))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+                serializer.Serialize(writer, parametrs);
+        }
+
+        private void ñîõðàíèòüÍà÷àëüíûåÏàðàìåòðûToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            SaveFileDialog openDialog = new SaveFileDialog();
+            openDialog.Filter = "Ôàéë äàííûõ|*.json";
+            if (openDialog.ShowDialog() == DialogResult.Cancel) return;
+            using (StreamWriter sw = new StreamWriter(openDialog.FileName))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+                serializer.Serialize(writer, inletParametrs);
         }
     }
 }

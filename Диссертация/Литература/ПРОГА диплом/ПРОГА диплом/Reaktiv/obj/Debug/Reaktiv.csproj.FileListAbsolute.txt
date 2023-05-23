@@ -1,0 +1,46 @@
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe.config
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\bin\Debug\Reaktiv.pdb
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csprojAssemblyReference.cache
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Form1.resources
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Properties.Resources.resources
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.GenerateResource.cache
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.exe
+C:\Users\user\Desktop\Диплом\Reaktiv\Reaktiv\obj\Debug\Reaktiv.pdb
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csprojAssemblyReference.cache
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Form1.resources
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Properties.Resources.resources
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.GenerateResource.cache
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.CoreCompileInputs.cache
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.exe
+D:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.pdb
+I:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe.config
+I:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe
+I:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.pdb
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csprojAssemblyReference.cache
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Form1.resources
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Properties.Resources.resources
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.GenerateResource.cache
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.CoreCompileInputs.cache
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.exe
+I:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.pdb
+E:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe.config
+E:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.exe
+E:\Reaktiv\Reaktiv\bin\Debug\Reaktiv.pdb
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Form1.resources
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.Properties.Resources.resources
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csproj.GenerateResource.cache
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.exe
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.pdb
+E:\Reaktiv\Reaktiv\obj\Debug\Reaktiv.csprojResolveAssemblyReference.cache
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\bin\Debug\Reaktiv.exe.config
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\bin\Debug\Reaktiv.exe
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\bin\Debug\Reaktiv.pdb
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.csprojAssemblyReference.cache
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.Form1.resources
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.Properties.Resources.resources
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.csproj.GenerateResource.cache
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.csproj.CoreCompileInputs.cache
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.exe
+C:\Users\кот\Desktop\ПРОГА диплом\Reaktiv\obj\Debug\Reaktiv.pdb

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reaktiv", "Reaktiv\Reaktiv.csproj", "{936C3AB0-26A2-4272-9701-D0979DB364AD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{936C3AB0-26A2-4272-9701-D0979DB364AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{936C3AB0-26A2-4272-9701-D0979DB364AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{936C3AB0-26A2-4272-9701-D0979DB364AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{936C3AB0-26A2-4272-9701-D0979DB364AD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3783AED3-CF79-4555-96CF-1084C4066D60}
+	EndGlobalSection
+EndGlobal

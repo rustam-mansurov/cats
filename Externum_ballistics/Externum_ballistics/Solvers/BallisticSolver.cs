@@ -152,7 +152,8 @@ namespace Externum_ballistics
         {
             return Math.Round(V / a,2);
         }
-
+       // private static double[] Machs = { 0.5, 0.8, 0.9, 1.0, 1.1, 1.2, 1.5, 1.75, 2.0, 2.5, 3.0 };
+        //private static double[] Cx = { 0.157, 0.159, 0.183, 0.326, 0.378, 0.384, 0.361, 0.337, 0.317, 0.288, 0.27 };
         public double Cx (double M, double t_delta, double t_start,  double t)
         {
             double [] a = new double[4];

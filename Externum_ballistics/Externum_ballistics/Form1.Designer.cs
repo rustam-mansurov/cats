@@ -44,8 +44,12 @@
             this.изменитьПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.InitialСonditions = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.начальныеУсловияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьНачальныеПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьНачальныеПараметрыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.загрузитьНачальныеПараметрыToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.Optimisation = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.оптимизацияВнешнебаллистическихПараметровToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.Calculation = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -179,14 +183,30 @@
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem,
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem});
             this.InitialСonditions.Name = "InitialСonditions";
-            this.InitialСonditions.Size = new System.Drawing.Size(338, 70);
+            this.InitialСonditions.Size = new System.Drawing.Size(338, 92);
             // 
             // начальныеУсловияToolStripMenuItem
             // 
+            this.начальныеУсловияToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьНачальныеПараметрыToolStripMenuItem,
+            this.загрузитьНачальныеПараметрыToolStripMenuItem});
             this.начальныеУсловияToolStripMenuItem.Name = "начальныеУсловияToolStripMenuItem";
             this.начальныеУсловияToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
             this.начальныеУсловияToolStripMenuItem.Text = "Начальные условия снаряда";
             this.начальныеУсловияToolStripMenuItem.Click += new System.EventHandler(this.начальныеУсловияToolStripMenuItem_Click);
+            // 
+            // сохранитьНачальныеПараметрыToolStripMenuItem
+            // 
+            this.сохранитьНачальныеПараметрыToolStripMenuItem.Name = "сохранитьНачальныеПараметрыToolStripMenuItem";
+            this.сохранитьНачальныеПараметрыToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.сохранитьНачальныеПараметрыToolStripMenuItem.Text = "Сохранить начальные параметры";
+            this.сохранитьНачальныеПараметрыToolStripMenuItem.Click += new System.EventHandler(this.сохранитьНачальныеПараметрыToolStripMenuItem_Click);
+            // 
+            // загрузитьНачальныеПараметрыToolStripMenuItem
+            // 
+            this.загрузитьНачальныеПараметрыToolStripMenuItem.Name = "загрузитьНачальныеПараметрыToolStripMenuItem";
+            this.загрузитьНачальныеПараметрыToolStripMenuItem.Size = new System.Drawing.Size(262, 22);
+            this.загрузитьНачальныеПараметрыToolStripMenuItem.Text = "Загрузить начальные параметры";
             // 
             // начальныеПараметрыРеактивногоДвигателяToolStripMenuItem
             // 
@@ -196,10 +216,26 @@
             // 
             // начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem
             // 
+            this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1,
+            this.загрузитьНачальныеПараметрыToolStripMenuItem1});
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Name = "начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem";
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Size = new System.Drawing.Size(337, 22);
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Text = "Начальные параметры внутренней баллистики";
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem.Click += new System.EventHandler(this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem_Click);
+            // 
+            // сохранитьНачальныеПараметрыToolStripMenuItem1
+            // 
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1.Name = "сохранитьНачальныеПараметрыToolStripMenuItem1";
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1.Size = new System.Drawing.Size(262, 22);
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1.Text = "Сохранить начальные параметры";
+            this.сохранитьНачальныеПараметрыToolStripMenuItem1.Click += new System.EventHandler(this.сохранитьНачальныеПараметрыToolStripMenuItem1_Click);
+            // 
+            // загрузитьНачальныеПараметрыToolStripMenuItem1
+            // 
+            this.загрузитьНачальныеПараметрыToolStripMenuItem1.Name = "загрузитьНачальныеПараметрыToolStripMenuItem1";
+            this.загрузитьНачальныеПараметрыToolStripMenuItem1.Size = new System.Drawing.Size(262, 22);
+            this.загрузитьНачальныеПараметрыToolStripMenuItem1.Text = "Загрузить начальные параметры";
             // 
             // Optimisation
             // 
@@ -856,5 +892,9 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
+        private ToolStripMenuItem сохранитьНачальныеПараметрыToolStripMenuItem;
+        private ToolStripMenuItem загрузитьНачальныеПараметрыToolStripMenuItem;
+        private ToolStripMenuItem сохранитьНачальныеПараметрыToolStripMenuItem1;
+        private ToolStripMenuItem загрузитьНачальныеПараметрыToolStripMenuItem1;
     }
 }
