@@ -1,0 +1,662 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata>
+	<group name = "helicopter">
+      <description>Параметры вертолета</description>
+      <structure name="record" />
+		<var name = "name">
+			<description>Наименование вертолета</description>
+			<structure name = "scalar">
+				<datatype>string</datatype>
+				<unit></unit>
+				<data> Ми-8 </data>
+			</structure>
+		</var>
+		<var name = "m">
+			<description>Масса вертолета</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг</unit>
+				<data> 11100 </data>
+			</structure>
+		</var>
+		<var name = "Rnv">
+			<description>Диаметр_винта</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м </unit>
+				<data> 21,288 </data>
+			</structure>
+		</var>
+		<var name = "w_nv">
+			<description>Скорость_вращения</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> об/мин </unit>
+				<data> 192,0 </data>
+			</structure>
+		</var>
+		<var name = "Bnv">
+			<description>Коэффицент_потерь_винта</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> 1 </unit>
+				<data> 0,96 </data>
+			</structure>
+		</var>
+        <var name = "da_nv">
+			<description>Угол_наклона_оси_винта</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> град </unit>
+				<data> -4,5 </data>
+			</structure>
+		</var>
+        <var name = "X">
+			<description>Координата центра винта X</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м </unit>
+				<data> 0,0</data>
+			</structure>
+		</var>
+        <var name = "Y">
+			<description>Координата центра винта Y</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м </unit>
+				<data> 300,0</data>
+			</structure>
+		</var>
+        <var name = "Z">
+			<description>Координата центра винта Z</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м </unit>
+				<data> 0,0</data>
+			</structure>
+		</var>
+        <var name = "adir_grad">
+			<description>Дирекционный_угол</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> град </unit>
+				<data> 30,0 </data>
+			</structure>
+		</var>
+        <var name = "Vx">
+			<description>Продольная_скорость</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м/с </unit>
+				<data> 27,78</data>
+			</structure>
+		</var>
+        <var name = "Vy">
+			<description>Вертикальная_скорость</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м/c </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "Vz">
+			<description>Боковая_скорость</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> м/c </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "ax_grad">
+			<description>Угол крена</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> град </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "ay_grad">
+			<description>Угол рыскания</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> град </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "az_grad">
+			<description>Угол тангажа</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> град </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "wx">
+			<description>Угловая скорость wx</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> рад/с </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "wy">
+			<description>Угловая скорость wy</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> рад/с </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+        <var name = "wz">
+			<description>Угловая скорость wz</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit> рад/с </unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "r_op">
+		<description>Координаты орудия</description>
+		<structure name = "vector">
+			<datatype>point3D</datatype>
+			<unit>м</unit>
+			<data>1,5</data>	<data>-3,5</data>	<data>2,85</data>
+		</structure>
+		</var>
+		<var name = "a1_op">
+		<description>горизонт.угол установки орудия</description>
+		<structure name = "vector">
+			<datatype>double</datatype>
+			<unit>град</unit>
+			<data>0,0</data>
+		</structure>
+		</var>
+		<var name = "a2_op">
+		<description>вертикал.угол установки орудия</description>
+		<structure name = "vector">
+			<datatype>double</datatype>
+			<unit>град</unit>
+			<data>1,0</data>
+		</structure>
+		</var>
+		<group name = "AeroKoef">
+		<description>Аэродинамические_коэффициенты_фюзеляжа</description>
+		<structure name = "record">
+		<var name = "cxa">
+			<description>Аэродинамические_коэффициенты_Cx</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>__</unit>
+				<data> 0,0056 </data> <data> 0,0 </data> <data> 0,039 </data>
+			</structure>
+		</var>
+		<var name = "cya">
+			<description>Аэродинамические_коэффициенты_Cy</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>__</unit>
+				<data> 0,0 </data> <data> 0,040 </data> <data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "cza">
+			<description>Аэродинамические_коэффициенты_Cz</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>__</unit>
+				<data> 0,0 </data> <data> 0,055 </data> <data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "cyya">
+			<description>Аэродинамические_коэффициенты_Cyy</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>__</unit>
+				<data>0,062</data>	<data>0,0</data>	<data>0,0</data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+		<var name = "cm">
+			<description>Центр масс</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>м</unit>
+				<data> -0,35 </data> <data> -2,4 </data> <data> 0,0 </data>
+			</structure>
+		</var>
+		<group name = "MomentyCharact">
+		<description>Моменты инерции</description>
+		<structure name = "record">
+		<var name = "Jx">
+			<description>Момент инерции Jx</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> 32527,7 </data>
+			</structure>
+		</var>
+		<var name = "Jy">
+			<description>Момент инерции Jy</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> 76449,6 </data>
+			</structure>
+		</var>
+		<var name = "Jz">
+			<description>Момент инерции Jz</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> 72237,4 </data>
+			</structure>
+		</var>
+		<var name = "Dx">
+			<description>Момент инерции Dx</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> 18,8 </data>
+			</structure>
+		</var>
+		<var name = "Dy">
+			<description>Момент инерции Dy</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> -7,0 </data>
+			</structure>
+		</var>
+		<var name = "Dz">
+			<description>Момент инерции Dz</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг_м2</unit>
+				<data> -1021,4 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+		<group name = "ParametersVinty">
+		<description>Винты</description>
+		<structure name = "record">
+		<var name = "Nvint">
+		<description>Количество винтов</description>
+		<structure name = "scalar">
+			<datatype>integer</datatype>
+			<unit>шт.</unit>
+			<data> 3 </data>
+		</structure>
+		</var>
+		<var name = "rovint">
+			<description>Положение винтов</description>		
+			<structure name = "Vector">
+				<datatype>point3D</datatype>
+				<unit>м</unit>
+				<data>0</data> <data>0</data> <data>0</data>
+				<data>0</data> <data>-1</data> <data>0</data>
+				<data>-11</data> <data>0</data> <data>0</data>			
+			</structure>
+		</var>
+		<var name = "mvint">
+			<description>Масса винтов</description>		
+			<structure name = "Vector">
+				<datatype>double</datatype>
+				<unit>кг</unit>
+				<data>300</data> <data>100</data> <data>100</data>
+			</structure>
+		</var>
+		<var name = "Omvint">
+			<description>Угловая скорость винтов</description>		
+			<structure name = "Vector">
+				<datatype>double</datatype>
+				<unit>рад/с</unit>
+				<data>3,2</data> <data>300</data> <data>18,6</data>
+			</structure>
+		</var>
+		<var name = "Amvint">
+			<description>Амплитуда вибраций винтов</description>		
+			<structure name = "Vector">
+				<datatype>double</datatype>
+				<unit>м/с2</unit>
+				<data>4</data> <data>1</data> <data>20</data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+		</group>
+	<group name = "helicopter_weapon">
+      <description>Параметры вооружения вертолета</description>
+      <structure name="record" />
+ 		<var name = "TPcoord">
+			<description>Координаты точек подвеса вооружения (x y z)</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>м</unit>
+				<data n = "1"> 0,20 </data> <data> -3,27 </data> <data> -3,45 </data>
+                <data n = "2"> 0,20 </data> <data> -3,27 </data> <data> -2,85 </data>
+                <data n = "3"> 0,20 </data> <data> -3,27 </data> <data> -2,21 </data>
+                <data n = "4"> 0,20 </data> <data> -3,27 </data> <data> 2,21 </data>
+                <data n = "5"> 0,20 </data> <data> -3,27 </data> <data> 2,85 </data>
+                <data n = "6"> 0,20 </data> <data> -3,27 </data> <data> 3,45 </data>
+			</structure>
+		</var>    
+        <var name = "B8coord">
+			<description>Координаты ракет в пусковом блоке Б8 (y z)</description>
+			<structure name = "vector">
+				<datatype>point2D</datatype>
+				<unit>мм</unit>
+				<data n = "1"> 180,2 </data> <data> 86,8 </data> 
+                <data n = "2"> 124,7 </data> <data> 156,4 </data>
+                <data n = "3"> 44,5 </data> <data> 195,0 </data>
+                <data n = "4"> -44,5 </data> <data> 195,0 </data>
+                <data n = "5"> -124,7 </data> <data> 156,4 </data>
+                <data n = "6"> -180,2 </data> <data> 86,8 </data>
+                <data n = "7"> -200,0 </data> <data> 0,0 </data>
+                <data n = "8"> -180,2 </data> <data> -86,8 </data>
+                <data n = "9"> -124,7 </data> <data> -156,4 </data>
+                <data n = "10"> -44,5 </data> <data> -195,0 </data>
+                <data n = "11"> 44,5 </data> <data> -195,0 </data>
+                <data n = "12"> 124,7 </data> <data> -156,4 </data>
+                <data n = "13"> 180,2 </data> <data> -86,8 </data>
+                <data n = "14"> 90,1 </data> <data> 43,4 </data>
+                <data n = "15"> 22,3 </data> <data> 97,5 </data>
+                <data n = "16"> -62,3 </data> <data> 78,2 </data>
+                <data n = "17"> -100,0 </data> <data> 0,0 </data>
+                <data n = "18"> -62,4 </data> <data> -78,2 </data>
+                <data n = "19"> 22,2 </data> <data> -97,5 </data>
+                <data n = "20"> 90,1 </data> <data> -43,4 </data>
+			</structure>
+		</var>
+        <var name = "B8unload">
+			<description>Схема разгрузки пускового блока Б8</description>
+			<structure name = "vector">
+				<datatype>integer</datatype>
+				<unit>номер</unit>
+				<data> 14 </data>
+                <data> 7 </data>
+                <data> 20 </data>
+                <data> 6 </data>
+                <data> 19 </data>
+                <data> 5 </data>
+                <data> 9 </data>
+                <data> 15 </data>
+                <data> 10 </data>
+                <data> 2 </data>
+                <data> 8 </data>
+                <data> 13 </data>
+                <data> 17 </data>
+                <data> 1 </data>
+                <data> 18 </data>
+                <data> 3 </data>
+                <data> 12 </data>
+                <data> 16 </data>
+                <data> 11 </data>
+                <data> 4 </data>
+			</structure>
+		</var>
+		<group name = "B8">
+		<description>Размеры пускового блока Б8(l,w,h)</description>
+		<structure name = "record">
+		<var name = "B8_l">
+			<description>размеры Б8_l длина</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 1,7 </data>
+			</structure>
+		</var>
+		<var name = "B8_w">
+			<description>размеры Б8_w ширина</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 0,52 </data>
+			</structure>
+		</var>
+		<var name = "B8_h">
+			<description>размеры Б8_h высота</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 0,52 </data>
+			</structure>
+		</var>
+		<var name = "B8_a1">
+			<description>угол установки горизонт.</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "B8_a2">
+			<description>угол установки вертикал.</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> 1,0 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+        <group name = "GS">
+		<description>Размеры пушки ГШ23(l,w,h)</description>
+		<structure name = "record">
+		<var name = "GS_l">
+			<description>размеры ГШ23_l длина</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 1,5 </data>
+			</structure>
+		</var>
+		<var name = "GS_w">
+			<description>размеры ГШ23_w ширина</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 0,3 </data>
+			</structure>
+		</var>
+		<var name = "GS_h">
+			<description>размеры ГШ23_h высота</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м</unit>
+				<data> 0,3 </data>
+			</structure>
+		</var>
+		<var name = "GS_a1">
+			<description>угол установки горизонт.</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "GS_a2">
+			<description>угол установки вертикал.</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+        <var name = "TPweap">
+		<description>Вариант подвеса вооружения ТП1-6 (0-нет,1-УПК,2-Б8)</description>
+		<structure name = "vector">
+			<datatype>string</datatype>
+			<unit>__</unit>
+			<data>0</data>
+            <data>2</data>
+            <data>1</data>
+            <data>1</data>
+            <data>2</data>
+            <data>0</data>
+		</structure>
+		</var>
+        <group name = "GSt">
+		<description>Режим стрельбы ГШ</description>
+		<structure name = "record">
+		<var name = "GS_t0">
+			<description>начало</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> 0,1 </data>
+			</structure>
+		</var>
+        <var name = "GS_dt">
+			<description>интервал</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> 0,02 </data>
+			</structure>
+		</var>
+        <var name = "GS_nn">
+			<description>количество выстрелов</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit>шт.</unit>
+				<data> 20 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+        <group name = "B8t">
+		<description>Режим стрельбы Б8</description>
+		<structure name = "record">
+		<var name = "B8_t0">
+			<description>начало</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> 0,5 </data>
+			</structure>
+		</var>
+        <var name = "B8_dt">
+			<description>интервал</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> 0,025 </data>
+			</structure>
+		</var>
+        <var name = "B8_nn">
+			<description>количество выстрелов</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit>шт.</unit>
+				<data> 10 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+        <group name = "ParametrySnaryad">
+		<description>Параметры снаряда</description>
+		<structure name = "record">
+        <var name = "msn">
+			<description>Масса снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг</unit>
+				<data> 0,183 </data>
+			</structure>
+		</var>
+		<var name = "Vsn0">
+			<description>Скорость снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м/с</unit>
+				<data> 740 </data>
+			</structure>
+		</var>
+		<var name = "asn">
+			<description>Коэф. a снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>__</unit>
+				<data> 3000 </data>
+			</structure>
+		</var>
+		<var name = "bsn">
+			<description>Коэф. b снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>__</unit>
+				<data> 0,85 </data>
+			</structure>
+		</var>
+		<var name = "csn">
+			<description>Коэф. c снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>__</unit>
+				<data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "tausn">
+			<description>Коэф. tau снаряда</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>__</unit>
+				<data> 0,00325 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+		<group name = "ParametryRocket">
+		<description>Параметры ракеты</description>
+		<structure name = "record">
+        <var name = "mroc">
+			<description>Масса ракеты</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг</unit>
+				<data> 16,3 </data>
+			</structure>
+		</var>
+		<var name = "Improc">
+			<description>Удельный импульс тяги</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м/с</unit>
+				<data> 2342 </data>
+			</structure>
+		</var>
+		<var name = "Groc">
+			<description>Расход продуктов сгорания</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>кг/с</unit>
+				<data> 3,0 </data>
+			</structure>
+		</var>
+		<var name = "tauroc">
+			<description>Время схода ракет</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> 0,087 </data>
+			</structure>
+		</var>
+		<var name = "Krotroc">
+			<description>Коэффициент зацепления</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>__</unit>
+				<data> 0,5 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>
+		</group>
+	</initialdata>
+</program>

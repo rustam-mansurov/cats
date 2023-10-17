@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<program name="VneshBallistic">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+  <initialdata>
+    <description>Исходные данные</description>
+    <group name="Snaryad">
+      <description>Параметры снаряда</description>
+      <structure name="record" />
+      <var name="name">
+        <description>Наименование снаряда</description>
+        <structure name="scalar">
+          <datatype>string</datatype>
+          <unit></unit>
+          <data> С80 </data>
+        </structure>
+      </var>
+      <var name="D">
+        <description>Калибр</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>80</data>
+        </structure>
+      </var>
+      <var name="m">
+        <description>Масса</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг</unit>
+          <data>16,5</data>
+        </structure>
+      </var>
+      <var name="l">
+        <description>Длина</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>1570</data>
+        </structure>
+      </var>
+      <var name="l_cm">
+        <description>Центр_масс_от_носа</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>570</data>
+        </structure>
+      </var>
+      <var name="l_gol">
+        <description>Головная_часть</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>200</data>
+        </structure>
+      </var>
+      <var name="Vs0">
+        <description>Начальная_скорость</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м/с</unit>
+          <data>42</data>
+        </structure>
+      </var>
+      <var name="wxs0">
+        <description>Начальная_угловая_скорость</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>рад/с</unit>
+          <data>73</data>
+        </structure>
+      </var>
+      <var name="tet0">
+        <description>Начальный_угол</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="I_x">
+        <description>Момент_инерции_Ix</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг*м2</unit>
+          <data>0,014</data>
+        </structure>
+      </var>
+      <var name="I_z">
+        <description>Момент_инерции_Iz</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг*м2</unit>
+          <data>1,442</data>
+        </structure>
+      </var>
+      <var name="narez">
+        <description>Длина_хода_нарезов(калибров)</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="cx_law">
+        <description>Закон сопротивления(1-1943г.,2-1958г.)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>2</data>
+        </structure>
+      </var>
+      <var name="ix">
+        <description>Коэффициент формы ix</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>1,71</data>
+        </structure>
+      </var>
+      <var name="iz">
+        <description>Коэффициент бок. отклонения</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="Ma">
+        <description>Диапазон чисел Maха</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>5</count>
+          <unit></unit>
+          <data>0</data>
+          <data>0,8</data>
+          <data>1</data>
+          <data>1,2</data>
+          <data>5</data>
+        </structure>
+      </var>
+      <var name="Cxa">
+        <description>Зависимость Cxa(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>20</count>
+          <unit></unit>
+          <data>0,6183</data>
+          <data>-0,3924</data>
+          <data>0,3623</data>
+          <data>0</data>
+          <data>11,445</data>
+          <data>2,0768</data>
+          <data>-2,9255</data>
+          <data>0</data>
+          <data>1,5061</data>
+          <data>12,201</data>
+          <data>-1,1575</data>
+          <data>0</data>
+          <data>4,5321</data>
+          <data>-2,7303</data>
+          <data>12,542</data>
+          <data>0,7251</data>
+          <data>0</data>
+          <data>-0,0958</data>
+          <data>0,0249</data>
+          <data>13,077</data>
+        </structure>
+      </var>
+      <var name="Cya">
+        <description>Зависимость Cya(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>20</count>
+          <unit></unit>
+          <data>0</data>
+          <data>10,422</data>
+          <data>12,69</data>
+          <data>-10,365</data>
+          <data>10,323</data>
+          <data>0</data>
+          <data>17,617</data>
+          <data>13,003</data>
+          <data>-24,298</data>
+          <data>16,454</data>
+          <data>0</data>
+          <data>13,628</data>
+          <data>19,267</data>
+          <data>-4,8211</data>
+          <data>0,4069</data>
+          <data>0</data>
+          <data>14,49</data>
+          <data>37,912</data>
+          <data>-10,843</data>
+          <data>3,6686</data>
+        </structure>
+      </var>
+      <var name="Cza">
+        <description>Зависимость Cza(M,w,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>5</count>
+          <unit></unit>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mza">
+        <description>Зависимость Mza(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>-1,5936</data>
+          <data>-2,1044</data>
+          <data>1,2888</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mya">
+        <description>Зависимость Mya(M,w,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mxa">
+        <description>Зависимость Mxa(M,w)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>0,015</data>
+          <data>0</data>
+          <data>0</data>
+          <data>0,004</data>
+        </structure>
+      </var>
+      <var name="Mwa">
+        <description>Зависимость Mwa(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>3</count>
+          <unit></unit>
+          <data>0,006</data>
+          <data>0</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="RD">
+        <description>РД</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <group name="RDparam">
+        <description>Параметры РД</description>
+        <structure name="record" />
+        <var name="motd">
+          <description>масса_отдел_частей</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>кг</unit>
+            <data>0,45</data>
+          </structure>
+        </var>
+        <var name="me">
+          <description>масса_заряда</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>кг</unit>
+            <data>3,4</data>
+          </structure>
+        </var>
+        <var name="trd0">
+          <description>время_старта</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>с</unit>
+            <data>0</data>
+          </structure>
+        </var>
+        <var name="tdul">
+          <description>дульное время</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>с</unit>
+            <data>0,093</data>
+          </structure>
+        </var>
+        <var name="Tz">
+          <description>темпетура топливного заряда</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>град.С</unit>
+            <data>20</data>
+          </structure>
+        </var>
+        <var name="temp">
+          <description>Диапазон изменения температур</description>
+          <structure name="vector">
+            <datatype>double</datatype>
+            <count>3</count>
+            <unit>град.С</unit>
+            <data>-54</data>
+            <data>20</data>
+            <data>60</data>
+          </structure>
+        </var>
+        <var name="trd">
+          <description>время_работы</description>
+          <structure name="vector">
+            <datatype>double</datatype>
+            <count>3</count>
+            <unit>с</unit>
+            <data>1,49</data>
+            <data>1,32</data>
+            <data>1,19</data>
+          </structure>
+        </var>
+        <var name="Isum">
+          <description>суммарный_импульс_тяги</description>
+          <structure name="vector">
+            <datatype>double</datatype>
+            <count>3</count>
+            <unit>Н*с</unit>
+            <data>7844,3</data>
+            <data>7934,1</data>
+            <data>8018,9</data>
+          </structure>
+        </var>
+        <var name="Se">
+          <description>площадь_сопел</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>м2</unit>
+            <data>0,016</data>
+          </structure>
+        </var>
+        <var name="kcx">
+          <description>относит_уменьшение_Сх</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit></unit>
+            <data>0,12</data>
+          </structure>
+        </var>
+        <var name="mpx">
+          <description>коэф_вращат_момента</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit></unit>
+            <data>0,04</data>
+          </structure>
+        </var>
+        <var name="ip">
+          <description>коэф_корректировки_тяги</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit></unit>
+            <data>1</data>
+          </structure>
+        </var>
+        <var name="trd_ar">
+          <description>Диаграмма_секундного_расхода_tp</description>
+          <structure name="vector">
+            <datatype>double</datatype>
+            <count>16</count>
+            <unit></unit>
+            <data>0</data>
+            <data>0,015</data>
+            <data>0,03</data>
+            <data>0,045</data>
+            <data>0,06</data>
+            <data>0,1</data>
+            <data>0,2</data>
+            <data>0,36</data>
+            <data>0,52</data>
+            <data>0,68</data>
+            <data>0,82</data>
+            <data>0,88</data>
+            <data>0,91</data>
+            <data>0,94</data>
+            <data>0,97</data>
+            <data>1</data>
+          </structure>
+        </var>
+        <var name="mur_ar">
+          <description>Диаграмма_секундного_расхода_mp</description>
+          <structure name="vector">
+            <datatype>double</datatype>
+            <count>16</count>
+            <unit></unit>
+            <data>0</data>
+            <data>0,816</data>
+            <data>0,96</data>
+            <data>1</data>
+            <data>0,93</data>
+            <data>0,86</data>
+            <data>0,62</data>
+            <data>0,63</data>
+            <data>0,72</data>
+            <data>0,81</data>
+            <data>0,96</data>
+            <data>0,82</data>
+            <data>0,47</data>
+            <data>0,2</data>
+            <data>0,08</data>
+            <data>0</data>
+          </structure>
+        </var>
+      </group>
+    </group>
+    <group name="ball_ucl">
+      <description>Баллистические условия</description>
+      <structure name="record" />
+      <var name="t0">
+        <description>Начальное время</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>с</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="x0">
+        <description>Начальная дальность</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="y0">
+        <description>Начальная высота</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>300</data>
+        </structure>
+      </var>
+      <var name="z0">
+        <description>Начальное боковое отклонение</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="tk">
+        <description>Конечное время</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>с</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="xk">
+        <description>Конечная дальность</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="yk">
+        <description>Конечная высота</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Vkk">
+        <description>Конечная скорость</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="V0">
+        <description>Начальная скорость</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м/с</unit>
+          <data>42</data>
+        </structure>
+      </var>
+      <var name="wx0">
+        <description>Начальная аксиальная скорость вращения</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>рад/с</unit>
+          <data>73</data>
+        </structure>
+      </var>
+      <var name="teta0">
+        <description>Начальный угол наклона траектории</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="psy0">
+        <description>Начальный угол пути</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="a_dir">
+        <description>Дирекционный угол</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>30</data>
+        </structure>
+      </var>
+      <var name="y0abs">
+        <description>Абсолютная высота в точке старта</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>220</data>
+        </structure>
+      </var>
+      <var name="m0">
+        <description>Начальная масса</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг</unit>
+          <data>16,5</data>
+        </structure>
+      </var>
+      <group name="blok_5">
+        <description>Параметры блока 5</description>
+        <structure name="record" />
+        <var name="w10">
+          <description>Начальная эваториальная горизонтальная скорость</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>рад/с</unit>
+            <data>0</data>
+          </structure>
+        </var>
+        <var name="w20">
+          <description>Начальная эваториальная вертикальная скорость</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>рад/с</unit>
+            <data>0</data>
+          </structure>
+        </var>
+        <var name="delta10">
+          <description>Начальный горизонтальный угол нутации</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>град</unit>
+            <data>0</data>
+          </structure>
+        </var>
+        <var name="delta20">
+          <description>Начальный вертикальный угол нутации</description>
+          <structure name="scalar">
+            <datatype>double</datatype>
+            <unit>град</unit>
+            <data>0</data>
+          </structure>
+        </var>
+      </group>
+    </group>
+    <group name="geo_ucl">
+      <description>Гео условия</description>
+      <structure name="record" />
+      <var name="B_shirota">
+        <description>Географическая широта</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>57</data>
+        </structure>
+      </var>
+      <var name="U1_FormaZemli">
+        <description>Форма земли(0-плоскость,1-шар)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+    </group>
+    <group name="meteo_ucl">
+      <description>Метео условия</description>
+      <structure name="record" />
+      <var name="meteo_type">
+        <description>Тип_задания_метеоусловий(0-номинал,1-реал)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="T0">
+        <description>T0</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>oC</unit>
+          <data>15,75</data>
+        </structure>
+      </var>
+      <var name="P0">
+        <description>P0</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм рт.ст.</unit>
+          <data>750</data>
+        </structure>
+      </var>
+      <var name="wind_type">
+        <description>Тип_задания_ветра(1-пост,2-степ,3-реал)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>2</data>
+        </structure>
+      </var>
+      <var name="w_veter10">
+        <description>Скорость_ветра_Н=10м</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м/c</unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="a_weter">
+        <description>Направление_ветра</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>250</data>
+        </structure>
+      </var>
+      <var name="w_p">
+        <description>Показатель_степ_закона</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м</unit>
+          <data>0,33</data>
+        </structure>
+      </var>
+    </group>
+    <group name="Param">
+      <description>Параметры расчета</description>
+      <structure name="record" />
+      <var name="U_blok1">
+        <description>Учет_вращения_Земли(блок_1)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="U_blok2">
+        <description>Учет_метеоусловий(блок_2)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="Cx_law">
+        <description>Закон_сопротивления(1-1943г,2-1958г,3-расч)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>3</data>
+        </structure>
+      </var>
+      <var name="U_blok5">
+        <description>Учет_колебаний_снаряда(блок_5)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="hc_bool">
+        <description>Учет_движения_ПН</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="dt">
+        <description>Временной_шаг_dt</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>0,0005</data>
+        </structure>
+      </var>
+      <var name="iter">
+        <description>Количество_итераций(0-расчет_до_конеч_точки)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="diter">
+        <description>Шаг вывода результатов(итераций)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>100</data>
+        </structure>
+      </var>
+    </group>
+  </initialdata>
+</program>

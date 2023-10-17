@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata name = "Cx_otM_ET_1943">
+		<description>Cx_otM_ET_1943</description>
+		<structure name = "record">
+		<var name = "M1_43">
+			<description>М1</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,000000 </data>
+                <data> 0,733570 </data>
+                <data> 0,909620 </data>
+                <data> 0,997650 </data>
+                <data> 1,173710 </data>
+                <data> 1,584510 </data>
+                <data> 2,640840 </data>
+                <data> 3,726652 </data>
+			</structure>
+		</var>
+		<var name = "M2_43">
+			<description>М2</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,733570 </data>
+                <data> 0,909620 </data>
+                <data> 0,997650 </data>
+                <data> 1,173710 </data>
+                <data> 1,584510 </data>
+                <data> 2,640840 </data>
+                <data> 3,726652 </data>
+                <data> 10000,000000 </data>
+			</structure>
+		</var>
+        <var name = "a0_43">
+			<description>alpha0</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,157000 </data>
+                <data> -3,871879 </data>
+                <data> 122,720358 </data>
+                <data> -19,848947 </data>
+                <data> -0,639686 </data>
+                <data> 0,643812 </data>
+                <data> 0,621061 </data>
+                <data> 0,260000 </data>
+			</structure>
+		</var>
+        <var name = "a1_43">
+			<description>alpha1</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,000000 </data>
+                <data> 15,734575 </data>
+                <data> -390,742644 </data>
+                <data> 52,409513 </data>
+                <data> 2,250136 </data>
+                <data> -0,278701 </data>
+                <data> -0,242875 </data>
+                <data> 0,000000 </data>
+			</structure>
+		</var>
+        <var name = "a2_43">
+			<description>alpha2</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,000000 </data>
+                <data> -20,511918 </data>
+                <data> 413,613130 </data>
+                <data> -45,299813 </data>
+                <data> -1,600055 </data>
+                <data> 0,069619 </data>
+                <data> 0,053243 </data>
+                <data> 0,000000 </data>
+			</structure>
+		</var> 
+        <var name = "a3_43">
+			<description>alpha3</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>8</count>
+				<unit>__</unit>
+				<data> 0,000000 </data>
+                <data> 8,928144 </data>
+                <data> -145,266282 </data>
+                <data> 13,064840 </data>
+                <data> 0,363206 </data>
+                <data> -0,006031 </data>
+                <data> -0,003765 </data>
+                <data> 0,000000 </data>
+			</structure>
+		</var>        
+		</structure>
+	</initialdata>
+</program>

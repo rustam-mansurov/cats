@@ -1,0 +1,5 @@
+url: http://api.model.fgrep.ru/
+user: vsufiy
+pass: khDy3wPEPRd4rq
+login: izhgtu_outside_ballistics
+key: ZgDSz4JLfdOx_pGQ66P-eTdyrcmfbqQq

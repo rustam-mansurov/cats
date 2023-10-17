@@ -1,0 +1,11 @@
+3нт26
+Xmax 12095
+dx1 3010
+dx2 255
+Xizlet 10000
+ros 600
+rubez 0
+dz1 2663
+dz2 = 36
+Xsz = 25960
+Zsz 3299

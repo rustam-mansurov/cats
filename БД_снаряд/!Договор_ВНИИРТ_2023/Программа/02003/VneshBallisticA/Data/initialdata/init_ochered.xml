@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata>
+      <group name="Ochered">
+        <description>Параметры очереди</description>
+        <structure name="record" />
+        <group name="Ochered-1">
+          <description>Параметры очереди №1</description>
+          <structure name="record" />
+          <var name="weap">
+            <description>Тип вооружения (1 - снаряды, 2 - ракеты)</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>1</data>
+            </structure>
+          </var>
+          <var name="sn_name">
+            <description>Название снаряда</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>ОФ3-23</data>
+            </structure>
+          </var>
+          <var name="sn_file">
+            <description>Файл данных снаряда (/snaryad)</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>OF3-23.xml</data>
+            </structure>
+          </var>
+          <var name="t0">
+            <description>Начало очереди</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>с</unit>
+              <data>0,1</data>
+            </structure>
+          </var>
+          <var name="dt">
+            <description>Интервал</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>с</unit>
+              <data>0,02</data>
+            </structure>
+          </var>
+          <var name="nn">
+            <description>Количество выстрелов</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>20</data>
+            </structure>
+          </var>
+          <var name="disp_file">
+            <description>Файл парамеров разброса (/initialdata)</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>init_dispOF3-23.xml</data>
+            </structure>
+          </var>
+        </group>
+        <group name="Ochered-2">
+          <description>Параметры очереди №2</description>
+          <structure name="record" />
+          <var name="weap">
+            <description>Тип вооружения (1 - снаряды, 2 - ракеты)</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>2</data>
+            </structure>
+          </var>
+          <var name="sn_name">
+            <description>Название снаряда</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>C80</data>
+            </structure>
+          </var>
+          <var name="sn_file">
+            <description>Файл данных снаряда (/snaryad)</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>C80.xml</data>
+            </structure>
+          </var>
+          <var name="t0">
+            <description>Начало очереди</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>с</unit>
+              <data>0,5</data>
+            </structure>
+          </var>
+          <var name="dt">
+            <description>Интервал</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>с</unit>
+              <data>0,025</data>
+            </structure>
+          </var>
+          <var name="nn">
+            <description>Количество выстрелов</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>10</data>
+            </structure>
+          </var>
+          <var name="disp_file">
+            <description>Файл парамеров разброса (/initialdata)</description>
+            <structure name="scalar">
+              <datatype>string</datatype>
+              <unit></unit>
+              <data>init_dispC80.xml</data>
+            </structure>
+          </var>
+        </group>
+        <group name="VibrParam">
+          <description>Параметры расчета вибраций</description>
+          <structure name="record" />
+          <var name="t0">
+            <description>Начальное время расчета вибраций</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>c</unit>
+              <data>0,0</data>
+            </structure>
+          </var>
+          <var name="tk">
+            <description>Конечное время расчета вибраций</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>c</unit>
+              <data>1,0</data>
+            </structure>
+          </var>
+          <var name="dt">
+            <description>Временной шаг расчета вибраций</description>
+            <structure name="scalar">
+              <datatype>double</datatype>
+              <unit>c</unit>
+              <data>0,001</data>
+            </structure>
+          </var>
+          <var name="dit">
+            <description>Шаг вывода результатов расчета в файл</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit>c</unit>
+              <data>5</data>
+            </structure>
+          </var>		  		
+          <var name="U_ochdisp">
+            <description>Учет разброса параметров очереди (0 - нет, 1 - да)</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>0</data>
+            </structure>
+          </var>
+          <var name="U_injet">
+            <description>Учет влияния струи (0 - нет, 1 - да)</description>
+            <structure name="scalar">
+              <datatype>integer</datatype>
+              <unit></unit>
+              <data>0</data>
+            </structure>
+          </var>
+      </group>
+      </group>
+	</initialdata>
+</program>

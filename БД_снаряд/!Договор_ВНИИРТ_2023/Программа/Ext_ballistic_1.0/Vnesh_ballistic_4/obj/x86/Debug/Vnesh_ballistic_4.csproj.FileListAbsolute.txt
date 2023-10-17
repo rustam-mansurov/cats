@@ -1,0 +1,7 @@
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\ResolveAssemblyReference.cache
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\Vnesh_ballistic_4.Properties.Resources.resources
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\GenerateResource.read.1.tlog
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\GenerateResource.write.1.tlog
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\WindowsFormsApplication1.TrajectoryMainForm.resources
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\Vnesh_ballistic.TrajectoryGraphicsForm.resources
+D:\Ballistic\Vnesh_ballistic_4\Vnesh_ballistic_4\obj\x86\Debug\Vnesh_ballistic.TrajectoryMainForm.resources

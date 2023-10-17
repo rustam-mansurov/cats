@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<program name="VneshBallistic">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+  <initialdata>
+    <description>Исходные данные</description>
+    <group name="Snaryad">
+      <description>Параметры снаряда</description>
+      <structure name="record" />
+      <var name="name">
+        <description>Наименование снаряда</description>
+        <structure name="scalar">
+          <datatype>string</datatype>
+          <unit></unit>
+          <data>ОФ3-23</data>
+        </structure>
+      </var>
+      <var name="D">
+        <description>Калибр</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>23</data>
+        </structure>
+      </var>
+      <var name="m">
+        <description>Масса</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг</unit>
+          <data>0,183</data>
+        </structure>
+      </var>
+      <var name="l">
+        <description>Длина</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>108</data>
+        </structure>
+      </var>
+      <var name="l_cm">
+        <description>Центр_масс_от_носа</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>66</data>
+        </structure>
+      </var>
+      <var name="l_gol">
+        <description>Головная_часть</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>мм</unit>
+          <data>46</data>
+        </structure>
+      </var>
+      <var name="Vs0">
+        <description>Начальная_скорость</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>м/с</unit>
+          <data>740</data>
+        </structure>
+      </var>
+		<var name = "wxs0">
+			<description>Начальная_угловая_скорость</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>рад/с</unit>
+				<data> 8000,0 </data>
+			</structure>
+		</var>	
+      <var name="tet0">
+        <description>Начальный_угол</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>град</unit>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="I_x">
+        <description>Момент_инерции_Ix</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг*м2</unit>
+          <data>1,3E-05</data>
+        </structure>
+      </var>
+      <var name="I_z">
+        <description>Момент_инерции_Iz</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit>кг*м2</unit>
+          <data>0,000146</data>
+        </structure>
+      </var>
+      <var name="narez">
+        <description>Длина_хода_нарезов(калибров)</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>25</data>
+        </structure>
+      </var>
+      <var name="cx_law">
+        <description>Закон сопротивления(1-1943г.,2-1958г.)</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="ix">
+        <description>Коэффициент формы ix</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>1,25</data>
+        </structure>
+      </var>
+      <var name="iz">
+        <description>Коэффициент бок. отклонения</description>
+        <structure name="scalar">
+          <datatype>double</datatype>
+          <unit></unit>
+          <data>1</data>
+        </structure>
+      </var>
+      <var name="Ma">
+        <description>Диапазон чисел Maха</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>5</count>
+          <unit></unit>
+          <data>0</data>
+          <data>0,8</data>
+          <data>1</data>
+          <data>1,2</data>
+          <data>5</data>
+        </structure>
+      </var>
+      <var name="Cxa">
+        <description>Зависимость Cxa(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>20</count>
+          <unit></unit>
+          <data>0,203</data>
+          <data>0</data>
+          <data>0</data>
+          <data>0</data>
+          <data>2,87</data>
+          <data>-0,731</data>
+          <data>4,467</data>
+          <data>-7,014</data>
+          <data>3,618</data>
+          <data>3,423</data>
+          <data>-22,57</data>
+          <data>54,91</data>
+          <data>-43,33</data>
+          <data>11,34</data>
+          <data>4,365</data>
+          <data>0,625</data>
+          <data>-0,031</data>
+          <data>-0,061</data>
+          <data>0,012</data>
+          <data>4,999</data>
+        </structure>
+      </var>
+      <var name="Cya">
+        <description>Зависимость Cya(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>20</count>
+          <unit></unit>
+          <data>0</data>
+          <data>1,536</data>
+          <data>1,836</data>
+          <data>0</data>
+          <data>0,304</data>
+          <data>0</data>
+          <data>-2,565</data>
+          <data>4,853</data>
+          <data>7,368</data>
+          <data>-2,891</data>
+          <data>0</data>
+          <data>-5,232</data>
+          <data>6,372</data>
+          <data>12,217</data>
+          <data>-5,201</data>
+          <data>0</data>
+          <data>-0,408</data>
+          <data>8,519</data>
+          <data>2,379</data>
+          <data>-0,43</data>
+        </structure>
+      </var>
+      <var name="Cza">
+        <description>Зависимость Cza(M,w,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>5</count>
+          <unit></unit>
+          <data>0</data>
+          <data>0,117</data>
+          <data>0,311</data>
+          <data>0</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mza">
+        <description>Зависимость Mza(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>0,6964</data>
+          <data>0,1414</data>
+          <data>-0,0532</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mya">
+        <description>Зависимость Mya(M,w,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>0,009</data>
+          <data>-0,0032</data>
+          <data>0,0007</data>
+          <data>6,0042</data>
+        </structure>
+      </var>
+      <var name="Mxa">
+        <description>Зависимость Mxa(M,w)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>4</count>
+          <unit></unit>
+          <data>0,00081</data>
+          <data>-0,00033</data>
+          <data>5E-05</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="Mwa">
+        <description>Зависимость Mwa(M,a)</description>
+        <structure name="vector">
+          <datatype>double</datatype>
+          <count>3</count>
+          <unit></unit>
+          <data>0,006</data>
+          <data>0</data>
+          <data>0</data>
+        </structure>
+      </var>
+      <var name="RD">
+        <description>РД</description>
+        <structure name="scalar">
+          <datatype>integer</datatype>
+          <unit></unit>
+          <data>0</data>
+        </structure>
+      </var>
+    </group>
+  </initialdata>
+</program>

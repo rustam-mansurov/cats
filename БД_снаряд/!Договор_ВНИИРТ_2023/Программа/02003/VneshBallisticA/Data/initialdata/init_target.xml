@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata>
+    <group	name = "InverseProblem">
+		<description>Параметры решения обратной задачи</description>
+		<structure name = "record">
+		<var name = "PosA">
+			<description>Координаты точки старта (x - на север, y - на восток, z - по высоте)</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>м</unit>
+				<data> 0,0 </data> <data> 0,0 </data> <data> 300,0 </data>
+			</structure>
+		</var>
+		<var name = "PosB">
+			<description>Координаты точки цели (x - на север, y - на восток, z - по высоте)</description>
+			<structure name = "vector">
+				<datatype>point3D</datatype>
+				<unit>м</unit>
+				<data> 2260,0 </data> <data> 1350,0 </data> <data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "azimuthRange">
+			<description>Диапазон изменения азимута (Minimum, Maximum)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -180,0 </data> <data> 180,0 </data>
+			</structure>
+		</var>
+		<var name = "tetaRange">
+			<description>Диапазон изменения угла стрельбы (Minimum, Maximum)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -90,0 </data> <data> 90,0 </data>
+			</structure>
+		</var>
+		<var name = "moved_c">
+			<description>Движение цели (0 - неподвижная, 1 - подвижная)</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit> </unit>
+				<data> 0 </data>
+			</structure>
+		</var>
+		<var name = "alfa_m">
+			<description>Направление движения цели по азимуту</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> 30 </data>
+			</structure>
+		</var>
+		<var name = "V_m">
+			<description>Скорость движения цели</description>
+			<structure name = "scalar">
+				<datatype>double</datatype>
+				<unit>м/с</unit>
+				<data> 10 </data>
+			</structure>
+		</var>
+		</structure>
+		</group>		
+	</initialdata>
+</program>

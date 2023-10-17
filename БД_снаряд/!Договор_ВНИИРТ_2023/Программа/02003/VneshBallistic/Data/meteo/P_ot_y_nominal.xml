@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata name = "P_ot_y_nominal">
+		<description>P(y),давление_атмосферы_от_высоты,_Па</description>
+		<structure name = "record">
+		<var name = "y_pnorm_ar">
+			<description>y</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>65</count>
+				<unit>м</unit>
+				<data> 0 </data>
+				<data> 500 </data>
+				<data> 1000 </data>
+				<data> 1500 </data>
+				<data> 2000 </data>
+				<data> 2500 </data>
+				<data> 3000 </data>
+				<data> 3500 </data>
+				<data> 4000 </data>
+				<data> 4500 </data>
+				<data> 5000 </data>
+				<data> 5500 </data>
+				<data> 6000 </data>
+				<data> 6500 </data>
+				<data> 7000 </data>
+				<data> 7500 </data>
+				<data> 8000 </data>
+				<data> 8500 </data>
+				<data> 9000 </data>
+				<data> 9300 </data>
+				<data> 9500 </data>
+				<data> 10000 </data>
+				<data> 10500 </data>
+				<data> 11000 </data>
+				<data> 11500 </data>
+				<data> 12000 </data>
+				<data> 13000 </data>
+				<data> 14000 </data>
+				<data> 15000 </data>
+				<data> 16000 </data>
+				<data> 17000 </data>
+				<data> 18000 </data>
+				<data> 19000 </data>
+				<data> 20000 </data>
+				<data> 21000 </data>
+				<data> 22000 </data>
+				<data> 23000 </data>
+				<data> 24000 </data>
+				<data> 25000 </data>
+				<data> 26000 </data>
+				<data> 27000 </data>
+				<data> 28000 </data>
+				<data> 29000 </data>
+				<data> 30000 </data>
+				<data> 31000 </data>
+				<data> 32000 </data>
+				<data> 33000 </data>
+				<data> 34000 </data>
+				<data> 35000 </data>
+				<data> 36000 </data>
+				<data> 37000 </data>
+				<data> 38000 </data>
+				<data> 39000 </data>
+				<data> 40000 </data>
+				<data> 41000 </data>
+				<data> 42000 </data>
+				<data> 43000 </data>
+				<data> 44000 </data>
+				<data> 45000 </data>
+				<data> 46000 </data>
+				<data> 47000 </data>
+				<data> 47300 </data>
+				<data> 48000 </data>
+				<data> 49000 </data>
+				<data> 50000 </data>
+			</structure>
+		</var>
+		<var name = "p_norm_ar">
+			<description>P</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>65</count>
+				<unit>Па</unit>
+				<data> 100000 </data>
+				<data> 94220 </data>
+				<data> 88730 </data>
+				<data> 83500 </data>
+				<data> 78520 </data>
+				<data> 73790 </data>
+				<data> 69300 </data>
+				<data> 65030 </data>
+				<data> 60970 </data>
+				<data> 57130 </data>
+				<data> 53490 </data>
+				<data> 50040 </data>
+				<data> 46770 </data>
+				<data> 43680 </data>
+				<data> 40760 </data>
+				<data> 38000 </data>
+				<data> 35390 </data>
+				<data> 32930 </data>
+				<data> 30620 </data>
+				<data> 29290 </data>
+				<data> 28430 </data>
+				<data> 26380 </data>
+				<data> 24460 </data>
+				<data> 22670 </data>
+				<data> 21000 </data>
+				<data> 19450 </data>
+				<data> 16680 </data>
+				<data> 14300 </data>
+				<data> 12270 </data>
+				<data> 10520 </data>
+				<data> 9030 </data>
+				<data> 7740 </data>
+				<data> 6640 </data>
+				<data> 5700 </data>
+				<data> 4890 </data>
+				<data> 4190 </data>
+				<data> 3600 </data>
+				<data> 3090 </data>
+				<data> 2650 </data>
+				<data> 2270 </data>
+				<data> 1950 </data>
+				<data> 1670 </data>
+				<data> 1440 </data>
+				<data> 1240 </data>
+				<data> 1060 </data>
+				<data> 920 </data>
+				<data> 790 </data>
+				<data> 680 </data>
+				<data> 590 </data>
+				<data> 520 </data>
+				<data> 450 </data>
+				<data> 390 </data>
+				<data> 340 </data>
+				<data> 300 </data>
+				<data> 260 </data>
+				<data> 230 </data>
+				<data> 200 </data>
+				<data> 170 </data>
+				<data> 150 </data>
+				<data> 130 </data>
+				<data> 120 </data>
+				<data> 110 </data>
+				<data> 100 </data>
+				<data> 90 </data>
+				<data> 80 </data>
+			</structure>
+		</var>
+		</structure>
+	</initialdata>
+</program>

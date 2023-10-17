@@ -1,0 +1,11 @@
+нт29
+Xmax 28532
+dx1 8193
+dx2 545
+Xizlet 2000
+ros 700
+rubez 0
+dz1 4123
+dz2 = 85
+Xsz = 39970 
+Zsz 4908

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata>
+    <group	name = "Dispersion">
+		<description>Параметры задачи рассеивания</description>
+		<structure name = "record">
+		<var name = "N">
+			<description>Количество испытаний</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit> </unit>
+				<data> 100 </data>
+			</structure>
+		</var>
+		<var name = "rasp">
+			<description>Закон распределения случайных величин (0 - равномерный, 1 - нормальный)</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit> </unit>
+				<data> 1 </data>
+			</structure>
+		</var>
+		<var name = "U_disp_ballucl">
+			<description>Учет разброса баллистических параметров (0 - нет, 1 - да)</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit> </unit>
+				<data> 1 </data>
+			</structure>
+		</var>
+		<var name = "d_m">
+			<description>Разброс массы (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>кг</unit>
+				<data> -0,45 </data> <data> 0,25 </data>
+			</structure>
+		</var>
+		<var name = "d_ix">
+			<description>Разброс параметра формы ix (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit> </unit>
+				<data> 0,0 </data> <data> 0,0 </data>
+			</structure>
+		</var>
+		<var name = "d_rd">
+			<description>Разброс параметра коэф.тяги (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>%</unit>
+				<data> -1,0 </data> <data> 1,0 </data>
+			</structure>
+		</var>
+		<var name = "d_V0">
+			<description>Разброс начальной скорости (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>м/с</unit>
+				<data> -7,0 </data> <data> 7,0 </data>
+			</structure>
+		</var>
+		<var name = "d_teta">
+			<description>Разброс угла стрельбы (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -0,1 </data> <data> 0,1 </data>
+			</structure>
+		</var>
+		<var name = "d_azim">
+			<description>Разброс дирекционного угла (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -0,1 </data> <data> 0,1 </data>
+			</structure>
+		</var>
+		<var name = "d_delta1">
+			<description>Разброс горизонтального угла нутации (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -0,17 </data> <data> 0,17 </data>
+			</structure>
+		</var>
+		<var name = "d_delta2">
+			<description>Разброс вертикального угла нутации (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -0,17 </data> <data> 0,17 </data>
+			</structure>
+		</var>
+		<var name = "d_omega1">
+			<description>Разброс горизонтальной угловой скорости (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>рад/с</unit>
+				<data> -0,01 </data> <data> 0,01 </data>
+			</structure>
+		</var>
+		<var name = "d_omega2">
+			<description>Разброс вертикальной угловой скорости (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>рад/с</unit>
+				<data> -0,01 </data> <data> 0,01 </data>
+			</structure>
+		</var>
+		<var name = "d_t0">
+			<description>Разброс времени старта (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>с</unit>
+				<data> -0,005 </data> <data> 0,005 </data>
+			</structure>
+		</var>
+		<var name = "U_disp_meteoucl">
+			<description>Учет разброса метеорологических параметров (0 - нет, 1 - да)</description>
+			<structure name = "scalar">
+				<datatype>integer</datatype>
+				<unit> </unit>
+				<data> 1 </data>
+			</structure>
+		</var>
+		<var name = "d_Tm0">
+			<description>Разброс температуры воздуха (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град С</unit>
+				<data> -1,0 </data> <data> 1,0 </data>
+			</structure>
+		</var>
+		<var name = "d_Pr0">
+			<description>Разброс давления атмосферы (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>мм рт.ст.</unit>
+				<data> -5,0 </data> <data> 5,0 </data>
+			</structure>
+		</var>
+		<var name = "d_wind">
+			<description>Разброс приземной скорости ветра (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>м/с</unit>
+				<data> -0,3 </data> <data> 0,3 </data>
+			</structure>
+		</var>
+		<var name = "d_awind">
+			<description>Разброс направления ветра (-/+)</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<unit>град</unit>
+				<data> -10,0 </data> <data> 10,0 </data>
+			</structure>
+		</var>		
+		</structure>
+		</group>		
+	</initialdata>
+</program>

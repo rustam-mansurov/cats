@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata name = "K_NM">
+		<description>K_NM</description>
+		<structure name = "record">
+		<var name = "M1_K_NM">
+			<description>М1</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>7</count>
+				<unit>__</unit>
+				<data> 0,0 </data>
+                <data> 0,6 </data>
+                <data> 0,8 </data>
+                <data> 1,1 </data>
+                <data> 1,5 </data>
+                <data> 2,9 </data>
+                <data> 4,9 </data>
+			</structure>
+		</var>
+		<var name = "M2_K_NM">
+			<description>М2</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>7</count>
+				<unit>__</unit>
+				<data> 0,6 </data>
+                <data> 0,8 </data>
+                <data> 1,1 </data>
+                <data> 1,5 </data>
+                <data> 2,9 </data>
+                <data> 4,9 </data>
+                <data> 100,0 </data>
+			</structure>
+		</var>
+        <var name = "a0_K_NM">
+			<description>alpha0</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>7</count>
+				<unit>__</unit>
+				<data> 0,206000 </data>
+                <data> 0,173903 </data>
+                <data> 0,371089 </data>
+                <data> 0,085860 </data>
+                <data> 0,033077 </data>
+                <data> 0,139043 </data>
+                <data> 0,370000 </data>
+			</structure>
+		</var>
+        <var name = "a1_K_NM">
+			<description>alpha1</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>7</count>
+				<unit>__</unit>
+				<data> 0,000000 </data>
+                <data> 0,106376 </data>
+                <data> -0,307251 </data>
+                <data> 0,084315 </data>
+                <data> 0,139076 </data>
+                <data> 0,084848 </data>
+                <data> 0,000000 </data>
+			</structure>
+		</var>
+        <var name = "a2_K_NM">
+			<description>alpha2</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>7</count>
+				<unit>__</unit>
+                <data> 0,000000 </data>
+                <data> -0,086023 </data>
+                <data> 0,126190 </data>
+                <data> 0,000399 </data>
+                <data> -0,013524 </data>
+                <data> -0,007699 </data>
+                <data> 0,000000 </data>
+			</structure>
+		</var>       
+		</structure>
+	</initialdata>
+</program>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<program name="Vibr1">
+  <company>ISTU</company>
+  <version>0.0.1.0</version>
+	<initialdata name = "tau_ot_y_nominal">
+		<description>tau(y),темп_атмосферы_от_высоты,_Па</description>
+		<structure name = "record">
+		<var name = "y_tnorm_ar">
+			<description>y</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>6</count>
+				<unit>м</unit>
+				<data> 0 </data>
+				<data> 9300 </data>
+				<data> 12000 </data>
+				<data> 27000 </data>
+				<data> 32000 </data>
+				<data> 47300 </data>
+			</structure>
+		</var>
+		<var name = "tau_norm_ar">
+			<description>tau</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>6</count>
+				<unit>K</unit>
+				<data> 288,9 </data>
+				<data> 230,0 </data>
+				<data> 221,5 </data>
+				<data> 221,5 </data>
+				<data> 228,5 </data>
+				<data> 270,6 </data>
+			</structure>
+		</var>
+		<var name = "tau_k1">
+			<description>k1</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>6</count>
+				<unit>Па</unit>
+				<data> -6,328E-3 </data>
+				<data> -6,328E-3 </data>
+				<data> 0 </data>
+				<data> 2,8E-3 </data>
+				<data> 2,75E-3</data>
+				<data> 0 </data>
+			</structure>
+		</var>
+		<var name = "tau_k2">
+			<description>k2</description>
+			<structure name = "vector">
+				<datatype>double</datatype>
+				<count>6</count>
+				<unit>Па</unit>
+				<data> 0 </data>
+				<data> 1,172E-6 </data>
+				<data> 0 </data>
+				<data> 2,8E-6 </data>
+				<data> 0 </data>
+				<data> 0 </data>
+			</structure>
+		</var>
+		</structure>
+	</initialdata>
+</program>

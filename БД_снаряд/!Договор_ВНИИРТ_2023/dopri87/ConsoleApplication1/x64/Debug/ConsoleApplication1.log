@@ -1,0 +1,4 @@
+﻿  d87-double.cpp
+C:\Users\admin\Desktop\dorpi87\ConsoleApplication1\d87-double.cpp(5,1): warning C4005: _CRT_SECURE_NO_WARNINGS: изменение макроопределения
+C:\Users\admin\Desktop\dorpi87\ConsoleApplication1\d87-double.cpp(5,1): message : "_CRT_SECURE_NO_WARNINGS" ранее объявлен в командной строке
+  ConsoleApplication1.vcxproj -> C:\Users\admin\Desktop\dorpi87\x64\Debug\ConsoleApplication1.exe
