@@ -183,7 +183,7 @@
             this.начальныеПараметрыРеактивногоДвигателяToolStripMenuItem,
             this.начальныеПараметрыВнутреннейБаллистикиToolStripMenuItem});
             this.InitialСonditions.Name = "InitialСonditions";
-            this.InitialСonditions.Size = new System.Drawing.Size(338, 92);
+            this.InitialСonditions.Size = new System.Drawing.Size(338, 70);
             // 
             // начальныеУсловияToolStripMenuItem
             // 
@@ -258,7 +258,8 @@
             this.остановитьToolStripMenuItem,
             this.внутренняяБаллистикаToolStripMenuItem});
             this.Calculation.Name = "contextMenuStrip1";
-            this.Calculation.Size = new System.Drawing.Size(206, 70);
+            this.Calculation.Size = new System.Drawing.Size(206, 92);
+            this.Calculation.Opening += new System.ComponentModel.CancelEventHandler(this.Calculation_Opening);
             // 
             // начатьToolStripMenuItem
             // 

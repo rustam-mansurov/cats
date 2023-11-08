@@ -273,5 +273,10 @@ namespace Externum_ballistics
             using (JsonWriter writer = new JsonTextWriter(sw))
                 serializer.Serialize(writer, inletParametrs);
         }
+
+        private void Calculation_Opening(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+        }
     }
 }
