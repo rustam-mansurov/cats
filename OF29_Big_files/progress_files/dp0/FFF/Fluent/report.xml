@@ -1,0 +1,300 @@
+<FluentXMLReport>
+<version>
+Fluent
+Version: axi, swirl, dbns imp, ske (axi, swirl, density-based implicit, standard k-epsilon)
+Release: 22.1.0
+Title: 
+</version>
+
+<Models>
+
+Models
+------
+
+   Model                        Settings                              
+   ----------------------------------------------------------------
+   Space                        Axisymmetric swirl                    
+   Time                         Steady                                
+   Viscous                      Standard k-epsilon turbulence model   
+   Wall Treatment               Standard Wall Functions               
+   Heat Transfer                Enabled                               
+   Solidification and Melting   Disabled                              
+   Radiation                    None                                  
+   Species                      Disabled                              
+   Coupled Dispersed Phase      Disabled                              
+   NOx Pollutants               Disabled                              
+   SOx Pollutants               Disabled                              
+   Soot                         Disabled                              
+   Mercury Pollutants           Disabled                              
+   Structure                    Disabled                              
+   Acoustics                    Disabled                              
+   Eulerian Wall Film           Disabled                              
+   Potential/Li-ion Battery     Disabled                              
+   Multiphase                   Disabled                              
+
+</Models>
+
+<MaterialProperties>
+Material Properties
+-------------------
+
+   Material: air (fluid)
+
+      Property                        Units      Method       Value(s)                     
+      ----------------------------------------------------------------------------------
+      Density                         kg/m^3     ideal-gas    #f                           
+      Cp (Specific Heat)              J/(kg K)   constant     1006.43                      
+      Thermal Conductivity            W/(m K)    constant     0.0242                       
+      Viscosity                       kg/(m s)   sutherland   (1.716e-05 273.11 110.56 )   
+      Molecular Weight                kg/kmol    constant     28.966                       
+      Thermal Expansion Coefficient   K^-1       constant     0                            
+      Speed of Sound                  m/s        none         #f                           
+
+   Material: aluminum (solid)
+
+      Property               Units      Method     Value(s)   
+      -----------------------------------------------------
+      Density                kg/m^3     constant   2719       
+      Cp (Specific Heat)     J/(kg K)   constant   871        
+      Thermal Conductivity   W/(m K)    constant   202.4      
+
+</MaterialProperties>
+
+<CellZoneConditions>
+Cell Zone Conditions
+--------------------
+
+   Zones
+
+      name           id   type    
+      -------------------------
+      surface_body   2    fluid   
+
+   Setup Conditions
+
+      surface_body
+
+         Condition       Value   
+         ---------------------
+         Frame Motion?   no      
+
+</CellZoneConditions>
+
+<BoundaryConditions>
+Boundary Conditions
+-------------------
+
+   Zones
+
+      name                          id   type                 
+      -----------------------------------------------------
+      interface22-non-overlapping   23   wall                 
+      interface21-non-overlapping   24   wall                 
+      interface12-non-overlapping   25   wall                 
+      interface11-non-overlapping   26   wall                 
+      interface22                   15   interface            
+      interface21                   14   interface            
+      interface12                   13   interface            
+      interface11                   12   interface            
+      inlet                         10   pressure-far-field   
+      nose                          5    wall                 
+      head                          6    wall                 
+      body                          7    wall                 
+      bottom                        8    wall                 
+      axis                          9    axis                 
+      outlet                        11   pressure-outlet      
+
+   Setup Conditions
+
+      interface22-non-overlapping
+
+         Condition                  Value             
+         ------------------------------------------
+         Thermal BC Type            Heat Flux         
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+      interface21-non-overlapping
+
+         Condition                  Value             
+         ------------------------------------------
+         Thermal BC Type            Heat Flux         
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+      interface12-non-overlapping
+
+         Condition                  Value             
+         ------------------------------------------
+         Thermal BC Type            Heat Flux         
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+      interface11-non-overlapping
+
+         Condition                  Value             
+         ------------------------------------------
+         Thermal BC Type            Heat Flux         
+         Wall Motion                Stationary Wall   
+         Shear Boundary Condition   No Slip           
+
+      interface22
+
+         Condition   Value                         
+         ---------------------------------------
+                     interface22-non-overlapping   
+
+      interface21
+
+         Condition   Value                         
+         ---------------------------------------
+                     interface21-non-overlapping   
+
+      interface12
+
+         Condition   Value                         
+         ---------------------------------------
+                     interface12-non-overlapping   
+
+      interface11
+
+         Condition   Value                         
+         ---------------------------------------
+                     interface11-non-overlapping   
+
+      inlet
+
+         Condition                   Value   
+         ---------------------------------
+         Mach Number                 1.1     
+         Temperature [K]             288     
+         Turbulent Intensity [%]     2       
+         Turbulent Viscosity Ratio   5       
+
+      nose
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Heat Flux     
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   yes           
+         Apply a rotational velocity to this wall?            yes           
+         Wall Roughness Height [m]                            0.0002        
+         Rotation Speed [rad/s]                               1000          
+
+      head
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Heat Flux     
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   yes           
+         Apply a rotational velocity to this wall?            yes           
+         Wall Roughness Height [m]                            0.0002        
+         Rotation Speed [rad/s]                               1000          
+
+      body
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Heat Flux     
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   yes           
+         Apply a rotational velocity to this wall?            yes           
+         Wall Roughness Height [m]                            0.0002        
+         Rotation Speed [rad/s]                               1000          
+
+      bottom
+
+         Condition                                            Value         
+         ----------------------------------------------------------------
+         Thermal BC Type                                      Heat Flux     
+         Wall Motion                                          Moving Wall   
+         Shear Boundary Condition                             No Slip       
+         Define wall motion relative to adjacent cell zone?   yes           
+         Apply a rotational velocity to this wall?            yes           
+         Wall Roughness Height [m]                            0.0002        
+         Rotation Speed [rad/s]                               1000          
+
+      axis
+
+         Condition   Value   
+         -----------------
+
+      outlet
+
+         Condition                            Value   
+         ------------------------------------------
+         Backflow Total Temperature [K]       288     
+         Backflow Turbulent Intensity [%]     2       
+         Backflow Turbulent Viscosity Ratio   5       
+
+</BoundaryConditions>
+
+<SolverSettings>
+Solver Settings
+---------------
+
+   Equations
+
+      Equation     Solved   
+      -------------------
+      Flow         yes      
+      Turbulence   yes      
+
+   Numerics
+
+      Numeric                         Enabled   
+      ---------------------------------------
+      Absolute Velocity Formulation   yes       
+
+   Under-Relaxation Factors
+
+      Variable                     Relaxation Factor   
+      ----------------------------------------------
+      Turbulent Kinetic Energy     0.8                 
+      Turbulent Dissipation Rate   0.8                 
+      Turbulent Viscosity          1                   
+      Solid                        1                   
+
+   Linear Solver
+
+      Variable                     Solver Type   Termination Criterion   Residual Reduction Tolerance   
+      -----------------------------------------------------------------------------------------------
+      Flow                         F-Cycle       0.1                                                    
+      Turbulent Kinetic Energy     Flexible      0.1                     0.7                            
+      Turbulent Dissipation Rate   Flexible      0.1                     0.7                            
+
+   Discretization Scheme
+
+      Variable                     Scheme                
+      ------------------------------------------------
+      Flow                         Second Order Upwind   
+      Turbulent Kinetic Energy     Second Order Upwind   
+      Turbulent Dissipation Rate   Second Order Upwind   
+
+   Time Marching
+
+      Parameter        Value      
+      -------------------------
+      Solver           Implicit   
+      Courant Number   1          
+
+   Solution Limits
+
+      Quantity                         Limit    
+      ---------------------------------------
+      Minimum Absolute Pressure        1        
+      Maximum Absolute Pressure        5e+10    
+      Minimum Temperature              1        
+      Maximum Temperature              5000     
+      Minimum Turb. Kinetic Energy     1e-14    
+      Minimum Turb. Dissipation Rate   1e-20    
+      Maximum Turb. Viscosity Ratio    100000   
+
+</SolverSettings>
+
+</FluentXMLReport>

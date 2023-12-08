@@ -1,0 +1,70 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v7.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v7.0": {
+      "BomberManClient/1.0.0": {
+        "dependencies": {
+          "BomberMansTCPFormsLibrary": "1.0.0"
+        },
+        "runtime": {
+          "BomberManClient.dll": {}
+        }
+      },
+      "Newtonsoft.Json/13.0.3": {
+        "runtime": {
+          "lib/net6.0/Newtonsoft.Json.dll": {
+            "assemblyVersion": "13.0.0.0",
+            "fileVersion": "13.0.3.27908"
+          }
+        }
+      },
+      "SuperSimpleTcp/3.0.13": {
+        "runtime": {
+          "lib/net7.0/SuperSimpleTcp.dll": {
+            "assemblyVersion": "3.0.13.0",
+            "fileVersion": "3.0.13.0"
+          }
+        }
+      },
+      "BomberMansTCPFormsLibrary/1.0.0": {
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.3",
+          "SuperSimpleTcp": "3.0.13"
+        },
+        "runtime": {
+          "BomberMansTCPFormsLibrary.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BomberManClient/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Newtonsoft.Json/13.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HrC5BXdl00IP9zeV+0Z848QWPAoCr9P3bDEZguI+gkLcBKAOxix/tLEAAHC+UvDNPv4a2d18lOReHMOagPa+zQ==",
+      "path": "newtonsoft.json/13.0.3",
+      "hashPath": "newtonsoft.json.13.0.3.nupkg.sha512"
+    },
+    "SuperSimpleTcp/3.0.13": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-I0fIJ7lzH/gd50Ey6Dsb6uY72DE0ogGZEdtOJVWX27/kSgixo52uv8kcczDfZqARvibbM6XpTsWWk/jxptjWLQ==",
+      "path": "supersimpletcp/3.0.13",
+      "hashPath": "supersimpletcp.3.0.13.nupkg.sha512"
+    },
+    "BomberMansTCPFormsLibrary/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

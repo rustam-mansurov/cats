@@ -110,7 +110,7 @@ Boundary Conditions
 
          Condition                   Value   
          ---------------------------------
-         Mach Number                 1       
+         Mach Number                 0.5     
          Turbulent Intensity [%]     2       
          Turbulent Viscosity Ratio   5       
 
@@ -280,7 +280,7 @@ Solver Settings
       Parameter        Value      
       -------------------------
       Solver           Implicit   
-      Courant Number   5          
+      Courant Number   1          
 
    Solution Limits
 
