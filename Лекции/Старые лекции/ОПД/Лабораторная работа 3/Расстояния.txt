@@ -1,0 +1,88 @@
+        void DrawRoads()
+        {
+            DataTable dt4 = new DataTable();
+            DataTable dt5 = new DataTable();
+            DataTable dt6 = new DataTable();
+            string query = "SELECT Дороги.[Код дороги], Дороги.[Код маршрута], УзлыДорог.Широта, УзлыДорог.Долгота " +
+                "FROM УзлыДорог INNER JOIN Дороги ON УзлыДорог.[Код узла] = Дороги.[Код узла] ORDER BY Дороги.[Код дороги]; ";
+        OleDbCommand command = new OleDbCommand(query, myConnection);
+            OleDbDataAdapter da = new OleDbDataAdapter(command);
+            da.Fill(dt4);
+            int countItems4 = dt4.Rows.Count;
+            
+            query = "SELECT Маршруты.[Код маршрута], Маршруты.[Код типа дороги] FROM Маршруты";
+            command.CommandText = query;
+            da.SelectCommand = command;
+            da.Fill(dt5);
+            int countItems5 = dt5.Rows.Count;
+
+            /*query = "SELECT Расстояния.[Код расстояния], Пункты_1.Наименование, Пункты_2.Наименование, Расстояния.[Код маршрута] " +
+                "FROM(Расстояния INNER JOIN Пункты AS Пункты_1 ON Расстояния.[Код пункта 1] = Пункты_1.[Код пункта]) " +
+                "INNER JOIN Пункты AS Пункты_2 ON Расстояния.[Код пункта 2] = Пункты_2.[Код пункта] ORDER BY Расстояния.[Код расстояния]; ";*/
+            query = "SELECT * FROM Расстояния ORDER BY Расстояния.[Код расстояния]; ";
+            command.CommandText = query;
+            da.SelectCommand = command;
+            da.Fill(dt6);
+            int countItems6 = dt6.Rows.Count;
+            
+            List<PointLatLng>[] listPoints5 = new List<PointLatLng>[countItems5];
+            for (int i = 0; i < listPoints5.Length; i++)
+            {
+                listPoints5[i] = new List<PointLatLng>();
+            }
+            for (int j = 0; j < countItems4; j++)
+            {
+                int t1 = (int)dt4.Rows[j][1];
+                listPoints5[t1 - 1].Add(
+                    new PointLatLng((Convert.ToDouble(dt4.Rows[j][2]) / 1000000), Convert.ToDouble(dt4.Rows[j][3]) / 1000000));
+            }
+
+            GMapRoute[] marshrut = new GMapRoute[countItems5];
+            Color colorRoad = Color.FromArgb(255, 0, 0, 0);
+            PointLatLng pll,pll2;
+            Random random = new Random();
+            Bitmap bm = new Bitmap(10, 10);
+            for (int j = 0; j < countItems5; j++)
+            {
+                colorRoad = Color.FromArgb(random.Next(255), random.Next(255), random.Next(255));
+                marshrut[j] = new GMapRoute(listPoints5[j], "O" + (j+1).ToString());
+                //pll = new PointLatLng(j,j);
+                pll = new PointLatLng(listPoints5[j].FirstOrDefault().Lat, listPoints5[j].FirstOrDefault().Lng);
+                roadNode = new GMarkerGoogle(pll, bm)
+                {
+                    ToolTipText = Convert.ToString(marshrut[j].Name),
+                    ToolTipMode = MarkerTooltipMode.OnMouseOver
+                };
+                marshrut[j].Stroke = new Pen(colorRoad, 1f);
+                marshrut[j].Stroke.Width = 1f;
+                roadOverlay.Routes.Add(marshrut[j]);
+                roadOverlay.Markers.Add(roadNode);
+                pll2 = new PointLatLng(listPoints5[j].Last().Lat, listPoints5[j].Last().Lng);
+                roadNode = new GMarkerGoogle(pll2, bm)
+                {
+                    ToolTipText = Convert.ToString(j+1),
+                    ToolTipMode = MarkerTooltipMode.OnMouseOver
+                };
+                roadOverlay.Markers.Add(roadNode);
+            }
+          
+  //расстояния
+            int kolpunkt = (int)dt6.Rows[countItems6 - 1][1];
+            double[,] masrasst = new double[kolpunkt, kolpunkt];
+            for (int j = 0; j < countItems6; j++)
+            {
+                int t1 = (int)dt6.Rows[j][1];
+                int t2 = (int)dt6.Rows[j][2];
+                int t3 = (int)dt6.Rows[j][3];
+                masrasst[t1 - 1, t2 - 1] += marshrut[t3 - 1].Distance;
+            }
+            dataGridView1.RowCount = kolpunkt;
+            dataGridView1.ColumnCount = kolpunkt;
+            for (int i = 0; i < kolpunkt; i++)
+                for (int j = 0; j < kolpunkt; j++)
+                {
+                    dataGridView1[i,j].Value = masrasst[i,j];
+                }
+            //label1.Text = Convert.ToString(marshrut[0].Distance);
+            gMapControl1.Overlays.Add(roadOverlay);
+        }
