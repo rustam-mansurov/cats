@@ -1,8 +1,0 @@
-REGEDIT4
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HTMLHelp]
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HTMLHelp\1.x]
-"EnforcedDirectories"="%WINDIR%;%ProgramFiles%\\Movie Maker"
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HTMLHelp\1.x\HHRestrictions]
-"MaxAllowedZone"=dword:00000003
-[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\HTMLHelp\1.x\ItssRestrictions]
-"MaxAllowedZone"=dword:00000003

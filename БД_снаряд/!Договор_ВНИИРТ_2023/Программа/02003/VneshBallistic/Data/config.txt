@@ -1,6 +1,0 @@
-Начальные параметры запуска программы:
-Начальные_условия(/initialdata): NU_OF3-23.xml
-Параметры_вертолета(/vert): Mi-8.xml
-Параметры_обратной_задачи(/initialdata): init_target.xml
-Параметры_задачи_рассеивания(/initialdata): init_dispOF3-23.xml
-Параметры_очереди(/initialdata): init_ochered.xml

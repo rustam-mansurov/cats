@@ -1,1 +1,0 @@
-VBConsoleApp.exe 1 NU_OF3-23blok5.xml Mi-8.xml res_OF3-23.xml
