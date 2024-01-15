@@ -1,1 +1,0 @@
-VBConsoleApp.exe 1 NU_C80.xml Mi-8.xml res_C80
