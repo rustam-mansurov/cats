@@ -108,3 +108,4 @@ C:\Users\Рустам\Desktop\dogs\cats\Externum_ballistics\Externum_ballistics\
 C:\Users\Рустам\Desktop\dogs\cats\Externum_ballistics\Externum_ballistics\obj\Debug\net6.0-windows\ref\Externum_ballistics.dll
 C:\Users\Рустам\Desktop\dogs\cats\Externum_ballistics\Externum_ballistics\obj\Debug\net6.0-windows\Externum_ballistics.pdb
 C:\Users\Рустам\Desktop\dogs\cats\Externum_ballistics\Externum_ballistics\obj\Debug\net6.0-windows\Externum_ballistics.genruntimeconfig.cache
+C:\Users\Admin\Desktop\Git\cats\Externum_ballistics\Externum_ballistics\obj\Debug\net6.0-windows\Externum_ballistics.sourcelink.json
