@@ -1,7 +1,7 @@
 <FluentXMLReport>
 <version>
 Fluent
-Version: axi, swirl, dbns imp, ske (axi, swirl, density-based implicit, standard k-epsilon)
+Version: axi, swirl, dbns imp, rngke (axi, swirl, density-based implicit, RNG k-epsilon)
 Release: 22.1.0
 Title: 
 </version>
@@ -11,26 +11,28 @@ Title:
 Models
 ------
 
-   Model                        Settings                              
-   ----------------------------------------------------------------
-   Space                        Axisymmetric swirl                    
-   Time                         Steady                                
-   Viscous                      Standard k-epsilon turbulence model   
-   Wall Treatment               Standard Wall Functions               
-   Heat Transfer                Enabled                               
-   Solidification and Melting   Disabled                              
-   Radiation                    None                                  
-   Species                      Disabled                              
-   Coupled Dispersed Phase      Disabled                              
-   NOx Pollutants               Disabled                              
-   SOx Pollutants               Disabled                              
-   Soot                         Disabled                              
-   Mercury Pollutants           Disabled                              
-   Structure                    Disabled                              
-   Acoustics                    Disabled                              
-   Eulerian Wall Film           Disabled                              
-   Potential/Li-ion Battery     Disabled                              
-   Multiphase                   Disabled                              
+   Model                              Settings                         
+   -----------------------------------------------------------------
+   Space                              Axisymmetric swirl               
+   Time                               Steady                           
+   Viscous                            RNG k-epsilon turbulence model   
+   Wall Treatment                     Standard Wall Functions          
+   RNG Differential Viscosity Model   Disabled                         
+   RNG Swirl Dominated Flow Option    Disabled                         
+   Heat Transfer                      Enabled                          
+   Solidification and Melting         Disabled                         
+   Radiation                          None                             
+   Species                            Disabled                         
+   Coupled Dispersed Phase            Disabled                         
+   NOx Pollutants                     Disabled                         
+   SOx Pollutants                     Disabled                         
+   Soot                               Disabled                         
+   Mercury Pollutants                 Disabled                         
+   Structure                          Disabled                         
+   Acoustics                          Disabled                         
+   Eulerian Wall Film                 Disabled                         
+   Potential/Li-ion Battery           Disabled                         
+   Multiphase                         Disabled                         
 
 </Models>
 
@@ -166,7 +168,7 @@ Boundary Conditions
 
          Condition                   Value   
          ---------------------------------
-         Mach Number                 1.1     
+         Mach Number                 1.2     
          Temperature [K]             288     
          Turbulent Intensity [%]     2       
          Turbulent Viscosity Ratio   5       

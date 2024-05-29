@@ -1,6 +1,4 @@
 ﻿dp0/FFF/DM/FFF.agdb
-dp0/FFF/Fluent/FFF-30-05400.dat.h5
-dp0/FFF/Fluent/FFF-30.cas.h5
 dp0/FFF/Fluent/FFF-Setup-Output.cas.h5
 dp0/FFF/Fluent/FFF.ip
 dp0/FFF/Fluent/FFF.set
@@ -16,6 +14,7 @@ progress_files/dp0/FFF/Fluent/report.xml
 session_files/journal1.wbjn
 session_files/journal2.wbjn
 session_files/journal3_crashed.wbjn
+session_files/journal4.wbjn
 dp0/
 dpall/
 progress_files/
